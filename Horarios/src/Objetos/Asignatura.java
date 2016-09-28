@@ -17,6 +17,8 @@ public class Asignatura {
     int horasSemanales;
     int horasSesion;
     
+    boolean puedeRepetir = false;
+    
     //Inicio 
     SimpleDateFormat horaInicio = new SimpleDateFormat("H:mm");
     SimpleDateFormat horaFin = new SimpleDateFormat("H:mm");
@@ -55,6 +57,7 @@ public class Asignatura {
         this.nombre = nombre;
         this.horasSemanales = horasSemanales;
         this.horasSesion = horasSesion;
+        //this.puedeRepetir = repetir;
     }
 
     public String getNombre() {
@@ -90,6 +93,7 @@ public class Asignatura {
         if(horasSemanaActual==horasSemanales){
             topeSemana=true;
         }
+        if(puedeRepetir){diaActualPuede=true;}
     }
     public void setDiaActualPuede(boolean diaActualPuede) {
         this.diaActualPuede = diaActualPuede;

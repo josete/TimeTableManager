@@ -14,13 +14,13 @@ import Objetos.Asignatura;
 public class CrearAsignaturas {
     
     public static Asignatura[] crearAsignaturas(){
-        Asignatura[] asignaturas = new Asignatura[6];
-        asignaturas[0] = new Asignatura("Software", 4, 2);
-        asignaturas[1] = new Asignatura("IA", 4, 2);
-        asignaturas[2] = new Asignatura("Proyectos", 4, 2);
-        asignaturas[3] = new Asignatura("Infraestructuras", 4, 2);
-        asignaturas[4] = new Asignatura("Sistemas", 4, 2);
-        asignaturas[5] = new Asignatura("Programacion", 4, 2);
+        Asignatura[] asignaturas = new Asignatura[5];
+        asignaturas[0] = new Asignatura("aaaa", 6, 2);
+        asignaturas[1] = new Asignatura("bbbb", 6, 2);
+        asignaturas[2] = new Asignatura("cccc", 4, 2);
+        asignaturas[3] = new Asignatura("dddd", 4, 2);
+        asignaturas[4] = new Asignatura("eeee", 4, 2);
+        //asignaturas[5] = new Asignatura("Programacion", 4, 2);
         
         return asignaturas;
     }
