@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package horarios;
-
+//Prueba Angel
 import Funcionalidad.GenerarHorario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
