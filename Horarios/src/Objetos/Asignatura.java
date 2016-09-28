@@ -5,6 +5,8 @@
  */
 package Objetos;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Familia
@@ -15,6 +17,35 @@ public class Asignatura {
     int horasSemanales;
     int horasSesion;
     
+    //Inicio 
+    SimpleDateFormat horaInicio = new SimpleDateFormat("H:mm");
+    SimpleDateFormat horaFin = new SimpleDateFormat("H:mm");
+
+    
+    public Asignatura(String nombre, SimpleDateFormat horaInicio, SimpleDateFormat horaFin) {
+        this.nombre = nombre;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
+
+    public SimpleDateFormat getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(SimpleDateFormat horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public SimpleDateFormat getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(SimpleDateFormat horaFin) {
+        this.horaFin = horaFin;
+    }
+    
+    
+    //Fin
     boolean diaActualPuede = true;
     boolean topeSemana = false;
 
