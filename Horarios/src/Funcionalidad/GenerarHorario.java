@@ -16,12 +16,12 @@ public class GenerarHorario {
     public void generar() {
         Asignatura[] asignaturas = CrearAsignaturas.crearAsignaturas();
 
-        int horasDia = 4;
+        int horasDia = 6;
 
-        String[][] horario = new String[5][4];
+        String[][] horario = new String[5][6];
         int dia = 1;
         int hora = 1;
-        int totalHorasSemana = 20;
+        int totalHorasSemana = 30;
         for (int i = 0; i < totalHorasSemana; i += 2) {
             //Suponiendo que todas las clases duran lo mismo
             Asignatura asignatura = seleccionar(asignaturas);
@@ -61,6 +61,22 @@ public class GenerarHorario {
         for (int i = 0; i < as.length; i++) {
             as[i].setDiaActualPuede(true);
         }
+    }
+
+    //PAra angel
+    public Asignatura asignaturaSiguiente(Asignatura[] as, String nombre) {
+        Asignatura a = null;
+        for (int i = 0; i < as.length; i++) {
+            if (as[i].getNombre().equals(nombre)) {
+                try {
+                    a = as[i + 1];
+                    break;
+                } catch (Exception e) {
+                    //a = as[0];
+                }
+            }
+        }
+        return a;
     }
 
 }
