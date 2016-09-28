@@ -16,23 +16,24 @@ public class GenerarHorario {
     public void generar() {
         Asignatura[] asignaturas = CrearAsignaturas.crearAsignaturas();
 
-        int horasDia = 4;
+        int horasDia = 6;
 
-        String[][] horario = new String[5][4];
+        String[][] horario = new String[5][6];
         int dia = 1;
         int hora = 1;
-        for (int i = 0; i < 20; i += 2) {
+        int totalHorasSemana = 30;
+        for (int i = 0; i < totalHorasSemana; i += 2) {
             //Suponiendo que todas las clases duran lo mismo
-            Asignatura nomnre = seleccionar(asignaturas);
-            horario[dia - 1][hora-1] = nomnre.getNombre();
-            hora++;
-            horario[dia - 1][hora-1] = nomnre.getNombre();
-            hora++;
-            nomnre.setDiaActualPuede(false);
-            nomnre.sumar();
-            if ((hora-1) == horasDia) {
+            Asignatura asignatura = seleccionar(asignaturas);
+            for (int j = 0; j < asignatura.getHorasSesion(); j++) {
+                horario[dia - 1][hora - 1] = asignatura.getNombre();
+                hora++;
+            }
+            asignatura.setDiaActualPuede(false);
+            asignatura.sumar();
+            if ((hora - 1) == horasDia) {
                 dia++;
-                hora=1;
+                hora = 1;
                 resetearDiaAsignaturas(asignaturas);
             }
         }
@@ -49,7 +50,7 @@ public class GenerarHorario {
     public Asignatura seleccionar(Asignatura[] as) {
         Asignatura a = null;
         for (int i = 0; i < as.length; i++) {
-            if (as[i].isDiaActualPuede()&&!as[i].isTopeSemana()) {
+            if (as[i].isDiaActualPuede() && !as[i].isTopeSemana()) {
                 a = as[i];
             }
         }
@@ -60,6 +61,22 @@ public class GenerarHorario {
         for (int i = 0; i < as.length; i++) {
             as[i].setDiaActualPuede(true);
         }
+    }
+
+    //PAra angel
+    public Asignatura asignaturaSiguiente(Asignatura[] as, String nombre) {
+        Asignatura a = null;
+        for (int i = 0; i < as.length; i++) {
+            if (as[i].getNombre().equals(nombre)) {
+                try {
+                    a = as[i + 1];
+                    break;
+                } catch (Exception e) {
+                    //a = as[0];
+                }
+            }
+        }
+        return a;
     }
 
 }
