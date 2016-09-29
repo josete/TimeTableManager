@@ -15,11 +15,11 @@ public class CrearAsignaturas {
     
     public static Asignatura[] crearAsignaturas(){
         Asignatura[] asignaturas = new Asignatura[5];
-        asignaturas[0] = new Asignatura("aaaa", 6, 2);
-        asignaturas[1] = new Asignatura("bbbb", 6, 2);
-        asignaturas[2] = new Asignatura("cccc", 4, 2);
-        asignaturas[3] = new Asignatura("dddd", 4, 2);
-        asignaturas[4] = new Asignatura("eeee", 4, 2);
+        asignaturas[0] = new Asignatura("a", 6, 2);
+        asignaturas[1] = new Asignatura("b", 6, 2);
+        asignaturas[2] = new Asignatura("c", 4, 2);
+        asignaturas[3] = new Asignatura("d", 4, 2);
+        asignaturas[4] = new Asignatura("e", 4, 2);
         //asignaturas[5] = new Asignatura("Programacion", 4, 2);
         
         return asignaturas;
