@@ -46,6 +46,8 @@ public class GenerarHorario {
             }
         }
 
+        System.out.println("\tLunes\tMartes\tMiercoles\tJueves\tViernes");
+        System.out.print("8:30\t");
         for (int j = 0; j < 6; j++) {
             for (int i = 0; i < 5; i++) {
                 System.out.print(horario[i][j]);
