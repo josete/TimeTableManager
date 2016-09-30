@@ -19,6 +19,7 @@ public class GenerarHorario {
         Asignatura[] asignaturas = CrearAsignaturas.crearAsignaturas();
         Asignatura[] asignaturas1 = new Asignatura[25];
         int p = 0;
+        //El array asignaturas1 tiene 5 veces cada una de las asignaturas originales y como hay 5 asignaturas, 5*5=25
         for(int i=0;i<5;i++){
             System.arraycopy(asignaturas, 0, asignaturas1, p, asignaturas.length);
             p+=5;

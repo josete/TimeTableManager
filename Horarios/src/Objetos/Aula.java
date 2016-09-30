@@ -18,6 +18,10 @@ public class Aula {
         this.id_aula = id_aula;
         this.ocupado = ocupado;
     }
+    public Aula(String id_aula){
+        this.id_aula=id_aula;
+        
+    }
 
     public String getId_aula() {
         return id_aula;

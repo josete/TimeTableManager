@@ -5,6 +5,7 @@
  */
 package horarios;
 //Prueba Angel
+
 import Funcionalidad.GenerarHorario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,7 @@ public class Horarios extends Application {
         //launch(args);
         GenerarHorario g = new GenerarHorario();
         g.generar();
+
     }
     
 }
