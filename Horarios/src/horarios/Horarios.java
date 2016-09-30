@@ -7,6 +7,7 @@ package horarios;
 //Prueba Angel
 
 import Funcionalidad.GenerarHorario;
+import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
  */
 public class Horarios extends Application {
     
+    static Scanner s = new Scanner(System.in);
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -34,7 +36,13 @@ public class Horarios extends Application {
      */
     public static void main(String[] args) {
         //launch(args);
+        System.out.println("Hora de inicio (Solo hora): ");
+        int h0 = s.nextInt();
+        System.out.println("¿Cuantas horas al dia?");
+        int horas = s.nextInt();
         GenerarHorario g = new GenerarHorario();
+        g.setHoraInicio(h0);
+        g.setHorasDia(horas);
         g.generar();
 
     }
