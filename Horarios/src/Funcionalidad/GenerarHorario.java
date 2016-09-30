@@ -16,6 +16,7 @@ public class GenerarHorario {
     int asignaturaActual = 0;
     int horaInicio = 8;
     int horasDia = 6;
+    String[][] horario;
         
     public void generar() {
         Asignatura[] asignaturas = CrearAsignaturas.crearAsignaturas();
@@ -29,7 +30,7 @@ public class GenerarHorario {
 
         //Se empeiza a y 30
 
-        String[][] horario = new String[5][horasDia];
+        horario = new String[5][horasDia];
         int dia = 1;
         int hora = 1;
         int totalHorasSemana = 5*horasDia;
@@ -99,6 +100,15 @@ public class GenerarHorario {
     public void setHorasDia(int horasDia) {
         this.horasDia = horasDia;
     }
+
+    public String[][] getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String[][] horario) {
+        this.horario = horario;
+    }
+    
     
     
 

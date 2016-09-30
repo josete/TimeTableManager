@@ -19,15 +19,24 @@ import javafx.stage.Stage;
  * @author Familia
  */
 public class Horarios extends Application {
-    
+
     static Scanner s = new Scanner(System.in);
+    static int h0 = 0;
+    static int horas = 0;
+    static String[][] horario;
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = loader.load();
+        FXMLDocumentController controller = loader.getController();
+        controller.iniciar(horario,horas,h0);
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
+        stage.setTitle("Horario");
         stage.show();
     }
 
@@ -35,16 +44,17 @@ public class Horarios extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //launch(args);
         System.out.println("Hora de inicio (Solo hora): ");
-        int h0 = s.nextInt();
+        h0 = s.nextInt();
         System.out.println("¿Cuantas horas al dia?");
-        int horas = s.nextInt();
+        horas = s.nextInt();
         GenerarHorario g = new GenerarHorario();
         g.setHoraInicio(h0);
         g.setHorasDia(horas);
         g.generar();
+        horario = g.getHorario();
+        launch(args);
 
     }
-    
+
 }
