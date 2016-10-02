@@ -33,6 +33,16 @@ public class Sesion {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Sesion "+id + " Id= " + id + ", Asignatura= " + asignatura + ", Profesor= " + 
+                nombre_profesor + ", Aula= " + aula + ", Hora= " + hora + '}';
+    }
+
+    public Sesion() {
+    }
+    
+
     public String getAsignatura() {
         return asignatura;
     }
