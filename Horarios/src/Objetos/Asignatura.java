@@ -59,7 +59,7 @@ public class Asignatura {
         this.horasSesion = horasSesion;
         //this.puedeRepetir = repetir;
     }
-
+  
     public String getNombre() {
         return nombre;
     }

@@ -7,6 +7,7 @@ package horarios;
 //Prueba Angel
 
 import Funcionalidad.GenerarHorario;
+import Objetos.Sesion;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -43,7 +44,23 @@ public class Horarios extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+            
+        static Sesion sesion11=new Sesion(1,"Software","Raul","1.5.10",830);
+        static Sesion sesion12=new Sesion(2,"IA","Mariano","1.5.10",1030);
+        static Sesion sesion13=new Sesion(3,"ISI","Paloma","1.5.10",1230);
+        static Sesion sesion21=new Sesion(4,"Proyectos","Jose Manuel","1.5.10",1030);
+        static Sesion sesion22=new Sesion(5,"Software","Raul","1.5.10",1230);
+        static Sesion sesion31=new Sesion(6,"SI","Angel","1.5.10",830);
+       
+        public static void main(String[] args) {
+        //System.out.println(sesion11.toString());
+        
+                    System.out.println(sesion11.toString());
+                    System.out.println(sesion12.toString());
+                    System.out.println(sesion13.toString());
+                    System.out.println(sesion21.toString());
+                    System.out.println(sesion22.toString());
+                    System.out.println(sesion31.toString());
         System.out.println("Hora de inicio (Solo hora): ");
         h0 = s.nextInt();
         System.out.println("¿Cuantas horas al dia?");
@@ -56,5 +73,12 @@ public class Horarios extends Application {
         launch(args);
 
     }
+       
+               
+                     
 
+
+            
 }
+
+

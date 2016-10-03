@@ -27,6 +27,11 @@ public class Aula {
         return id_aula;
     }
 
+    @Override
+    public String toString() {
+        return "Aula{" + "id_aula=" + id_aula + ", ocupado=" + ocupado + '}';
+    }
+
     public void setId_aula(String id_aula) {
         this.id_aula = id_aula;
     }
