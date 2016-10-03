@@ -12,14 +12,14 @@ package Objetos;
 public class Fila {
 
     //Despues seran sesiones
-    String a1;
-    String a2;
-    String a3;
-    String a4;
-    String a5;
+    Sesion a1;
+    Sesion a2;
+    Sesion a3;
+    Sesion a4;
+    Sesion a5;
     String hora;
 
-    public Fila(String hora,String a1, String a2, String a3, String a4, String a5) {
+    public Fila(Sesion hora,Sesion a1, Sesion a2, Sesion a3, Sesion a4, Sesion a5) {
         this.a1 = a1;
         this.a2 = a2;
         this.a3 = a3;
@@ -30,43 +30,43 @@ public class Fila {
     public Fila() {
     }
 
-    public String getA1() {
+    public Sesion getA1() {
         return a1;
     }
 
-    public void setA1(String a1) {
+    public void setA1(Sesion a1) {
         this.a1 = a1;
     }
 
-    public String getA2() {
+    public Sesion getA2() {
         return a2;
     }
 
-    public void setA2(String a2) {
+    public void setA2(Sesion a2) {
         this.a2 = a2;
     }
 
-    public String getA3() {
+    public Sesion getA3() {
         return a3;
     }
 
-    public void setA3(String a3) {
+    public void setA3(Sesion a3) {
         this.a3 = a3;
     }
 
-    public String getA4() {
+    public Sesion getA4() {
         return a4;
     }
 
-    public void setA4(String a4) {
+    public void setA4(Sesion a4) {
         this.a4 = a4;
     }
 
-    public String getA5() {
+    public Sesion getA5() {
         return a5;
     }
 
-    public void setA5(String a5) {
+    public void setA5(Sesion a5) {
         this.a5 = a5;
     }
 
@@ -80,7 +80,7 @@ public class Fila {
     
     
 
-    public void insertar(int i, String a) {
+    public void insertar(int i, Sesion a) {
         switch (i) {
             case 1:
                 a1 = a;

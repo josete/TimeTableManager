@@ -14,52 +14,29 @@ import java.text.SimpleDateFormat;
 public class Asignatura {
     
     String nombre;
+    Profesor profesor;
+    int curso;
+    Titulacion titulacion;
     int horasSemanales;
     int horasSesion;
     
     boolean puedeRepetir = false;
-    
-    //Inicio 
-    SimpleDateFormat horaInicio = new SimpleDateFormat("H:mm");
-    SimpleDateFormat horaFin = new SimpleDateFormat("H:mm");
-
-    
-    public Asignatura(String nombre, SimpleDateFormat horaInicio, SimpleDateFormat horaFin) {
-        this.nombre = nombre;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-    }
-
-    public SimpleDateFormat getHoraInicio() {
-        return horaInicio;
-    }
-
-    public void setHoraInicio(SimpleDateFormat horaInicio) {
-        this.horaInicio = horaInicio;
-    }
-
-    public SimpleDateFormat getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(SimpleDateFormat horaFin) {
-        this.horaFin = horaFin;
-    }
-    
     
     //Fin
     boolean diaActualPuede = true;
     boolean topeSemana = false;
 
     int horasSemanaActual = 0;
-    
-    public Asignatura(String nombre, int horasSemanales, int horasSesion) {
+
+    public Asignatura(String nombre, Profesor profesor, int curso, Titulacion titulacion, int horasSemanales, int horasSesion) {
         this.nombre = nombre;
+        this.profesor = profesor;
+        this.curso = curso;
+        this.titulacion = titulacion;
         this.horasSemanales = horasSemanales;
         this.horasSesion = horasSesion;
-        //this.puedeRepetir = repetir;
     }
-  
+    
     public String getNombre() {
         return nombre;
     }
@@ -106,6 +83,31 @@ public class Asignatura {
     public void setTopeSemana(boolean topeSemana) {
         this.topeSemana = topeSemana;
     }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public int getCurso() {
+        return curso;
+    }
+
+    public void setCurso(int curso) {
+        this.curso = curso;
+    }
+
+    public Titulacion getTitulacion() {
+        return titulacion;
+    }
+
+    public void setTitulacion(Titulacion titulacion) {
+        this.titulacion = titulacion;
+    }
+    
     
     
     

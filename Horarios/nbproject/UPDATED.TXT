@@ -5,15 +5,7 @@ Project Horarios build script updated
 Project build script file jfx-impl.xml in nbproject sub-directory has not been recognized
 as compliant with this version of NetBeans JavaFX support module. To ensure correct
 and complete functionality within this NetBeans installation the script file has been
-<<<<<<< HEAD
-backed up to jfx-impl_backup_4.xml and then updated to the currently supported state.
-=======
-backed up to jfx-impl_backup_3.xml and then updated to the currently supported state.
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d2599db84be527ac2d902dd6e16041e870ac942
->>>>>>> 7f488c93ae064ecab318a30d7e56eb747f6e342d
+backed up to jfx-impl_backup_5.xml and then updated to the currently supported state.
 
 FX Project build script auto-update may be triggered on project open either after
 NetBeans installation update or by manual changes in jfx-impl.xml. Please note that
