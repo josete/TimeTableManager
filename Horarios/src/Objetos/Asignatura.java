@@ -67,6 +67,7 @@ public class Asignatura {
 
     public void sumar(){
         horasSemanaActual+=horasSesion;
+        horasSemanales-=horasSesion;
         if(horasSemanaActual==horasSemanales){
             topeSemana=true;
         }

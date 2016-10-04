@@ -18,9 +18,11 @@ public class GenerarHorario {
     int horaInicio = 8;
     int horasDia = 6;
     Sesion[][] horario;
+    Contenedor almacenamiento;
         
     public void generar() {
-        Sesion[] sesiones = CrearAsignaturas.crearAsignaturas();
+        almacenamiento = new Contenedor();
+        Sesion[] sesiones = CrearAsignaturas.crearAsignaturas(almacenamiento);
         
         //Se empeiza a y 30
 
@@ -36,7 +38,7 @@ public class GenerarHorario {
                 hora++;
             }
             sesion.getAsignatura().setDiaActualPuede(false);
-            sesion.getAsignatura().sumar();
+            //sesion.getAsignatura().sumar();
             if ((hora - 1) == horasDia) {
                 dia++;
                 hora = 1;
@@ -63,7 +65,7 @@ public class GenerarHorario {
         if (as[asignaturaActual].getAsignatura().isDiaActualPuede() && !as[asignaturaActual].getAsignatura().isTopeSemana()) {
             a = as[asignaturaActual];
         } else {
-            a = new Sesion();
+           a = new Sesion();
         }
         asignaturaActual++;
         if (asignaturaActual == as.length) {

@@ -5,10 +5,36 @@
  */
 package Objetos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Familia
  */
-class Horario {
+public class Horario {
+    
+    int id;
+    ArrayList<Sesion> sesiones;
+
+    public Horario(ArrayList<Sesion> sesiones) {
+        this.sesiones = sesiones;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ArrayList<Sesion> getSesiones() {
+        return sesiones;
+    }
+
+    public void setSesiones(ArrayList<Sesion> sesiones) {
+        this.sesiones = sesiones;
+    }
+    
     
 }

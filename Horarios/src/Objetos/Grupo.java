@@ -14,12 +14,21 @@ public class Grupo {
     int id;
     Horario horario;
     Aula aula;
+    Titulacion titulacion;
+    int curso;
 
     public Grupo(Horario horario, Aula aula) {
         this.horario = horario;
         this.aula = aula;
     }
 
+    public Grupo(Aula aula, Titulacion titulacion, int curso) {
+        this.aula = aula;
+        this.titulacion = titulacion;
+        this.curso = curso;
+    }
+
+    
     public Grupo() {
     }
     
@@ -47,6 +56,22 @@ public class Grupo {
 
     public void setAula(Aula aula) {
         this.aula = aula;
+    }
+
+    public Titulacion getTitulacion() {
+        return titulacion;
+    }
+
+    public void setTitulacion(Titulacion titulacion) {
+        this.titulacion = titulacion;
+    }
+
+    public int getCurso() {
+        return curso;
+    }
+
+    public void setCurso(int curso) {
+        this.curso = curso;
     }
     
     
