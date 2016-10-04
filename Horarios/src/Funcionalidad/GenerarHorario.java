@@ -5,7 +5,7 @@
  */
 package Funcionalidad;
 
-import Objetos.Asignatura;
+import Objetos.Horario;
 import Objetos.Sesion;
 
 /**
@@ -15,36 +15,44 @@ import Objetos.Sesion;
 public class GenerarHorario {
 
     int asignaturaActual = 0;
+    int totalSesiones = 0;
     int horaInicio = 8;
     int horasDia = 6;
     Sesion[][] horario;
     Contenedor almacenamiento;
+    Horario horario1;
         
     public void generar() {
         almacenamiento = new Contenedor();
-        Sesion[] sesiones = CrearAsignaturas.crearAsignaturas(almacenamiento);
-        
+        Sesion[] sesiones=null ; //CrearAsignaturas.crearAsignaturas(almacenamiento);
+        totalSesiones = sesiones.length;
+        System.out.println("-----------"+sesiones.length);
+        horario1 = new Horario();
         //Se empeiza a y 30
 
         horario = new Sesion[5][horasDia];
-        int dia = 1;
-        int hora = 1;
-        int totalHorasSemana = 5*horasDia;
-        for (int i = 0; i < totalHorasSemana; i += 2) {
-            //Suponiendo que todas las clases duran lo mismo
-            Sesion sesion = seleccionar(sesiones);
-            for (int j = 0; j < sesion.getAsignatura().getHorasSesion(); j++) {
-                horario[dia - 1][hora - 1] = sesion;
-                hora++;
-            }
-            sesion.getAsignatura().setDiaActualPuede(false);
-            //sesion.getAsignatura().sumar();
-            if ((hora - 1) == horasDia) {
-                dia++;
-                hora = 1;
-                resetearDiaAsignaturas(sesiones);
-            }
+        for(Sesion s:sesiones){
+            horario1.anadirSesion(horaInicio+":30", s);
+            horaInicio++;
         }
+//        int dia = 1;
+//        int hora = 1;
+//        int totalHorasSemana = 5*horasDia;
+//        for (int i = 0; i < totalHorasSemana; i += 2) {
+//            //Suponiendo que todas las clases duran lo mismo
+//            Sesion sesion = seleccionar(sesiones);
+//            for (int j = 0; j < sesion.getAsignatura().getHorasSesion(); j++) {
+//                horario[dia - 1][hora - 1] = sesion;
+//                hora++;
+//            }
+//            sesion.getAsignatura().setDiaActualPuede(false);
+//            //sesion.getAsignatura().sumar();
+//            if ((hora - 1) == horasDia) {
+//                dia++;
+//                hora = 1;
+//                resetearDiaAsignaturas(sesiones);
+//            }
+//        }
 
         System.out.println("\tL\tM\tX\tJ\tV");
         for (int j = 0; j < horasDia; j++) {
@@ -61,17 +69,12 @@ public class GenerarHorario {
 
     public Sesion seleccionar(Sesion[] as) {
         Sesion a = null;
-        //for (int i = 0; i < as.length; i++) {
-        if (as[asignaturaActual].getAsignatura().isDiaActualPuede() && !as[asignaturaActual].getAsignatura().isTopeSemana()) {
+        try{
             a = as[asignaturaActual];
-        } else {
-           a = new Sesion();
+            asignaturaActual++;
+        }catch(NullPointerException ex){
+            a = new Sesion();
         }
-        asignaturaActual++;
-        if (asignaturaActual == as.length) {
-            asignaturaActual = 0;
-        }
-        // }
         return a;
     }
 
@@ -97,8 +100,8 @@ public class GenerarHorario {
         this.horasDia = horasDia;
     }
 
-    public Sesion[][] getHorario() {
-        return horario;
+    public Horario getHorario() {
+        return horario1;
     }
 
     public void setHorario(Sesion[][] horario) {

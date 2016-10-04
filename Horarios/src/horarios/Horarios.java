@@ -6,9 +6,10 @@
 package horarios;
 //Prueba Angel
 
+import Funcionalidad.Contenedor;
+import Funcionalidad.CrearAsignaturas;
 import Funcionalidad.GenerarHorario;
-import Objetos.Asignatura;
-import Objetos.Sesion;
+import Objetos.Horario;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,8 @@ public class Horarios extends Application {
     static Scanner s = new Scanner(System.in);
     static int h0 = 0;
     static int horas = 0;
-    static Sesion[][] horario;
+    static Horario horario;
+    static Contenedor almacenamiento;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -47,15 +49,14 @@ public class Horarios extends Application {
      */
         public static void main(String[] args) {
         //System.out.println(sesion11.toString());
+        almacenamiento = new Contenedor();
+        CrearAsignaturas.crearAsignaturas(almacenamiento);
         System.out.println("Hora de inicio (Solo hora): ");
         h0 = s.nextInt();
         System.out.println("¿Cuantas horas al dia?");
         horas = s.nextInt();
-        GenerarHorario g = new GenerarHorario();
-        g.setHoraInicio(h0);
-        g.setHorasDia(horas);
-        g.generar();
-        horario = g.getHorario();
+        horario = new Horario(almacenamiento.getAsignaturas(), h0, 0,horas,almacenamiento.getGrupoPorNombre("informatica", 3));
+        horario.generar();
         launch(args);
 
     }

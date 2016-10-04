@@ -6,6 +6,7 @@
 package horarios;
 
 import Objetos.Fila;
+import Objetos.Horario;
 import Objetos.Sesion;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,7 +29,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     TableView tabla;
     
-    Sesion[][] horario;
+    Horario horario;
     int horasDia;
     int horaInicio;
 
@@ -38,24 +39,9 @@ public class FXMLDocumentController implements Initializable {
         
     }
 
-    public void iniciar(Sesion[][] horario, int horasDia,int horaInicio){
-        System.out.println("Holaa");
+    public void iniciar(Horario horario, int horasDia,int horaInicio){
         this.horario = horario;
-        this.horaInicio = horaInicio;
-        this.horasDia = horasDia;
-        final ObservableList<Fila> data = FXCollections.observableArrayList();
-        Fila f;
-        for (int j = 0; j < horasDia; j++) {
-            f = new Fila();
-            f.setHora(horaInicio+":30");
-            for (int i = 0; i < 5; i++) {
-                f.insertar(i+1, horario[i][j]);
-            }
-            data.add(f);
-            horaInicio++;
-        }
-        System.out.println(data.size());
-        //tabla = new TableView<Fila>();
+        final ObservableList<Fila> data = horario.datosDibujar();
         tabla.setEditable(true);
         TableColumn blanco = new TableColumn("  ");
         blanco.setCellValueFactory(
@@ -63,19 +49,23 @@ public class FXMLDocumentController implements Initializable {
         TableColumn lunes = new TableColumn("Lunes");
         lunes.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a1"));
-        TableColumn martes = new TableColumn("Martes");
-        
+        lunes.setSortable(false);
+        TableColumn martes = new TableColumn("Martes");        
         martes.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a2"));
+        martes.setSortable(false);
         TableColumn miercoles = new TableColumn("Miercoles");
         miercoles.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a3"));
+        miercoles.setSortable(false);
         TableColumn jueves = new TableColumn("Jueves");
         jueves.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a4"));
+        jueves.setSortable(false);
         TableColumn viernes = new TableColumn("Viernes");
         viernes.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a5"));
+        viernes.setSortable(false);
           
         tabla.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override

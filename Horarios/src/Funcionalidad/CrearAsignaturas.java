@@ -60,7 +60,7 @@ public class CrearAsignaturas {
         for(Asignatura a:asignaturas){
             if(a.getHorasSemanales()>0){
                 sesiones.add(new Sesion(a,g));
-                a.sumar();
+                //a.sumar();
             }
         }
         Sesion[] sesiones2 = new Sesion[sesiones.size()];
