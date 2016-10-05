@@ -8,6 +8,18 @@
 
 <AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="horarios.FXMLDocumentController">
    <children>
-      <TableView fx:id="tabla" prefHeight="371.0" prefWidth="656.0" />
+      <BorderPane prefHeight="371.0" prefWidth="656.0">
+         <center>
+            <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button mnemonicParsing="false" text="Ver configuración" />
+                  <Button mnemonicParsing="false" text="Cargar configuración" />
+              </items>
+            </ToolBar>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>
