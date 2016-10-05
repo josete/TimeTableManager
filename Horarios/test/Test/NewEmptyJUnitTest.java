@@ -5,41 +5,56 @@
  */
 package Test;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import Objetos.Profesor;
+//import org.junit.After;
+//import org.junit.AfterClass;
+//import org.junit.Before;
+//import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+//dimport static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 /**
  *
  * @author angelnuneztorron
  */
-public class NewEmptyJUnitTest {
+public class NewEmptyJUnitTest extends TestCase {
     
-    public NewEmptyJUnitTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+//    public NewEmptyJUnitTest() {
+//    }
+//    
+//    @BeforeClass
+//    public static void setUpClass() {
+//    }
+//    
+//    @AfterClass
+//    public static void tearDownClass() {
+//    }
+//    
+//    @Before
+//    public void setUp() {
+//    }
+//    
+//    @After
+//    public void tearDown() {
+//    }
+//    @Test
+//    public void unProfesorConNombre(){
+//        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
+//        assertEquals("Adolfo",profesor.getNombre());
+//        
+//    }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     // @Test
     // public void hello() {}
-}
+
+   @Test
+    public void unProfesorConNombre(){
+        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
+        assertEquals("Adolfo",profesor.getNombre());
+        
+    }
+}    

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
@@ -23,3 +24,30 @@
       </BorderPane>
    </children>
 </AnchorPane>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="horarios.FXMLDocumentController">
+   <children>
+      <BorderPane prefHeight="371.0" prefWidth="656.0">
+         <center>
+            <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button mnemonicParsing="false" text="Ver configuración" />
+                  <Button mnemonicParsing="false" text="Cargar configuración" />
+              </items>
+            </ToolBar>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
+>>>>>>> 72a73b64d0bf1de29da911b1280763e03b7e4de6
