@@ -137,5 +137,9 @@ public class Contenedor {
         }
         return pr;
     }
+    
+    public void anadirAsignatura(Asignatura a){
+        asignaturas.add(a);
+    }
 
 }

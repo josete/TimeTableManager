@@ -5,12 +5,14 @@
  */
 package horarios;
 
+import Funcionalidad.Contenedor;
+import Funcionalidad.LeerExcel;
 import Objetos.Fila;
 import Objetos.Horario;
 import Objetos.Sesion;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,6 +21,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -28,19 +32,25 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     TableView tabla;
-    
+
     Horario horario;
     int horasDia;
     int horaInicio;
 
+    FileChooser fileChooser = new FileChooser();
+    Stage stage;
+    LeerExcel leerExcel;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
     }
 
-    public void iniciar(Horario horario, int horasDia,int horaInicio){
+    public void iniciar(Horario horario, int horasDia, int horaInicio, Stage stage,Contenedor c) {
+        leerExcel = new LeerExcel(c);
         this.horario = horario;
+        this.stage = stage;
         final ObservableList<Fila> data = horario.datosDibujar();
         tabla.setEditable(true);
         TableColumn blanco = new TableColumn("  ");
@@ -50,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
         lunes.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a1"));
         lunes.setSortable(false);
-        TableColumn martes = new TableColumn("Martes");        
+        TableColumn martes = new TableColumn("Martes");
         martes.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a2"));
         martes.setSortable(false);
@@ -66,7 +76,7 @@ public class FXMLDocumentController implements Initializable {
         viernes.setCellValueFactory(
                 new PropertyValueFactory<Fila, Sesion>("a5"));
         viernes.setSortable(false);
-          
+
         tabla.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
@@ -79,9 +89,18 @@ public class FXMLDocumentController implements Initializable {
             }
         });
         tabla.setItems(data);
-        
+
         tabla.getColumns().addAll(blanco, lunes, martes, miercoles, jueves, viernes);
     }
-    
-    
+
+    @FXML
+    private void seleccionarArchivo() {
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            System.out.println(file.getName());
+            leerExcel.leer(file);
+        }
+
+    }
+
 }

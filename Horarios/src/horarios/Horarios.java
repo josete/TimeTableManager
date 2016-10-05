@@ -35,7 +35,7 @@ public class Horarios extends Application {
         loader.setLocation(getClass().getResource("FXMLDocument.fxml"));
         Parent root = loader.load();
         FXMLDocumentController controller = loader.getController();
-        controller.iniciar(horario,horas,h0);
+        controller.iniciar(horario,horas,h0,stage,almacenamiento);
 
         Scene scene = new Scene(root);
 
@@ -48,7 +48,6 @@ public class Horarios extends Application {
      * @param args the command line arguments
      */
         public static void main(String[] args) {
-        //System.out.println(sesion11.toString());
         almacenamiento = new Contenedor();
         CrearAsignaturas.crearAsignaturas(almacenamiento);
         System.out.println("Hora de inicio (Solo hora): ");

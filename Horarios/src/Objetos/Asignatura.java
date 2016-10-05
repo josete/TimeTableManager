@@ -36,6 +36,15 @@ public class Asignatura {
         this.horasSemanales = horasSemanales;
         this.horasSesion = horasSesion;
     }
+
+    public Asignatura(String nombre, int curso, int horasSemanales, int horasSesion) {
+        this.nombre = nombre;
+        this.curso = curso;
+        this.horasSemanales = horasSemanales;
+        this.horasSesion = horasSesion;
+    }
+    
+    
     
     public String getNombre() {
         return nombre;
