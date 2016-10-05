@@ -41,56 +41,61 @@ public class FXMLDocumentController implements Initializable {
     Stage stage;
     LeerExcel leerExcel;
 
+    Contenedor almacenamiento;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
     }
 
-    public void iniciar(Horario horario, int horasDia, int horaInicio, Stage stage,Contenedor c) {
+    public void iniciar(Horario horario, Stage stage, Contenedor c) {
+        almacenamiento = c;
         leerExcel = new LeerExcel(c);
-        this.horario = horario;
         this.stage = stage;
-        final ObservableList<Fila> data = horario.datosDibujar();
-        tabla.setEditable(true);
-        TableColumn blanco = new TableColumn("  ");
-        blanco.setCellValueFactory(
-                new PropertyValueFactory<Fila, String>("hora"));
-        TableColumn lunes = new TableColumn("Lunes");
-        lunes.setCellValueFactory(
-                new PropertyValueFactory<Fila, Sesion>("a1"));
-        lunes.setSortable(false);
-        TableColumn martes = new TableColumn("Martes");
-        martes.setCellValueFactory(
-                new PropertyValueFactory<Fila, Sesion>("a2"));
-        martes.setSortable(false);
-        TableColumn miercoles = new TableColumn("Miercoles");
-        miercoles.setCellValueFactory(
-                new PropertyValueFactory<Fila, Sesion>("a3"));
-        miercoles.setSortable(false);
-        TableColumn jueves = new TableColumn("Jueves");
-        jueves.setCellValueFactory(
-                new PropertyValueFactory<Fila, Sesion>("a4"));
-        jueves.setSortable(false);
-        TableColumn viernes = new TableColumn("Viernes");
-        viernes.setCellValueFactory(
-                new PropertyValueFactory<Fila, Sesion>("a5"));
-        viernes.setSortable(false);
+        this.horario = horario;
+        if (horario.isGenerado()) {
+            final ObservableList<Fila> data = horario.datosDibujar();
+            tabla.setEditable(true);
+            TableColumn blanco = new TableColumn("  ");
+            blanco.setCellValueFactory(
+                    new PropertyValueFactory<Fila, String>("hora"));
+            TableColumn lunes = new TableColumn("Lunes");
+            lunes.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a1"));
+            lunes.setSortable(false);
+            TableColumn martes = new TableColumn("Martes");
+            martes.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a2"));
+            martes.setSortable(false);
+            TableColumn miercoles = new TableColumn("Miercoles");
+            miercoles.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a3"));
+            miercoles.setSortable(false);
+            TableColumn jueves = new TableColumn("Jueves");
+            jueves.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a4"));
+            jueves.setSortable(false);
+            TableColumn viernes = new TableColumn("Viernes");
+            viernes.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a5"));
+            viernes.setSortable(false);
 
-        tabla.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                TablePosition pos = (TablePosition) tabla.getSelectionModel().getSelectedCells().get(0);
-                int row = pos.getRow();
-                Fila item = (Fila) tabla.getItems().get(row);
-                TableColumn col = pos.getTableColumn();
-                Sesion data = (Sesion) col.getCellObservableValue(item).getValue();
-                System.out.println(data.getInfo());
-            }
-        });
-        tabla.setItems(data);
+            tabla.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+                    TablePosition pos = (TablePosition) tabla.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    Fila item = (Fila) tabla.getItems().get(row);
+                    TableColumn col = pos.getTableColumn();
+                    Sesion data = (Sesion) col.getCellObservableValue(item).getValue();
+                    System.out.println(data.getInfo());
+                }
+            });
+            tabla.setItems(data);
 
-        tabla.getColumns().addAll(blanco, lunes, martes, miercoles, jueves, viernes);
+            tabla.getColumns().addAll(blanco, lunes, martes, miercoles, jueves, viernes);
+        }
     }
 
     @FXML
@@ -103,5 +108,55 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-}
+    @FXML
+    private void generarHorario() {
+        horario.setAsignaturas(almacenamiento.getAsignaturas());
+        horario.generar();
+        repintar();
+    }
 
+    private void repintar() {
+        if (horario.isGenerado()) {
+            final ObservableList<Fila> data = horario.datosDibujar();
+            tabla.setEditable(true);
+            TableColumn blanco = new TableColumn("  ");
+            blanco.setCellValueFactory(
+                    new PropertyValueFactory<Fila, String>("hora"));
+            TableColumn lunes = new TableColumn("Lunes");
+            lunes.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a1"));
+            lunes.setSortable(false);
+            TableColumn martes = new TableColumn("Martes");
+            martes.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a2"));
+            martes.setSortable(false);
+            TableColumn miercoles = new TableColumn("Miercoles");
+            miercoles.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a3"));
+            miercoles.setSortable(false);
+            TableColumn jueves = new TableColumn("Jueves");
+            jueves.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a4"));
+            jueves.setSortable(false);
+            TableColumn viernes = new TableColumn("Viernes");
+            viernes.setCellValueFactory(
+                    new PropertyValueFactory<Fila, Sesion>("a5"));
+            viernes.setSortable(false);
+
+            tabla.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
+                @Override
+                public void handle(javafx.scene.input.MouseEvent event) {
+                    TablePosition pos = (TablePosition) tabla.getSelectionModel().getSelectedCells().get(0);
+                    int row = pos.getRow();
+                    Fila item = (Fila) tabla.getItems().get(row);
+                    TableColumn col = pos.getTableColumn();
+                    Sesion data = (Sesion) col.getCellObservableValue(item).getValue();
+                    System.out.println(data.getInfo());
+                }
+            });
+            tabla.setItems(data);
+
+            tabla.getColumns().addAll(blanco, lunes, martes, miercoles, jueves, viernes);
+        }
+    }
+}

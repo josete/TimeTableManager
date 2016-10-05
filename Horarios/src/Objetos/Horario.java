@@ -24,11 +24,21 @@ public class Horario {
     int horasDia;
     int dia = 1; //de 1 a 5
     Grupo g;
+    
+    boolean generado = false;
 
     public Horario() {
         sesiones = new Hashtable<>();
     }
 
+    public Horario(int horaInicio, int minInicio, int horasDia) {
+        this.horaInicio = horaInicio;
+        this.minInicio = minInicio;
+        this.horasDia = horasDia;
+        sesiones = new Hashtable<>();
+    }
+
+    
     public Horario(ArrayList<Asignatura> asignaturas, int hora0, int min0, int horasDia, Grupo g) {
         sesiones = new Hashtable<>();
         this.asignaturas = asignaturas;
@@ -78,6 +88,7 @@ public class Horario {
                 actual = 0;
             }
         }
+        generado = true;
     }
 
     public ArrayList<Sesion> crearSesiones() {
@@ -111,5 +122,23 @@ public class Horario {
         }
         return data;
     }
+
+    public boolean isGenerado() {
+        return generado;
+    }
+
+    public void setGenerado(boolean generado) {
+        this.generado = generado;
+    }
+
+    public ArrayList<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
+    public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
+    }
+    
+    
 
 }
