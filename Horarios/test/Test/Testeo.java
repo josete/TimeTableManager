@@ -5,6 +5,7 @@
  */
 package Test;
 
+import Excepciones.EProfesorSinNombre;
 import Objetos.Profesor;
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
@@ -30,6 +31,14 @@ public class Testeo {
         }
         assertEquals(true,sin);
     }
+    
+       @Test (expected=EProfesorSinNombre.class)
+       public void profesorSinNombre(){
+           Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es", "");
+           profesor.getNombre();
+       }
+    
+    
        @Test
     public void unProfesorConCorreo(){
         Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
@@ -42,4 +51,5 @@ public class Testeo {
         assertEquals("2.2.2",profesor.getDespacho());
         
     }
+    
 }
