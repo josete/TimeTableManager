@@ -17,6 +17,8 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
@@ -51,7 +53,7 @@ public class FXMLDocumentController implements Initializable {
 
     public void iniciar(Horario horario, Stage stage, Contenedor c) {
         almacenamiento = c;
-        leerExcel = new LeerExcel(c);
+        leerExcel = new LeerExcel();
         this.stage = stage;
         this.horario = horario;
         if (horario.isGenerado()) {
@@ -89,7 +91,7 @@ public class FXMLDocumentController implements Initializable {
                     Fila item = (Fila) tabla.getItems().get(row);
                     TableColumn col = pos.getTableColumn();
                     Sesion data = (Sesion) col.getCellObservableValue(item).getValue();
-                    System.out.println(data.getInfo());
+                    System.out.println(data.getInfo());                 
                 }
             });
             tabla.setItems(data);
@@ -102,8 +104,8 @@ public class FXMLDocumentController implements Initializable {
     private void seleccionarArchivo() {
         File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
-            System.out.println(file.getName());
-            leerExcel.leer(file);
+            leerExcel.leer(file,almacenamiento);
+            System.out.println(almacenamiento.getAsignaturas().size());
         }
 
     }
@@ -111,6 +113,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void generarHorario() {
         horario.setAsignaturas(almacenamiento.getAsignaturas());
+        horario.setG(almacenamiento.getGrupoPorNombre("informatica", 3));
         horario.generar();
         repintar();
     }

@@ -8,13 +8,8 @@ package Funcionalidad;
 import Objetos.Asignatura;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -26,13 +21,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class LeerExcel {
 
-    Contenedor almacenamiento;
-    
-    public LeerExcel(Contenedor c) {
-        c = almacenamiento;
+
+    public LeerExcel() {
+        
     }
 
-    public void leer(File archivo) {
+    public void leer(File archivo,Contenedor almacenamiento) {
         try {
             FileInputStream fs = new FileInputStream(archivo);
             XSSFWorkbook workbook = new XSSFWorkbook(fs);
@@ -45,16 +39,25 @@ public class LeerExcel {
                     row = rowIterator.next();
                     Iterator<Cell> cellIterator = row.cellIterator();
                     Cell celda;
+                    ArrayList<String> nombres = new ArrayList<>();
+                    ArrayList<Integer> numeros = new ArrayList<>();
                     while (cellIterator.hasNext()) {
                         celda = cellIterator.next();
                         switch (celda.getCellType()) {
                             case Cell.CELL_TYPE_STRING:
-                                System.out.println(celda.getStringCellValue());
+                                nombres.add(celda.getStringCellValue());
                                 break;
                             case Cell.CELL_TYPE_NUMERIC:
-                                System.out.println(celda.getNumericCellValue());
+                                Double d = celda.getNumericCellValue();
+                                numeros.add(d.intValue());
                                 break;
                         }
+                    }
+                    switch (i) {
+                        case 0:
+                            almacenamiento.anadirAsignatura(
+                                    new Asignatura(nombres.get(0), numeros.get(0), numeros.get(1), numeros.get(2)));
+                            break;
                     }
                 }
             }
@@ -62,11 +65,6 @@ public class LeerExcel {
         } catch (Exception ex) {
             //Logger.getLogger(LeerExcel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public void crearAsignatura(String nombre,int curso, int horasSemana, int horasSesion){
-        Asignatura a = new Asignatura(nombre, curso, horasSemana, horasSesion);
-        almacenamiento.anadirAsignatura(a);
     }
 
 }

@@ -24,6 +24,7 @@ public class Horario {
     int horasDia;
     int dia = 1; //de 1 a 5
     Grupo g;
+    int dias;
     
     boolean generado = false;
 
@@ -111,7 +112,7 @@ public class Horario {
     public ObservableList<Fila> datosDibujar(){
         ObservableList<Fila> data = FXCollections.observableArrayList();
         Fila f;
-        for(int i=0;i<3;i++){
+        for(int i=0;i<(horasDia/2);i++){
             f = new Fila();
             f.setHora(horaInicio+":"+String.format("%02d", minInicio));
             for(int j=1;j<6;j++){
@@ -138,6 +139,23 @@ public class Horario {
     public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
         this.asignaturas = asignaturas;
     }
+
+    public Grupo getG() {
+        return g;
+    }
+
+    public void setG(Grupo g) {
+        this.g = g;
+    }
+
+    public int getDias() {
+        return dias;
+    }
+
+    public void setDias(int dias) {
+        this.dias = dias;
+    }
+    
     
     
 

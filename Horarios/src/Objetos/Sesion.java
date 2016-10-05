@@ -55,8 +55,9 @@ public class Sesion {
     }
     
     public String getInfo(){
-        String info = asignatura.getNombre()+"\n\tProfesor: "+asignatura.getProfesor().getNombre()
-                +"\n\tCurso: "+asignatura.getCurso()+"\n\tAula: "+grupo.getAula().getId_aula();
+        String info = "Profesor: "+asignatura.getProfesor().getNombre()
+                +"\nCurso: "+asignatura.getCurso()+
+                "\nAula: "+grupo.getAula().getId_aula();
         return info;
     }
     
