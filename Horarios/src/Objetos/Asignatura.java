@@ -43,6 +43,10 @@ public class Asignatura {
         this.horasSemanales = horasSemanales;
         this.horasSesion = horasSesion;
     }
+
+    public Asignatura() {
+    }
+    
     
     
     

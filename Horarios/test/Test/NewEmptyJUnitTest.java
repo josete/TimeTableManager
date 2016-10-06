@@ -5,6 +5,7 @@
  */
 package Test;
 
+import Objetos.Asignatura;
 import Objetos.Profesor;
 //import org.junit.After;
 //import org.junit.AfterClass;
@@ -55,6 +56,13 @@ public class NewEmptyJUnitTest extends TestCase {
     public void unProfesorConNombre(){
         Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
         assertEquals("Adolfo",profesor.getNombre());
+        
+    }
+    
+    @Test
+    public void testNombreAsignaturaNotNull(){
+        Asignatura asignatura=new Asignatura("Software",3,6,2);
+        assertNotNull(asignatura.getNombre());
         
     }
 }    
