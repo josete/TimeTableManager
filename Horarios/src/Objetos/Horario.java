@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import Excepciones.EHorarioSinGrupo;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import javafx.collections.FXCollections;
@@ -25,7 +26,7 @@ public class Horario {
     int dia = 1; //de 1 a 5
     Grupo g;
     int dias;
-    
+
     boolean generado = false;
 
     public Horario() {
@@ -39,7 +40,6 @@ public class Horario {
         sesiones = new Hashtable<>();
     }
 
-    
     public Horario(ArrayList<Asignatura> asignaturas, int hora0, int min0, int horasDia, Grupo g) {
         sesiones = new Hashtable<>();
         this.asignaturas = asignaturas;
@@ -66,30 +66,34 @@ public class Horario {
     }
 
     public void anadirSesion(String horaInicio, Sesion s) {
-        sesiones.put(horaInicio+" "+dia, s);
+        sesiones.put(horaInicio + " " + dia, s);
     }
 
-    public void generar() {
-        int horaCambia = horaInicio;
-        ArrayList<Sesion> sesionesList = crearSesiones();
-        int actual = 0;
-        while (dia < 6) {
-            if (sesionesList.get(actual).getAsignatura().isDiaActualPuede()) {
-                anadirSesion(horaCambia + ":" + minInicio, sesionesList.get(actual));
-                horaCambia += sesionesList.get(actual).getAsignatura().getHorasSesion();
-                sesionesList.get(actual).getAsignatura().setDiaActualPuede(false);
+    public void generar() throws EHorarioSinGrupo {
+        if (g != null) {
+            int horaCambia = horaInicio;
+            ArrayList<Sesion> sesionesList = crearSesiones();
+            int actual = 0;
+            while (dia < 6) {
+                if (sesionesList.get(actual).getAsignatura().isDiaActualPuede()) {
+                    anadirSesion(horaCambia + ":" + minInicio, sesionesList.get(actual));
+                    horaCambia += sesionesList.get(actual).getAsignatura().getHorasSesion();
+                    sesionesList.get(actual).getAsignatura().setDiaActualPuede(false);
+                }
+                actual++;
+                if (horaCambia == (horasDia + horaInicio)) {
+                    horaCambia = horaInicio;
+                    dia++;
+                    resetear(sesionesList);
+                }
+                if (actual == sesionesList.size()) {
+                    actual = 0;
+                }
             }
-            actual++;
-            if (horaCambia == (horasDia + horaInicio)) {
-                horaCambia = horaInicio;
-                dia++;
-                resetear(sesionesList);
-            }
-            if (actual == sesionesList.size()) {
-                actual = 0;
-            }
+            generado = true;
+        } else {
+            throw new EHorarioSinGrupo();
         }
-        generado = true;
     }
 
     public ArrayList<Sesion> crearSesiones() {
@@ -102,24 +106,24 @@ public class Horario {
         }
         return sesiones;
     }
-    
-    public void resetear(ArrayList<Sesion> se){
-        for(Sesion s:se){
+
+    public void resetear(ArrayList<Sesion> se) {
+        for (Sesion s : se) {
             s.getAsignatura().setDiaActualPuede(true);
         }
     }
-    
-    public ObservableList<Fila> datosDibujar(){
+
+    public ObservableList<Fila> datosDibujar() {
         ObservableList<Fila> data = FXCollections.observableArrayList();
         Fila f;
-        for(int i=0;i<(horasDia/2);i++){
+        for (int i = 0; i < (horasDia / 2); i++) {
             f = new Fila();
-            f.setHora(horaInicio+":"+String.format("%02d", minInicio));
-            for(int j=1;j<6;j++){
-                f.insertar(j, sesiones.get(horaInicio+":"+minInicio+" "+j));
+            f.setHora(horaInicio + ":" + String.format("%02d", minInicio));
+            for (int j = 1; j < 6; j++) {
+                f.insertar(j, sesiones.get(horaInicio + ":" + minInicio + " " + j));
             }
             data.add(f);
-            horaInicio+=2;
+            horaInicio += 2;
         }
         return data;
     }
@@ -155,8 +159,5 @@ public class Horario {
     public void setDias(int dias) {
         this.dias = dias;
     }
-    
-    
-    
 
 }

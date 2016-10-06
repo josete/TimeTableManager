@@ -5,14 +5,18 @@
  */
 package horarios;
 
+import Excepciones.EHorarioSinGrupo;
 import Funcionalidad.Contenedor;
 import Funcionalidad.LeerExcel;
 import Objetos.Fila;
+import Objetos.Grupo;
 import Objetos.Horario;
 import Objetos.Sesion;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -125,10 +129,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void generarHorario() {
-        horario.setAsignaturas(almacenamiento.getAsignaturas());
-        horario.setG(almacenamiento.getGrupoPorNombre("informatica", 3));
-        horario.generar();
-        repintar();
+        try {
+            horario.setAsignaturas(almacenamiento.getAsignaturas());
+            Object objeto = grupos.getSelectionModel().getSelectedItem();
+            if(objeto.getClass() == Grupo.class){
+                Grupo g = (Grupo)objeto;
+                horario.setG(g);
+            }
+            horario.generar();
+            repintar();
+        } catch (EHorarioSinGrupo|NullPointerException ex) {
+            //Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Horario sin grupo");
+        }
     }
 
     private void repintar() {

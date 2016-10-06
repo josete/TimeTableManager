@@ -5,7 +5,9 @@
  */
 package Test;
 
+import Excepciones.EHorarioSinGrupo;
 import Excepciones.EProfesorSinNombre;
+import Objetos.Horario;
 import Objetos.Profesor;
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
@@ -15,41 +17,49 @@ import org.junit.Test;
  * @author Clara
  */
 public class Testeo {
-    
+
     @Test
-    public void unProfesorConNombre(){
-        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
-        assertEquals("Adolfo",profesor.getNombre());
+    public void unProfesorConNombre() {
+        Profesor profesor = new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
+        assertEquals("Adolfo", profesor.getNombre());
         
+
     }
-        @Test
-    public void unProfesorSinNombre(){
-        Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es", "");
+
+    @Test
+    public void unProfesorSinNombre() {
+        Profesor profesor = new Profesor(null, "a.dolfo@usp.ceu.es", "");
         boolean sin = false;
-        if(profesor.getNombre()==null){
+        if (profesor.getNombre() == null) {
             sin = true;
         }
-        assertEquals(true,sin);
+        assertEquals(true, sin);
+    }
+
+    @Test(expected = EProfesorSinNombre.class)
+    public void profesorSinNombre() {
+        Profesor profesor = new Profesor(null, "a.dolfo@usp.ceu.es", "");
+        profesor.getNombre();
+    }
+
+    @Test
+    public void unProfesorConCorreo() {
+        Profesor profesor = new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
+        assertEquals("a.dolfo@usp.ceu.es", profesor.getEmail());
+
+    }
+
+    @Test
+    public void unProfesorConDespacho() {
+        Profesor profesor = new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "2.2.2");
+        assertEquals("2.2.2", profesor.getDespacho());
+
     }
     
-       @Test (expected=EProfesorSinNombre.class)
-       public void profesorSinNombre(){
-           Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es", "");
-           profesor.getNombre();
-       }
-    
-    
-       @Test
-    public void unProfesorConCorreo(){
-        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
-        assertEquals("a.dolfo@usp.ceu.es",profesor.getEmail());
-        
+    @Test(expected = EHorarioSinGrupo.class)
+    public void horarioSinGrupo() throws EHorarioSinGrupo{
+        Horario horario = new Horario();
+        horario.generar();
     }
-       @Test
-    public void unProfesorConDespacho(){
-        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "2.2.2");
-        assertEquals("2.2.2",profesor.getDespacho());
-        
-    }
-    
+
 }
