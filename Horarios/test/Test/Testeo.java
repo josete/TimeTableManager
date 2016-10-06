@@ -32,16 +32,16 @@ public class Testeo {
         assertEquals(true,sin);
     }
     
-       @Test (expected=EProfesorSinNombre.class)
+       @Test
        public void profesorSinNombre(){
-           Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es", "");
-           profesor.getNombre();
+           Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es", "2.2.2");
+           assertNull(profesor.getNombre());
        }
     
     
        @Test
     public void unProfesorConCorreo(){
-        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
+        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "2.2.2");
         assertEquals("a.dolfo@usp.ceu.es",profesor.getEmail());
         
     }
@@ -50,6 +50,10 @@ public class Testeo {
         Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "2.2.2");
         assertEquals("2.2.2",profesor.getDespacho());
         
+    }
+
+    private void assertNull(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

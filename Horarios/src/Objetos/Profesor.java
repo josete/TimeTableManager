@@ -5,6 +5,8 @@
  */
 package Objetos;
 
+import Excepciones.EProfesorSinNombre;
+
 /**
  *
  * @author Familia
@@ -15,13 +17,17 @@ public class Profesor {
     String nombre;
     String email;
     String despacho;
+    //EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
 
-    public Profesor(String nombre, String email, String despacho,int id) {
+    public Profesor(String nombre, String email, String despacho,int id){
+        
         this.nombre = nombre;
         this.email = email;
         this.despacho = despacho;
         this.id = id;
+    
     }
+    
 
     public Profesor(String nombre, String email, String despacho) {
         this.nombre = nombre;
