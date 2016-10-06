@@ -5,6 +5,7 @@
  */
 package horarios;
 
+import Excepciones.EHorarioSinAsignaturas;
 import Excepciones.EHorarioSinGrupo;
 import Funcionalidad.Contenedor;
 import Funcionalidad.LeerExcel;
@@ -141,6 +142,8 @@ public class FXMLDocumentController implements Initializable {
         } catch (EHorarioSinGrupo|NullPointerException ex) {
             //Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             System.err.println("Horario sin grupo");
+        }catch(EHorarioSinAsignaturas ex){
+            System.err.println("Horario sin asignaturas");
         }
     }
 

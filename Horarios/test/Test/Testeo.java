@@ -5,10 +5,14 @@
  */
 package Test;
 
+import Excepciones.EHorarioSinAsignaturas;
 import Excepciones.EHorarioSinGrupo;
 import Excepciones.EProfesorSinNombre;
+import Objetos.Grupo;
 import Objetos.Horario;
 import Objetos.Profesor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
 
@@ -59,7 +63,22 @@ public class Testeo {
     @Test(expected = EHorarioSinGrupo.class)
     public void horarioSinGrupo() throws EHorarioSinGrupo{
         Horario horario = new Horario();
-        horario.generar();
+        try {
+            horario.generar();
+        } catch (EHorarioSinAsignaturas ex) {
+            Logger.getLogger(Testeo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test(expected = EHorarioSinAsignaturas.class)
+    public void horarioSinAsignaturas() throws EHorarioSinAsignaturas{
+        Horario horario = new Horario();
+        horario.setG(new Grupo());
+        try {
+            horario.generar();
+        } catch (EHorarioSinGrupo ex) {
+            Logger.getLogger(Testeo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

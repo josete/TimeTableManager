@@ -5,9 +5,10 @@
  */
 package Objetos;
 
+import Excepciones.EHorarioSinAsignaturas;
 import Excepciones.EHorarioSinGrupo;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -18,30 +19,29 @@ import javafx.collections.ObservableList;
 public class Horario {
 
     int id;
-    Hashtable<String, Sesion> sesiones;
+    HashMap<String, Sesion> sesiones;
     ArrayList<Asignatura> asignaturas;
     int horaInicio;
     int minInicio;
     int horasDia;
     int dia = 1; //de 1 a 5
     Grupo g;
-    int dias;
 
     boolean generado = false;
 
     public Horario() {
-        sesiones = new Hashtable<>();
+        sesiones = new HashMap<>();
     }
 
     public Horario(int horaInicio, int minInicio, int horasDia) {
         this.horaInicio = horaInicio;
         this.minInicio = minInicio;
         this.horasDia = horasDia;
-        sesiones = new Hashtable<>();
+        sesiones = new HashMap<>();
     }
 
     public Horario(ArrayList<Asignatura> asignaturas, int hora0, int min0, int horasDia, Grupo g) {
-        sesiones = new Hashtable<>();
+        sesiones = new HashMap<>();
         this.asignaturas = asignaturas;
         this.horaInicio = hora0;
         this.minInicio = min0;
@@ -57,11 +57,11 @@ public class Horario {
         this.id = id;
     }
 
-    public Hashtable<String, Sesion> getSesiones() {
+    public HashMap<String, Sesion> getSesiones() {
         return sesiones;
     }
 
-    public void setSesiones(Hashtable<String, Sesion> sesiones) {
+    public void setSesiones(HashMap<String, Sesion> sesiones) {
         this.sesiones = sesiones;
     }
 
@@ -69,7 +69,7 @@ public class Horario {
         sesiones.put(horaInicio + " " + dia, s);
     }
 
-    public void generar() throws EHorarioSinGrupo {
+    public void generar() throws EHorarioSinGrupo, EHorarioSinAsignaturas {
         if (g != null) {
             int horaCambia = horaInicio;
             ArrayList<Sesion> sesionesList = crearSesiones();
@@ -96,13 +96,17 @@ public class Horario {
         }
     }
 
-    public ArrayList<Sesion> crearSesiones() {
+    public ArrayList<Sesion> crearSesiones() throws EHorarioSinAsignaturas {
         ArrayList<Sesion> sesiones = new ArrayList();
+        if(asignaturas!=null&&asignaturas.size()>0){
         for (Asignatura a : asignaturas) {
             while (a.getHorasSemanales() > 0) {
                 sesiones.add(new Sesion(a, g));
                 a.sumar();
             }
+        }
+        }else{
+            throw new EHorarioSinAsignaturas();
         }
         return sesiones;
     }
@@ -150,14 +154,6 @@ public class Horario {
 
     public void setG(Grupo g) {
         this.g = g;
-    }
-
-    public int getDias() {
-        return dias;
-    }
-
-    public void setDias(int dias) {
-        this.dias = dias;
     }
 
 }
