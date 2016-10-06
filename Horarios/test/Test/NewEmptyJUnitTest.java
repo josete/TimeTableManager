@@ -55,8 +55,14 @@ public class NewEmptyJUnitTest extends TestCase {
     
     @Test
     public void testNombreAsignaturaNotNull(){
-        Asignatura asignatura=new Asignatura("Software",3,6,2);
+       Asignatura asignatura=new Asignatura("Software",3,6,2);
         assertNotNull(asignatura.getNombre());
+        
+    }
+    @Test
+    public void testCursoAsignaturaNotNull(){
+       Asignatura asignatura=new Asignatura("Software",3,6,2);
+        assertNotNull(asignatura.getCurso());
         
     }
     @Test
@@ -102,6 +108,7 @@ public class NewEmptyJUnitTest extends TestCase {
         int horasSesion=a.getHorasSesion();
         assertEquals(2,horasSesion);
     }
+    @Test
     public void testAsignaturaTieneHorasSesionNoNulasNiNegativas(){
         Asignatura a=new Asignatura("Soft",3,6,1);
         boolean horasSesion=false;
@@ -111,4 +118,5 @@ public class NewEmptyJUnitTest extends TestCase {
         }
         assertTrue(horasSesion);
     }
+    
 }    
