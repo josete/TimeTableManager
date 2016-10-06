@@ -28,29 +28,24 @@ import org.junit.Test;
 public class Testeo {
 
     @Test
-    public void unProfesorConNombre() {
+    public void unProfesorConNombre() throws EProfesorSinNombre {
         Profesor profesor = new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
         assertEquals("Adolfo", profesor.getNombre());
         
 
     }
-
-    @Test
-    public void unProfesorSinNombre() {
-        Profesor profesor = new Profesor(null, "a.dolfo@usp.ceu.es", "");
-        boolean sin = false;
-        if (profesor.getNombre() == null) {
-            sin = true;
-        }
-        assertEquals(true, sin);
-    }
     
-       @Test
-       public void profesorSinNombre(){
-           Profesor profesor=new Profesor();
-           System.out.println(profesor.getNombre());
-           assertNull(profesor.getNombre());
+       @Test (expected = EProfesorSinNombre.class)
+       public void profesorSinNombre()throws EProfesorSinNombre {
+          Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es","2.6.4");
+           assertEquals("No puede haber un profesor sin nombre", profesor.getNombre());
+        
        }
+       public void nombreProfesorVacio(){
+           Profesor profesor=new Profesor("", "a.dolfo@usp.ceu.es","2.6.4");
+           assertEquals("No permitido",profesor);
+       }
+       
        @Test
        public void profesorSinCorreo(){
            Profesor profesor=new Profesor();
@@ -61,7 +56,7 @@ public class Testeo {
           @Test
        public void profesorSinDespacho(){
            Profesor profesor=new Profesor();
-           //System.out.println(profesor.getEmail());
+           System.out.println(profesor.getEmail());
            assertNull(profesor.getDespacho());
        }
     

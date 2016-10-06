@@ -17,10 +17,9 @@ public class Profesor {
     String nombre;
     String email;
     String despacho;
-    //EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
+    EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
 
-    public Profesor(String nombre, String email, String despacho,int id){
-        
+    public Profesor(String nombre, String email, String despacho,int id) {
         this.nombre = nombre;
         this.email = email;
         this.despacho = despacho;
@@ -29,14 +28,14 @@ public class Profesor {
     }
     
 
-    public Profesor(String nombre, String email, String despacho) {
+    public Profesor(String nombre, String email, String despacho){
         this.nombre = nombre;
         this.email = email;
         this.despacho = despacho;
+           
     }
-
     public Profesor() {
-        }
+       }
 
     public int getId() {
         return id;
@@ -46,8 +45,13 @@ public class Profesor {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getNombre() throws EProfesorSinNombre{
+        if (nombre==null){
+            throw new EProfesorSinNombre("No puede haber un profesor sin nombre");
+        }
+        else{
         return nombre;
+        }
     }
 
     public void setNombre(String nombre) {
