@@ -80,4 +80,10 @@ public class NewEmptyJUnitTest extends TestCase {
         String nombre=a.getNombre();
         assertEquals("Software",nombre);
     }
+    @Test
+    public void testAsignaturaTieneHorasSemanales(){
+        Asignatura a=new Asignatura("Soft",3,6,2);
+        int horasSem=a.getHorasSemanales();
+        assertEquals(6,horasSem);
+    }
 }    
