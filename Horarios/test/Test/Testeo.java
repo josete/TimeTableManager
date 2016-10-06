@@ -47,6 +47,19 @@ public class Testeo {
            System.out.println(profesor.getNombre());
            assertNull(profesor.getNombre());
        }
+       @Test
+       public void profesorSinCorreo(){
+           Profesor profesor=new Profesor();
+           System.out.println(profesor.getEmail());
+           assertNull(profesor.getEmail());
+       }
+       
+          @Test
+       public void profesorSinDespacho(){
+           Profesor profesor=new Profesor();
+           //System.out.println(profesor.getEmail());
+           assertNull(profesor.getDespacho());
+       }
     
     
        @Test
