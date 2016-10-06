@@ -14,6 +14,7 @@ import Objetos.Profesor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
 import org.junit.Test;
 
 /**
@@ -42,7 +43,8 @@ public class Testeo {
     
        @Test
        public void profesorSinNombre(){
-           Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es", "2.2.2");
+           Profesor profesor=new Profesor();
+           System.out.println(profesor.getNombre());
            assertNull(profesor.getNombre());
        }
     
@@ -60,9 +62,7 @@ public class Testeo {
 
     }
 
-    private void assertNull(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
     @Test(expected = EHorarioSinGrupo.class)
     public void horarioSinGrupo() throws EHorarioSinGrupo{

@@ -35,6 +35,9 @@ public class Profesor {
         this.despacho = despacho;
     }
 
+    public Profesor() {
+        }
+
     public int getId() {
         return id;
     }

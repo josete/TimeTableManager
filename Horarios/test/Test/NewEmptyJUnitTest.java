@@ -66,6 +66,11 @@ public class NewEmptyJUnitTest extends TestCase {
         
     }
     @Test
+    public void testAsignaturaNombreNull(){
+        Asignatura asignatura=new Asignatura();
+        assertNull(asignatura.getNombre());
+    }
+    @Test
     public void testAsignaturaSinNombre(){
         Asignatura asignatura=new Asignatura(null,3,6,2);
         boolean nombre = false;
