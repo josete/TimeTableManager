@@ -96,4 +96,10 @@ public class NewEmptyJUnitTest extends TestCase {
         }
         assertTrue(horasSemanalesMayoresQueCero);
     }
+    @Test
+    public void testAsignaturaTieneHorasSesion(){
+        Asignatura a=new Asignatura("Soft",3,6,2);
+        int horasSesion=a.getHorasSesion();
+        assertEquals(2,horasSesion);
+    }
 }    
