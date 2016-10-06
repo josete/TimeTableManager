@@ -52,12 +52,6 @@ public class NewEmptyJUnitTest extends TestCase {
     // @Test
     // public void hello() {}
 
-   @Test
-    public void unProfesorConNombre(){
-        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
-        assertEquals("Adolfo",profesor.getNombre());
-        
-    }
     
     @Test
     public void testNombreAsignaturaNotNull(){
@@ -79,5 +73,11 @@ public class NewEmptyJUnitTest extends TestCase {
         Asignatura a=new Asignatura("www",3,6,2);
         int curso=a.getCurso();
         assertEquals(curso,3);
+    }
+    @Test
+    public void testAsignaturaTieneNombre(){
+        Asignatura a=new Asignatura("Software",3,6,2);
+        String nombre=a.getNombre();
+        assertEquals("Software",nombre);
     }
 }    
