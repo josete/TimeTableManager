@@ -15,6 +15,12 @@ public class Titulacion {
     String nombre;
     int creditos;
 
+    public Titulacion(int id,String nombre, int creditos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.creditos = creditos;
+    }
+
     public Titulacion(String nombre, int creditos) {
         this.nombre = nombre;
         this.creditos = creditos;

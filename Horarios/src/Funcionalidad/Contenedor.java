@@ -141,5 +141,34 @@ public class Contenedor {
     public void anadirAsignatura(Asignatura a){
         asignaturas.add(a);
     }
+    
+    public void anadirProfesor(Profesor p){
+        profesores.add(p);
+    }
+    
+    public void anadidTitulacion(Titulacion t){
+        titulaciones.add(t);
+    }
+    
+    public Profesor getProfesorPorId(int id){
+        Profesor p1 = null;
+        for(Profesor p: profesores){
+            if(p.getId()==id){
+                p1 = p;
+                break;
+            }
+        }
+        return p1;
+    }
+    
+    public Titulacion getTitulacionPorId(int id){
+        Titulacion t1=null;
+        for(Titulacion t:titulaciones){
+            if(t.getId()==id){
+                t1 = t;
+            }
+        }
+        return t1;
+    }
 
 }

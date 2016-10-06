@@ -16,6 +16,13 @@ public class Profesor {
     String email;
     String despacho;
 
+    public Profesor(String nombre, String email, String despacho,int id) {
+        this.nombre = nombre;
+        this.email = email;
+        this.despacho = despacho;
+        this.id = id;
+    }
+
     public Profesor(String nombre, String email, String despacho) {
         this.nombre = nombre;
         this.email = email;

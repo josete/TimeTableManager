@@ -6,6 +6,8 @@
 package Funcionalidad;
 
 import Objetos.Asignatura;
+import Objetos.Profesor;
+import Objetos.Titulacion;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -21,12 +23,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class LeerExcel {
 
-
     public LeerExcel() {
-        
+
     }
 
-    public void leer(File archivo,Contenedor almacenamiento) {
+    public void leer(File archivo, Contenedor almacenamiento) {
         try {
             FileInputStream fs = new FileInputStream(archivo);
             XSSFWorkbook workbook = new XSSFWorkbook(fs);
@@ -55,8 +56,16 @@ public class LeerExcel {
                     }
                     switch (i) {
                         case 0:
-                            almacenamiento.anadirAsignatura(
-                                    new Asignatura(nombres.get(0), numeros.get(0), numeros.get(1), numeros.get(2)));
+                            almacenamiento.anadirProfesor(
+                                    new Profesor(nombres.get(0), nombres.get(1), nombres.get(2), numeros.get(0)));
+                            break;
+                        case 1:
+                            almacenamiento.anadidTitulacion(new Titulacion(numeros.get(0), nombres.get(0), numeros.get(1)));
+                            break;
+                        case 2:
+                            almacenamiento.anadirAsignatura(new Asignatura(nombres.get(0),
+                                    almacenamiento.getProfesorPorId(numeros.get(0)), numeros.get(1),
+                                    almacenamiento.getTitulacionPorId(numeros.get(2)), numeros.get(3), numeros.get(4)));
                             break;
                     }
                 }
