@@ -6,6 +6,8 @@
 package Funcionalidad;
 
 import Objetos.Asignatura;
+import Objetos.Aula;
+import Objetos.Grupo;
 import Objetos.Profesor;
 import Objetos.Titulacion;
 import java.io.File;
@@ -27,7 +29,8 @@ public class LeerExcel {
 
     }
 
-    public void leer(File archivo, Contenedor almacenamiento) {
+    public boolean leer(File archivo, Contenedor almacenamiento) {
+        boolean ok = true;
         try {
             FileInputStream fs = new FileInputStream(archivo);
             XSSFWorkbook workbook = new XSSFWorkbook(fs);
@@ -67,13 +70,22 @@ public class LeerExcel {
                                     almacenamiento.getProfesorPorId(numeros.get(0)), numeros.get(1),
                                     almacenamiento.getTitulacionPorId(numeros.get(2)), numeros.get(3), numeros.get(4)));
                             break;
+                        case 3:
+                            almacenamiento.anadirAula(new Aula(numeros.get(0), nombres.get(0)));
+                            break;
+                        case 4:
+                            almacenamiento.anadirGrupo(new Grupo(numeros.get(0), almacenamiento.getAulaPorId(numeros.get(1)),
+                                    almacenamiento.getTitulacionPorId(numeros.get(2)), numeros.get(3),nombres.get(0)));
+                            break;
                     }
                 }
             }
 
         } catch (Exception ex) {
             //Logger.getLogger(LeerExcel.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
         }
+        return ok;
     }
 
 }

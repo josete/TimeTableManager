@@ -7,7 +7,6 @@ package Funcionalidad;
 
 import Objetos.Asignatura;
 import Objetos.Aula;
-import Objetos.Curso;
 import Objetos.Grupo;
 import Objetos.Horario;
 import Objetos.Profesor;
@@ -22,7 +21,6 @@ public class Contenedor {
 
     ArrayList<Asignatura> asignaturas;
     ArrayList<Aula> aulas;
-    ArrayList<Curso> cursos;
     ArrayList<Grupo> grupos;
     ArrayList<Profesor> profesores;
     ArrayList<Horario> horarios;
@@ -31,7 +29,6 @@ public class Contenedor {
     public Contenedor() {
         asignaturas = new ArrayList<>();
         aulas = new ArrayList<>();
-        cursos = new ArrayList<>();
         grupos = new ArrayList<>();
         profesores = new ArrayList<>();
         horarios = new ArrayList<>();
@@ -52,14 +49,6 @@ public class Contenedor {
 
     public void setAulas(ArrayList<Aula> aulas) {
         this.aulas = aulas;
-    }
-
-    public ArrayList<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(ArrayList<Curso> cursos) {
-        this.cursos = cursos;
     }
 
     public ArrayList<Grupo> getGrupos() {
@@ -119,7 +108,7 @@ public class Contenedor {
     public Aula getAulaPorNombre(String nombre) {
         Aula pr = null;
         for (Aula p : aulas) {
-            if (p.getId_aula().equals(nombre)) {
+            if (p.getnAula().equals(nombre)) {
                 pr = p;
                 break;
             }
@@ -150,6 +139,14 @@ public class Contenedor {
         titulaciones.add(t);
     }
     
+    public void anadirAula(Aula a){
+        aulas.add(a);
+    }
+    
+    public void anadirGrupo(Grupo g){
+        grupos.add(g);
+    }
+    
     public Profesor getProfesorPorId(int id){
         Profesor p1 = null;
         for(Profesor p: profesores){
@@ -166,9 +163,39 @@ public class Contenedor {
         for(Titulacion t:titulaciones){
             if(t.getId()==id){
                 t1 = t;
+                break;
             }
         }
         return t1;
     }
+    
+    public Aula getAulaPorId(int id){
+        Aula a1 = null;
+        for(Aula a: aulas){
+            if(a.getId()==id){
+                a1 = a;
+                break;
+            }
+        }
+        return a1;
+    }
+    
+    public Grupo getGrupoPorId(int id){
+        Grupo g1 = null;
+        for(Grupo g:grupos){
+            if(g.getId()==id){
+                g1 = g;
+                break;
+            }
+        }
+        return g1;
+    }
 
+    public boolean hayDatos(){
+        boolean hay = false;
+        if(asignaturas.size()>0&&aulas.size()>0&&grupos.size()>0&&profesores.size()>0&&titulaciones.size()>0){
+            hay = true;
+        }
+        return hay;
+    }
 }

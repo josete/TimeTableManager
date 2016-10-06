@@ -13,12 +13,15 @@ import Objetos.Sesion;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
@@ -34,6 +37,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     TableView tabla;
+    @FXML
+    Button generar;
+    @FXML
+    ComboBox grupos;
 
     Horario horario;
     int horasDia;
@@ -48,7 +55,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        generar.setDisable(true);
     }
 
     public void iniciar(Horario horario, Stage stage, Contenedor c) {
@@ -56,6 +63,10 @@ public class FXMLDocumentController implements Initializable {
         leerExcel = new LeerExcel();
         this.stage = stage;
         this.horario = horario;
+        if (almacenamiento.hayDatos()) {
+            generar.setDisable(false);
+            grupos.getItems().setAll(FXCollections.observableArrayList(almacenamiento.getGrupos()));
+        }
         if (horario.isGenerado()) {
             final ObservableList<Fila> data = horario.datosDibujar();
             tabla.setEditable(true);
@@ -91,7 +102,7 @@ public class FXMLDocumentController implements Initializable {
                     Fila item = (Fila) tabla.getItems().get(row);
                     TableColumn col = pos.getTableColumn();
                     Sesion data = (Sesion) col.getCellObservableValue(item).getValue();
-                    System.out.println(data.getInfo());                 
+                    System.out.println(data.getInfo());
                 }
             });
             tabla.setItems(data);
@@ -104,8 +115,10 @@ public class FXMLDocumentController implements Initializable {
     private void seleccionarArchivo() {
         File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
-            leerExcel.leer(file,almacenamiento);
-            System.out.println(almacenamiento.getAsignaturas().size());
+            if (leerExcel.leer(file, almacenamiento)) {
+                generar.setDisable(false);
+                grupos.getItems().setAll(FXCollections.observableArrayList(almacenamiento.getGrupos()));
+            }
         }
 
     }
