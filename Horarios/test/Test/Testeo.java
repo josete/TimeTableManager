@@ -8,9 +8,13 @@ package Test;
 import Excepciones.EHorarioSinAsignaturas;
 import Excepciones.EHorarioSinGrupo;
 import Excepciones.EProfesorSinNombre;
+import Funcionalidad.Contenedor;
+import Objetos.Asignatura;
+import Objetos.Aula;
 import Objetos.Grupo;
 import Objetos.Horario;
 import Objetos.Profesor;
+import Objetos.Titulacion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static junit.framework.Assert.assertEquals;
@@ -97,5 +101,35 @@ public class Testeo {
             Logger.getLogger(Testeo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+ @Test
+    public void anadirAsignatura() {
+        Contenedor c = new Contenedor();
+        Asignatura a = new Asignatura("ADE", 1, 6, 8);
+        c.anadirAsignatura(a); 
 
+    }
+ @Test
+    public void anadirTitulacion() {
+        Contenedor c = new Contenedor();
+        Titulacion t = new Titulacion("Ingenieria Soft", 240);
+        c.anadidTitulacion(t);
+        
+
+    }
+ @Test
+    public void anadirProfesor() {
+        Contenedor c = new Contenedor();
+        Profesor p = new Profesor();
+        c.anadirProfesor(p); 
+
+    }
+ @Test
+    public void anadirGrupo() {
+        Contenedor c = new Contenedor();
+        Titulacion t = new Titulacion("Ingenieria Soft", 240);
+        Aula a = new Aula(1, "1.5.5");
+        Grupo g = new Grupo(1, a, t, 1, "A");
+        c.anadirGrupo(g);
+
+    }
 }
