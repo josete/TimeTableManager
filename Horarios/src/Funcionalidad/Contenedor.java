@@ -5,6 +5,7 @@
  */
 package Funcionalidad;
 
+import Excepciones.EProfesorSinNombre;
 import Objetos.Asignatura;
 import Objetos.Aula;
 import Objetos.Grupo;
@@ -12,6 +13,8 @@ import Objetos.Horario;
 import Objetos.Profesor;
 import Objetos.Titulacion;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -86,9 +89,13 @@ public class Contenedor {
     public Profesor getProfesorPorNombre(String nombre) {
         Profesor pr = null;
         for (Profesor p : profesores) {
-            if (p.getNombre().equals(nombre)) {
-                pr = p;
-                break;
+            try {
+                if (p.getNombre().equals(nombre)) {
+                    pr = p;
+                    break;
+                }
+            } catch (EProfesorSinNombre ex) {
+                Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return pr;

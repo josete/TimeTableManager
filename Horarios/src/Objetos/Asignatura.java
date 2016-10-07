@@ -121,6 +121,11 @@ public class Asignatura {
     public void setTitulacion(Titulacion titulacion) {
         this.titulacion = titulacion;
     }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" + "nombre=" + nombre + ", profesor=" + profesor + ", curso=" + curso + ", titulacion=" + titulacion + ", horasSemanales=" + horasSemanales + ", horasSesion=" + horasSesion + ", puedeRepetir=" + puedeRepetir + ", diaActualPuede=" + diaActualPuede + ", topeSemana=" + topeSemana + ", horasSemanaActual=" + horasSemanaActual + '}';
+    }
     
     
     

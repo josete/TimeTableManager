@@ -151,6 +151,14 @@ public class FXMLDocumentController implements Initializable {
     private void mostrarConfig(){
         System.out.println("Asignaturas:");
         System.out.println(almacenamiento.getAsignaturas());
+        System.out.println("Profesores:");
+        System.out.println(almacenamiento.getProfesores());
+        System.out.println("Titulaciones:");
+        System.out.println(almacenamiento.getTitulaciones());
+        System.out.println("Aulas:");
+        System.out.println(almacenamiento.getAulas());
+        System.out.println("Grupos:");
+        System.out.println(almacenamiento.getGrupos());
         
     }
 

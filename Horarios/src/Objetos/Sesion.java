@@ -5,6 +5,10 @@
  */
 package Objetos;
 
+import Excepciones.EProfesorSinNombre;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Rafael
@@ -55,8 +59,13 @@ public class Sesion {
     }
     
     public String getInfo(){
-        String info = "Profesor: "+asignatura.getProfesor().getNombre()
-                +"\nCurso: "+asignatura.getCurso();
+        String info = "";
+        try {
+            info = "Profesor: "+asignatura.getProfesor().getNombre()
+                    +"\nCurso: "+asignatura.getCurso();
+        } catch (EProfesorSinNombre ex) {
+            Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 //"\nAula: "+grupo.getAula().getId_aula();
         return info;
     }
