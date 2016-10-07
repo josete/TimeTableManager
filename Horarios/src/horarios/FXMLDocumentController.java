@@ -117,6 +117,13 @@ public class FXMLDocumentController implements Initializable {
         horario.generar();
         repintar();
     }
+    
+    @FXML
+    private void mostrarConfig(){
+        System.out.println("Asignaturas:");
+        System.out.println(almacenamiento.getAsignaturas());
+        
+    }
 
     private void repintar() {
         if (horario.isGenerado()) {

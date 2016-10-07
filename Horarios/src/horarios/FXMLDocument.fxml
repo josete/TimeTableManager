@@ -15,7 +15,7 @@
          <top>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" text="Ver configuración" />
+                <Button mnemonicParsing="false" onAction="#mostrarConfig" text="Ver configuración" />
                   <Button mnemonicParsing="false" onAction="#seleccionarArchivo" text="Cargar configuración" />
                   <Button mnemonicParsing="false" onAction="#generarHorario" text="Generar" />
               </items>
