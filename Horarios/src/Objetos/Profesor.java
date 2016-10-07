@@ -73,6 +73,11 @@ public class Profesor {
     public void setDespacho(String despacho) {
         this.despacho = despacho;
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + ", despacho=" + despacho + ", e=" + e + '}';
+    }
     
     
            
