@@ -10,6 +10,7 @@ package Objetos;
  * @author Rafael
  */
 public class Aula {
+    int id;
     String nAula;
     boolean ocupado;
     
@@ -18,12 +19,13 @@ public class Aula {
         this.nAula = nAula;
         this.ocupado = ocupado;
     }
-    public Aula(String nAula){
+    public Aula(int id,String nAula){
         this.nAula=nAula;
+        this.id = id;
         
     }
 
-    public String getId_aula() {
+    public String getnAula() {
         return nAula;
     }
 
@@ -32,7 +34,7 @@ public class Aula {
         return "Aula{" + "nAula=" + nAula + ", ocupado=" + ocupado + '}';
     }
 
-    public void setId_aula(String nAula) {
+    public void setnAula(String nAula) {
         this.nAula = nAula;
     }
 
@@ -43,6 +45,16 @@ public class Aula {
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
+    
+     
     
 }

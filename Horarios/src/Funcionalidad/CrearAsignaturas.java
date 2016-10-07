@@ -44,10 +44,10 @@ public class CrearAsignaturas {
         asignaturas.add(new Asignatura("Proyectos", almacenamiento.getProfesorPorNombre("Raul"), 3, almacenamiento.getTitulacionPorNombre("informatica"), 4, 2));
         almacenamiento.setAsignaturas(asignaturas);
         
-        aulas.add(new Aula("1.5.10"));
+        aulas.add(new Aula(1,"1.5.10"));
         almacenamiento.setAulas(aulas);
         
-        grupos.add(new Grupo(almacenamiento.getAulaPorNombre("1.5.10"), almacenamiento.getTitulacionPorNombre("informatica"), 3));
+        grupos.add(new Grupo(1,almacenamiento.getAulaPorNombre("1.5.10"), almacenamiento.getTitulacionPorNombre("informatica"), 3,"A"));
         almacenamiento.setGrupos(grupos);
         
         Sesion[] s = crearSeiones(asignaturas, almacenamiento.getGrupoPorNombre("informatica", 3));

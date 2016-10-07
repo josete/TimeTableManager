@@ -17,7 +17,8 @@
               <items>
                 <Button mnemonicParsing="false" onAction="#mostrarConfig" text="Ver configuración" />
                   <Button mnemonicParsing="false" onAction="#seleccionarArchivo" text="Cargar configuración" />
-                  <Button mnemonicParsing="false" onAction="#generarHorario" text="Generar" />
+                  <Button fx:id="generar" mnemonicParsing="false" onAction="#generarHorario" text="Generar" />
+                  <ComboBox fx:id="grupos" prefWidth="150.0" promptText="Seleccionar grupo" />
               </items>
             </ToolBar>
          </top>

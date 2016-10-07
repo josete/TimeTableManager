@@ -5,6 +5,7 @@
  */
 package Test;
 
+import Objetos.Asignatura;
 import Objetos.Profesor;
 //import org.junit.After;
 //import org.junit.AfterClass;
@@ -51,10 +52,76 @@ public class NewEmptyJUnitTest extends TestCase {
     // @Test
     // public void hello() {}
 
-   @Test
-    public void unProfesorConNombre(){
-        Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
-        assertEquals("Adolfo",profesor.getNombre());
+    
+    @Test
+    public void testNombreAsignaturaNotNull(){
+       Asignatura asignatura=new Asignatura("Software",3,6,2);
+        assertNotNull(asignatura.getNombre());
         
     }
+    @Test
+    public void testCursoAsignaturaNotNull(){
+       Asignatura asignatura=new Asignatura("Software",3,6,2);
+        assertNotNull(asignatura.getCurso());
+        
+    }
+    @Test
+    public void testAsignaturaNombreNull(){
+        Asignatura asignatura=new Asignatura();
+        assertNull(asignatura.getNombre());
+    }
+    @Test
+    public void testAsignaturaSinNombre(){
+        Asignatura asignatura=new Asignatura(null,3,6,2);
+        boolean nombre = false;
+        if(asignatura.getNombre()==null){
+            nombre = true;
+        }
+        assertEquals(true,nombre);
+    }
+    @Test
+    public void testAsignaturaPerteneceCurso(){
+        Asignatura a=new Asignatura("www",3,6,2);
+        int curso=a.getCurso();
+        assertEquals(curso,3);
+    }
+    @Test
+    public void testAsignaturaTieneNombre(){
+        Asignatura a=new Asignatura("Software",3,6,2);
+        String nombre=a.getNombre();
+        assertEquals("Software",nombre);
+    }
+    @Test
+    public void testAsignaturaTieneHorasSemanales(){
+        Asignatura a=new Asignatura("Soft",3,6,2);
+        int horasSem=a.getHorasSemanales();
+        assertEquals(6,horasSem);
+    }
+    @Test
+    public void testAsignaturatieneHorasSemanalesNoNulasNinegativas(){
+        Asignatura a=new Asignatura("Soft",3,6,2);
+        boolean horasSemanalesMayoresQueCero=false;
+       int horasSem=a.getHorasSemanales();
+        if(horasSem>0){
+            horasSemanalesMayoresQueCero=true;
+        }
+        assertTrue(horasSemanalesMayoresQueCero);
+    }
+    @Test
+    public void testAsignaturaTieneHorasSesion(){
+        Asignatura a=new Asignatura("Soft",3,6,2);
+        int horasSesion=a.getHorasSesion();
+        assertEquals(2,horasSesion);
+    }
+    @Test
+    public void testAsignaturaTieneHorasSesionNoNulasNiNegativas(){
+        Asignatura a=new Asignatura("Soft",3,6,1);
+        boolean horasSesion=false;
+        int horasSes=a.getHorasSesion();
+        if(horasSes>0){
+            horasSesion=true;
+        }
+        assertTrue(horasSesion);
+    }
+    
 }    

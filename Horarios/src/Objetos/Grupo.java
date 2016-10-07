@@ -16,16 +16,19 @@ public class Grupo {
     Aula aula;
     Titulacion titulacion;
     int curso;
+    String letra;
 
     public Grupo(Horario horario, Aula aula) {
         this.horario = horario;
         this.aula = aula;
     }
 
-    public Grupo(Aula aula, Titulacion titulacion, int curso) {
+    public Grupo(int id,Aula aula, Titulacion titulacion, int curso,String letra) {
         this.aula = aula;
         this.titulacion = titulacion;
         this.curso = curso;
+        this.id = id;
+        this.letra = letra;
     }
 
     
@@ -73,6 +76,12 @@ public class Grupo {
     public void setCurso(int curso) {
         this.curso = curso;
     }
+
+    @Override
+    public String toString() {
+        return titulacion.getNombre()+" "+curso+" "+letra;
+    }
+    
     
     
 }
