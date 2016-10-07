@@ -48,15 +48,58 @@ public class Horarios extends Application {
      */
     public static void main(String[] args) {
         almacenamiento = new Contenedor();
-        //CrearAsignaturas.crearAsignaturas(almacenamiento);
-        System.out.println("Hora de inicio (Solo hora): ");
-        h0 = s.nextInt();
-        System.out.println("¿Cuantas horas al dia?");
-        horas = s.nextInt();
-        horario = new Horario(h0, 0, horas);
-        //horario.generar();
+        menuGenerarHorario();
+//CrearAsignaturas.crearAsignaturas(almacenamiento);
+//        System.out.println("Hora de inicio (Solo hora): ");
+//        h0 = s.nextInt();
+//        System.out.println("¿Cuantas horas al dia?");
+//        horas = s.nextInt();
+//        horario = new Horario(h0, 0, horas);
+//        //horario.generar();
         launch(args);
 
+    }
+    
+    public static void menuGenerarHorario(){
+        
+        System.out.println("Hora de inicio (Solo hora): ");
+        //h0 = s.nextInt();
+       String str=s.nextLine();
+	int horaEmpieza=0;
+    	try{
+        	horaEmpieza=Integer.parseInt(str);
+    	}
+        catch(NumberFormatException ex){
+        	System.out.println("No es un número");
+                menuGenerarHorario();
+        }
+
+        System.out.println("¿Cuantas horas al dia?");
+        String horas = s.nextLine();
+        int numeroHorasDia=0;
+        try{
+            numeroHorasDia=Integer.parseInt(horas);
+        }
+        catch(NumberFormatException ex){
+            System.out.println("No es un número");
+                menuGenerarHorario();
+        }
+        
+        
+        if(7<horaEmpieza&horaEmpieza<20&2<numeroHorasDia&numeroHorasDia<12){
+            horario = new Horario(horaEmpieza, 0, numeroHorasDia);
+        }
+        else{
+            System.out.println("Fallo terrible en sistema: Introduzca de nuevo los datos");
+            menuGenerarHorario();
+        }
+        
+        
+            
+        
+                
+            
+        
     }
 
 }
