@@ -6,6 +6,7 @@
 package Test;
 
 import Objetos.Asignatura;
+import Objetos.Aula;
 import Objetos.Profesor;
 //import org.junit.After;
 //import org.junit.AfterClass;
@@ -14,12 +15,13 @@ import Objetos.Profesor;
 import org.junit.Test;
 //dimport static org.junit.Assert.*;
 import junit.framework.TestCase;
+import static org.junit.Assert.assertNull;
 
 /**
  *
  * @author angelnuneztorron
  */
-public class NewEmptyJUnitTest extends TestCase {
+public class TestAsignatura extends TestCase {
     
 //    public NewEmptyJUnitTest() {
 //    }
@@ -123,5 +125,6 @@ public class NewEmptyJUnitTest extends TestCase {
         }
         assertTrue(horasSesion);
     }
+    
     
 }    
