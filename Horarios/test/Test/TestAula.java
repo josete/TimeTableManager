@@ -36,6 +36,7 @@ public class TestAula extends TestCase {
     public void tearDown() {
     }
     @Test
+    //Estaría bien una expresión regular para el nombre de las aulas
     public void testAulaTieneNombreNoNulo(){
         Aula aula=new Aula("1.5.10",true);
 //        assertNotNull(aula.getnAula());
