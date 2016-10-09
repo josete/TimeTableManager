@@ -6,6 +6,8 @@
 package Objetos;
 
 import Excepciones.EProfesorSinNombre;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,23 +21,31 @@ public class Profesor {
     String despacho;
     EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
 
-    public Profesor(String nombre, String email, String despacho,int id) {
+    public Profesor(String nombre, String email, String despacho,int id) throws EProfesorSinNombre {
+        if (nombre==null){
+            throw e;
+        }
+        else{
         this.nombre = nombre;
         this.email = email;
         this.despacho = despacho;
         this.id = id;
-    
+        }
     }
     
 
-    public Profesor(String nombre, String email, String despacho){
+    public Profesor(String nombre, String email, String despacho) throws EProfesorSinNombre{
+        if (nombre==null){
+            throw e;
+        }
+        else{
         this.nombre = nombre;
         this.email = email;
         this.despacho = despacho;
-           
+        }
     }
-    public Profesor() {
-       }
+    //public Profesor() {
+      // }
 
     public int getId() {
         return id;
@@ -45,14 +55,9 @@ public class Profesor {
         this.id = id;
     }
 
-    public String getNombre() throws EProfesorSinNombre{
-        if (nombre==null){
-            throw new EProfesorSinNombre("No puede haber un profesor sin nombre");
-        }
-        else{
+    public String getNombre(){
         return nombre;
         }
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

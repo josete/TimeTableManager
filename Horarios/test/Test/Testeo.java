@@ -28,7 +28,7 @@ import org.junit.Test;
 public class Testeo {
 
     @Test
-    public void unProfesorConNombre() throws EProfesorSinNombre {
+    public void unProfesorConNombre() throws EProfesorSinNombre{
         Profesor profesor = new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "");
         assertEquals("Adolfo", profesor.getNombre());
         
@@ -37,44 +37,35 @@ public class Testeo {
     
        @Test (expected = EProfesorSinNombre.class)
        public void profesorSinNombre()throws EProfesorSinNombre {
-          Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es","2.6.4");
-           assertEquals("No puede haber un profesor sin nombre", profesor.getNombre());
+          Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es","2.6.4",0);
+          assertEquals("No puede haber un profesor sin nomnre",profesor);
         
        }
-       public void nombreProfesorVacio(){
-           Profesor profesor=new Profesor("", "a.dolfo@usp.ceu.es","2.6.4");
-           assertEquals("No permitido",profesor);
-       }
-       
+       //Tengo que poder crear un profesor sin correo.
        @Test
-       public void profesorSinCorreo(){
-           Profesor profesor=new Profesor();
-           System.out.println(profesor.getEmail());
-           assertNull(profesor.getEmail());
+       public void profesorSinCorreo() throws EProfesorSinNombre{
+           Profesor profesor=new Profesor("Rafael Zarza", null,"0.0.0",1);
+           assertEquals(profesor,profesor);
        }
-       
+       //Tengo que poder crear un profesor sin despacho
           @Test
-       public void profesorSinDespacho(){
-           Profesor profesor=new Profesor();
-           System.out.println(profesor.getEmail());
-           assertNull(profesor.getDespacho());
+       public void profesorSinDespacho() throws EProfesorSinNombre{
+           Profesor profesor=new Profesor("RGG","rgg@eps.ceu.es",null,2);
+           assertEquals(profesor,profesor);
        }
     
-    
        @Test
-    public void unProfesorConCorreo(){
+    public void unProfesorConCorreo() throws EProfesorSinNombre{
         Profesor profesor=new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "2.2.2");
         assertEquals("a.dolfo@usp.ceu.es",profesor.getEmail());
     }
 
     @Test
-    public void unProfesorConDespacho() {
+    public void unProfesorConDespacho() throws EProfesorSinNombre {
         Profesor profesor = new Profesor("Adolfo", "a.dolfo@usp.ceu.es", "2.2.2");
         assertEquals("2.2.2", profesor.getDespacho());
 
     }
-
-
     
     @Test(expected = EHorarioSinGrupo.class)
     public void horarioSinGrupo() throws EHorarioSinGrupo{
@@ -111,13 +102,13 @@ public class Testeo {
         
 
     }
- @Test
-    public void anadirProfesor() {
-        Contenedor c = new Contenedor();
-        Profesor p = new Profesor();
-        c.anadirProfesor(p); 
-
-    }
+// @Test
+//    public void anadirProfesor() {
+//        Contenedor c = new Contenedor();
+//        Profesor p = new Profesor();
+//        c.anadirProfesor(p); 
+//
+//    }
  @Test
     public void anadirGrupo() {
         Contenedor c = new Contenedor();

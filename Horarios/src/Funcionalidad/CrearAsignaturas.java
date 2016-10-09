@@ -5,6 +5,7 @@
  */
 package Funcionalidad;
 
+import Excepciones.EProfesorSinNombre;
 import Objetos.Asignatura;
 import Objetos.Aula;
 import Objetos.Grupo;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class CrearAsignaturas {
 
-    public static Sesion[] crearAsignaturas(Contenedor almacenamiento) {
+    public static Sesion[] crearAsignaturas(Contenedor almacenamiento) throws EProfesorSinNombre {
         ArrayList<Asignatura> asignaturas = new ArrayList<>();
         ArrayList<Profesor> profesores = new ArrayList<>();
         ArrayList<Titulacion> titulaciones = new ArrayList<>();
