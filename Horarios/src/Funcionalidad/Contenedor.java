@@ -89,13 +89,9 @@ public class Contenedor {
     public Profesor getProfesorPorNombre(String nombre) {
         Profesor pr = null;
         for (Profesor p : profesores) {
-            try {
-                if (p.getNombre().equals(nombre)) {
-                    pr = p;
-                    break;
-                }
-            } catch (EProfesorSinNombre ex) {
-                Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
+            if (p.getNombre().equals(nombre)) {
+                pr = p;
+                break;
             }
         }
         return pr;
