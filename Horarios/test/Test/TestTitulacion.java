@@ -43,4 +43,13 @@ public class TestTitulacion extends TestCase{
         Titulacion titulacion=new Titulacion("ISI",240);
         assertEquals("ISI", titulacion.getNombre());
     }
+    @Test
+    public void testTitulacionTieneNumeroDeCreditosMayoresQueCero(){
+        Titulacion titulacion=new Titulacion("ISI",240);
+        boolean creditosMayoresQueCero=false;
+        if(titulacion.getCreditos()>0){
+            creditosMayoresQueCero=true;
+        }
+        assertTrue(creditosMayoresQueCero);
+    }
 }
