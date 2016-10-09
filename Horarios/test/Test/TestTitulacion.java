@@ -5,6 +5,8 @@
  */
 package Test;
 
+import Objetos.Titulacion;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +18,7 @@ import static org.junit.Assert.*;
  *
  * @author angelnuneztorron
  */
-public class TestTitulacion {
+public class TestTitulacion extends TestCase{
     
     public TestTitulacion() {
     }
@@ -36,5 +38,9 @@ public class TestTitulacion {
     @After
     public void tearDown() {
     }
-    
+    @Test
+    public void testTitulacionTieneNombre(){
+        Titulacion titulacion=new Titulacion("ISI",240);
+        assertEquals("ISI", titulacion.getNombre());
+    }
 }
