@@ -147,6 +147,10 @@ public class Contenedor {
         grupos.add(g);
     }
     
+    public void anadirHorario(Horario h){
+        horarios.add(h);
+    }
+    
     public Profesor getProfesorPorId(int id){
         Profesor p1 = null;
         for(Profesor p: profesores){
