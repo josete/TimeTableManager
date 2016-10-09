@@ -48,5 +48,12 @@ public class TestSesion extends TestCase {
         Sesion sesion=new Sesion(asignatura, grupo);
         assertEquals(asignatura,sesion.getAsignatura());
     }
+    @Test
+    public void testSesionTieneGrupo(){
+        Grupo grupo=new Grupo();
+        Asignatura asignatura=new Asignatura();
+        Sesion sesion=new Sesion(asignatura, grupo);
+        assertEquals(grupo,sesion.getGrupo());
+    }
     
 }
