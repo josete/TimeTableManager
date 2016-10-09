@@ -47,4 +47,9 @@ public class TestAula extends TestCase {
         Aula aula=new Aula("1.5.10",true);
         assertTrue(aula.getOcupado());
     }
+    @Test
+    public void testAulaNoEstaOcupada(){
+        Aula aula=new Aula("1.5.10",false);
+        assertFalse(aula.getOcupado());
+    }
 }
