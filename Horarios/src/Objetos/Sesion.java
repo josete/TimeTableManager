@@ -60,12 +60,8 @@ public class Sesion {
     
     public String getInfo(){
         String info = "";
-        try {
-            info = "Profesor: "+asignatura.getProfesor().getNombre()
-                    +"\nCurso: "+asignatura.getCurso();
-        } catch (EProfesorSinNombre ex) {
-            Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        info = "Profesor: "+asignatura.getProfesor().getNombre()
+                +"\nCurso: "+asignatura.getCurso();
                 //"\nAula: "+grupo.getAula().getId_aula();
         return info;
     }

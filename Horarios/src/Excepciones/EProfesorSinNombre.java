@@ -9,7 +9,7 @@ package Excepciones;
  *
  * @author Clara
  */
-public class EProfesorSinNombre extends Throwable{
+public class EProfesorSinNombre extends Exception{
     public EProfesorSinNombre(String msg) {
         super(msg);
     }
