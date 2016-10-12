@@ -49,6 +49,12 @@ public class Titulacion {
     public void setCreditos(int creditos) {
         this.creditos = creditos;
     }
+
+    @Override
+    public String toString() {
+        return "Titulacion{" + "id=" + id + ", nombre=" + nombre + ", creditos=" + creditos + '}';
+    }
+    
     
     
 }

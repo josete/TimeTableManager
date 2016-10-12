@@ -139,6 +139,7 @@ public class FXMLDocumentController implements Initializable {
             }
             horario.generar();
             almacenamiento.anadirHorario(horario);
+            if(horario.isGenerado()){generar.setDisable(true);}
             repintar();
         } catch (EHorarioSinGrupo|NullPointerException ex) {
             //Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -146,6 +147,21 @@ public class FXMLDocumentController implements Initializable {
         }catch(EHorarioSinAsignaturas ex){
             System.err.println("Horario sin asignaturas");
         }
+    }
+    
+    @FXML
+    private void mostrarConfig(){
+        System.out.println("Asignaturas:");
+        System.out.println(almacenamiento.getAsignaturas());
+        System.out.println("Profesores:");
+        System.out.println(almacenamiento.getProfesores());
+        System.out.println("Titulaciones:");
+        System.out.println(almacenamiento.getTitulaciones());
+        System.out.println("Aulas:");
+        System.out.println(almacenamiento.getAulas());
+        System.out.println("Grupos:");
+        System.out.println(almacenamiento.getGrupos());
+        
     }
 
     private void repintar() {

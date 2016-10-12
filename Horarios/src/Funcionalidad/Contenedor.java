@@ -5,6 +5,7 @@
  */
 package Funcionalidad;
 
+import Excepciones.EProfesorSinNombre;
 import Objetos.Asignatura;
 import Objetos.Aula;
 import Objetos.Grupo;
@@ -12,6 +13,8 @@ import Objetos.Horario;
 import Objetos.Profesor;
 import Objetos.Titulacion;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
