@@ -126,5 +126,16 @@ public class TestAsignatura extends TestCase {
         assertTrue(horasSesion);
     }
     
+    @Test
+    public void testAsignaturaToString(){
+        Asignatura a = new Asignatura("gilingenieria", 1,1,1);
+        assertTrue("no imprime nada y debería", a.toString().length() > 0);
+    }
+     @Test
+    public void testAsignaturaVaciaNoImprimeNada(){
+        //Asignatura a = new Asignatura("gilingenieria", 1,1,1);
+        Asignatura a = new Asignatura();
+        assertTrue("imprime algo y no debería", a.toString().length() == 0);
+    }
     
 }    

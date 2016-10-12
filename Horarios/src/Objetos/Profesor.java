@@ -8,6 +8,7 @@ package Objetos;
 import Excepciones.EProfesorSinNombre;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -19,11 +20,11 @@ public class Profesor {
     String nombre;
     String email;
     String despacho;
-    EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
+    //EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
 
     public Profesor(String nombre, String email, String despacho,int id) throws EProfesorSinNombre {
         if (nombre==null){
-            throw e;
+             throw new Excepciones.EProfesorSinNombre("burrada en el ctor");
         }
         else{
         this.nombre = nombre;
@@ -32,14 +33,21 @@ public class Profesor {
         this.id = id;
         }
     }
-    
+    public Profesor() throws EProfesorSinNombre{
+        throw new Excepciones.EProfesorSinNombre("burrada en el ctor vacio");
+    }
 
+    public Profesor(String n) throws EProfesorSinNombre{
+        nombre = n;
+     }
     public Profesor(String nombre, String email, String despacho) throws EProfesorSinNombre{
         if (nombre==null){
-            throw e;
+            throw new Excepciones.EProfesorSinNombre("burrada en el semi ctor");
         }
         else{
         this.nombre = nombre;
+               Pattern pat = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
         this.email = email;
         this.despacho = despacho;
         }
@@ -59,8 +67,9 @@ public class Profesor {
         return nombre;
         }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws EProfesorSinNombre {
+        throw new Excepciones.EProfesorSinNombre("burrada en el setter");
+        //this.nombre = nombre;
     }
 
     public String getEmail() {
@@ -79,10 +88,10 @@ public class Profesor {
         this.despacho = despacho;
     }
 
-    @Override
-    public String toString() {
-        return "Profesor{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + ", despacho=" + despacho + ", e=" + e + '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Profesor{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + ", despacho=" + despacho + ", e=" + e + '}';
+//    }
     
     
            
