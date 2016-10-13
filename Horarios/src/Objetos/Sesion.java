@@ -18,10 +18,16 @@ public class Sesion {
     int id;
     Asignatura asignatura;
     Grupo grupo;
+    int numeroHoras;
 
     public Sesion(Asignatura asignatura, Grupo grupo) {
         this.asignatura = asignatura;
         this.grupo = grupo;
+    }
+     public Sesion(Asignatura asignatura, Grupo grupo, int numeroHoras) {
+        this.asignatura = asignatura;
+        this.grupo = grupo;
+        this.numeroHoras=numeroHoras;
     }
 
     public Sesion() {
@@ -35,6 +41,14 @@ public class Sesion {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setNumetoHoras(int numeroHoras){
+        this.numeroHoras=numeroHoras;
+    }
+    
+    public int getNumeroHoras(){
+        return numeroHoras;
     }
 
     public Asignatura getAsignatura() {
