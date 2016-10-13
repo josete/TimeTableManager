@@ -53,6 +53,32 @@ public class TestProfesor extends TestCase{
        assertTrue(emailCorrecto);
      //commitear
     }
+    /* esta prueba es mala mala, ya hay un metodo que comprueba que el nombre no puede
+        ser null, no se comprobar el metodo.
     
-      
+    @Test
+    public void testProfesorTieneNombre() throws EProfesorSinNombre{
+        Profesor profesor = new Profesor(null, "patat@gmail.com", "1.1.1", 3);
+        assertEquals((profesor.getNombre()==null), false);
+    }
+    */
+    public void testProfesorTieneDespacho() throws EProfesorSinNombre{
+        Profesor profesor = new Profesor("jose", "j.cara@gmail.com", null, 3);
+        boolean despacho = false;
+        if(profesor.getDespacho()==null){
+            despacho = true;
+        }
+        assertEquals(true, despacho);
+    }
 }
+/*
+@Test
+    public void testAsignaturaSinNombre(){
+        Asignatura asignatura=new Asignatura(null,3,6,2);
+        boolean nombre = false;
+        if(asignatura.getNombre()==null){
+            nombre = true;
+        }
+        assertEquals(true,nombre);
+    }
+*/
