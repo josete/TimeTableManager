@@ -109,18 +109,22 @@ public class Testeo {
         }
     }
  @Test
-    public void anadirAsignatura() {
+    public void anadirAsignatura() throws EProfesorSinNombre {
         Contenedor c = new Contenedor();
-        Asignatura a = new Asignatura("ADE", 1, 6, 8);
-        c.anadirAsignatura(a); 
+        Titulacion t = new Titulacion("Ingenieria Soft", 240);
+        Profesor profesor = new Profesor("Raul", "a.dolfo@usp.ceu.es", "2.2.2");
+        Asignatura a = new Asignatura("Ingenieria del software", profesor, 0, t, 0, 0);
+        c.anadirAsignatura(a);
+        assertEquals(a, c.getAsignaturas().get(0));
 
     }
  @Test
     public void anadirTitulacion() {
         Contenedor c = new Contenedor();
-        Titulacion t = new Titulacion("Ingenieria Soft", 240);
+        String titulacion = "Ingenieria Soft";
+        Titulacion t = new Titulacion(titulacion, 240);
         c.anadidTitulacion(t);
-        
+        assertEquals(t, c.getTitulaciones().get(0));
 
     }
 // @Test
@@ -137,6 +141,7 @@ public class Testeo {
         Aula a = new Aula(1, "1.5.5");
         Grupo g = new Grupo(1, a, t, 1, "A");
         c.anadirGrupo(g);
+        assertEquals(g, c.getGrupos().get(0));
 
     }
 }
