@@ -6,6 +6,7 @@
 package Test;
 
 import Excepciones.EProfesorSinNombre;
+import Objetos.Asignatura;
 import Objetos.Profesor;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -64,12 +65,14 @@ public class TestProfesor extends TestCase{
     */
     public void testProfesorTieneDespacho() throws EProfesorSinNombre{
         Profesor profesor = new Profesor("jose", "j.cara@gmail.com", null, 3);
-        boolean despacho = false;
-        if(profesor.getDespacho()==null){
-            despacho = true;
-        }
-        assertEquals(true, despacho);
+        assertEquals(profesor.getDespacho()==null, true);
     }
+    
+    public void testProfesorTieneEmail() throws EProfesorSinNombre{
+        Profesor profesor = new Profesor ("jose",  null, "1.1.1", 3);
+        assertEquals((profesor.getEmail()==null),true);
+    }
+    
 }
 /*
 @Test
