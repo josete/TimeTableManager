@@ -70,11 +70,6 @@ public class Profesor {
         return nombre;
         }
 
-    public void setNombre(String nombre) throws EProfesorSinNombre {
-        throw new Excepciones.EProfesorSinNombre("burrada en el setter");
-        //this.nombre = nombre;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -107,6 +102,9 @@ public class Profesor {
 
     public int getHorasActualesDia() {
         return horasActualesDia;
+    }
+    public void setNombre(String nombre){
+        this.nombre=nombre;
     }
 
     public void setHorasActualesDia(int horasActualesDia) {

@@ -56,4 +56,11 @@ public class TestSesion extends TestCase {
         assertEquals(grupo,sesion.getGrupo());
     }
     
+    @Test
+    public void testNumeroHorasConfigurable(){
+        Sesion s=new Sesion(new Asignatura(),new Grupo(),4);
+        s.setNumetoHoras(2);
+        assertEquals(2, s.getNumeroHoras());
+    }
+    
 }

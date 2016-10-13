@@ -97,6 +97,13 @@ public class TestProfesor extends TestCase {
             Logger.getLogger(TestProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //No tengo ningún requisito que me diga que se pueda cambiar el despacho del profesor.
+    @Test
+    public void testProfesorPuedeCambiarDespacho() throws EProfesorSinNombre{
+       Profesor p = new Profesor("Juan","juan@ceu.es","2.2.2",1);
+       p.setDespacho("1.2.3");
+       assertEquals("1.2.3",p.getDespacho());
+    }
 }
 /*
 @Test
