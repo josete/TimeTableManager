@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import Excepciones.EProfesorSinHoras;
 import Excepciones.EProfesorSinNombre;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,8 @@ public class Profesor {
     String nombre;
     String email;
     String despacho;
+    int maximoHorasDia = 0;
+    int horasActualesDia = 0;
     //EProfesorSinNombre e= new EProfesorSinNombre("No puede haber un profesor sin nombre");
 
     public Profesor(String nombre, String email, String despacho,int id) throws EProfesorSinNombre {
@@ -87,12 +90,36 @@ public class Profesor {
     public void setDespacho(String despacho) {
         this.despacho = despacho;
     }
-
+    
+    
 //    @Override
 //    public String toString() {
 //        return "Profesor{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + ", despacho=" + despacho + ", e=" + e + '}';
 //    }
+
+    public int getMaximoHorasDia() {
+        return maximoHorasDia;
+    }
+
+    public void setMaximoHorasDia(int maximoHorasDia) {
+        this.maximoHorasDia = maximoHorasDia;
+    }
+
+    public int getHorasActualesDia() {
+        return horasActualesDia;
+    }
+
+    public void setHorasActualesDia(int horasActualesDia) {
+        this.horasActualesDia = horasActualesDia;
+    }
     
+    public boolean puedeDarClaseHoy(){
+        boolean puede = false;
+        if(maximoHorasDia-horasActualesDia>0){
+            puede = true;
+        }
+        return puede;
+    }
     
            
 }
