@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -96,6 +97,22 @@ public class TestProfesor extends TestCase {
         } catch (EProfesorSinNombre ex) {
             Logger.getLogger(TestProfesor.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    //Hay que hacer refactor de otra forma no me funcionaba
+    @Test(expected = EProfesorSinHoras.class)
+    public void testProfesorSinHorasExcepcion(){
+        boolean salta = false;
+        try {
+            Profesor p = new Profesor("Juan");
+            p.setMaximoHorasDia(4);
+            p.sumar(5);
+        } catch (EProfesorSinNombre ex) {
+            Logger.getLogger(TestProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (EProfesorSinHoras ex) {
+            salta = true;
+        }
+        assertTrue(salta);
     }
 }
 /*

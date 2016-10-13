@@ -7,8 +7,6 @@ package Objetos;
 
 import Excepciones.EProfesorSinHoras;
 import Excepciones.EProfesorSinNombre;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
@@ -121,5 +119,17 @@ public class Profesor {
         return puede;
     }
     
+    public void sumar(int horas) throws EProfesorSinHoras{
+        int i = horasActualesDia + horas;
+        if(puedeDarClaseHoy()){
+            if(i>maximoHorasDia){
+                throw new EProfesorSinHoras();
+            }else{
+                horasActualesDia = i;
+            }
+        }else{
+            throw new EProfesorSinHoras();
+        }
+    }
            
 }
