@@ -62,5 +62,4 @@ public class TestSesion extends TestCase {
         s.setNumetoHoras(2);
         assertEquals(2, s.getNumeroHoras());
     }
-    
 }

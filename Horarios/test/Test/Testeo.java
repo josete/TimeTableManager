@@ -7,6 +7,7 @@ package Test;
 
 import Excepciones.EHorarioSinAsignaturas;
 import Excepciones.EHorarioSinGrupo;
+import Excepciones.EProfesorNoPuedeCambiarNombre;
 import Excepciones.EProfesorSinNombre;
 import Funcionalidad.Contenedor;
 import Objetos.Asignatura;
@@ -52,12 +53,16 @@ public class Testeo {
 //        assertEquals(profesor.getNombre(), n);
        }
        
-        @Test (expected = EProfesorSinNombre.class)
-       public void profesorNoPuedeCambiarNombre()throws EProfesorSinNombre {
-          String n = "tocame el pito";
-           Profesor profesor=new Profesor(n);
+        @Test (expected = EProfesorNoPuedeCambiarNombre.class)
+       public void profesorNoPuedeCambiarNombre()throws EProfesorNoPuedeCambiarNombre {
+        try {
+            String n = "tocame el pito";
+            Profesor profesor=new Profesor(n);
             
-           profesor.setNombre("que me irrito");
+            profesor.setNombre("que me irrito");
+        } catch (EProfesorSinNombre ex) {
+            Logger.getLogger(Testeo.class.getName()).log(Level.SEVERE, null, ex);
+        }
            
        }
               

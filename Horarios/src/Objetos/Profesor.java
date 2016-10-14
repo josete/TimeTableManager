@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import Excepciones.EProfesorNoPuedeCambiarNombre;
 import Excepciones.EProfesorSinHoras;
 import Excepciones.EProfesorSinNombre;
 import java.util.regex.Pattern;
@@ -101,8 +102,9 @@ public class Profesor {
     public int getHorasActualesDia() {
         return horasActualesDia;
     }
-    public void setNombre(String nombre){
-        this.nombre=nombre;
+    public void setNombre(String nombre) throws EProfesorNoPuedeCambiarNombre{
+        throw new EProfesorNoPuedeCambiarNombre();
+        //this.nombre=nombre;
     }
 
     public void setHorasActualesDia(int horasActualesDia) {
