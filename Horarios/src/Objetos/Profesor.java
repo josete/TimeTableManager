@@ -84,6 +84,7 @@ public class Profesor {
         return "Profesor{" + "id=" + id + ", nombre=" + nombre + ", email=" + email + ", despacho=" + despacho + ", e=" + e + '}';
     }
     
-    
-           
+    public boolean comprobarEmail(){
+        return false;
+    }
 }

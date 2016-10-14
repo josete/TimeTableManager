@@ -42,16 +42,12 @@ public class TestProfesor extends TestCase{
     
     @Test
     public void testProfesorTieneEmailBienEscrito() throws EProfesorSinNombre{
-        boolean emailCorrecto=false;
        Profesor profesor=new Profesor("Raul","rgg@eps.ceu.es","2.1.2");
        String email;
        email =profesor.getEmail();
        Pattern pat = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
        Matcher mat = pat.matcher(email);
-       if(mat.find()){
-          emailCorrecto=true;
-       }
-       assertTrue(emailCorrecto);
+       assertTrue(mat.find());
      //commitear
     }
     
