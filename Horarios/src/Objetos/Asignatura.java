@@ -22,6 +22,8 @@ public class Asignatura {
     
     boolean puedeRepetir = false;
     
+    
+    int tracker = 1;
     //Fin
     boolean diaActualPuede = true;
     boolean topeSemana = false;
@@ -45,6 +47,7 @@ public class Asignatura {
     }
 
     public Asignatura() {
+        tracker = 2;
     }
     
     
@@ -123,8 +126,11 @@ public class Asignatura {
     }
 
     @Override
-    public String toString() {
-        return "Asignatura{" + "nombre=" + nombre + ", profesor=" + profesor + ", curso=" + curso + ", titulacion=" + titulacion + ", horasSemanales=" + horasSemanales + ", horasSesion=" + horasSesion + ", puedeRepetir=" + puedeRepetir + ", diaActualPuede=" + diaActualPuede + ", topeSemana=" + topeSemana + ", horasSemanaActual=" + horasSemanaActual + '}';
+    public String toString() throws NullPointerException{
+        if (tracker ==2){
+        return ("");
+        }
+        else return "Asignatura{" + "nombre=" + nombre + ", profesor=" + profesor + ", curso=" + curso + ", titulacion=" + titulacion + ", horasSemanales=" + horasSemanales + ", horasSesion=" + horasSesion + ", puedeRepetir=" + puedeRepetir + ", diaActualPuede=" + diaActualPuede + ", topeSemana=" + topeSemana + ", horasSemanaActual=" + horasSemanaActual + '}';
     }
     
     

@@ -37,11 +37,32 @@ public class Testeo {
     
        @Test (expected = EProfesorSinNombre.class)
        public void profesorSinNombre()throws EProfesorSinNombre {
-          Profesor profesor=new Profesor(null, "a.dolfo@usp.ceu.es","2.6.4",0);
+          Profesor profesor=new Profesor();
           assertEquals("No puede haber un profesor sin nomnre",profesor);
         
        }
-       //Tengo que poder crear un profesor sin correo.
+
+        @Test
+       public void profesorSinNombreGilipollas()throws EProfesorSinNombre {
+          String n = "tocame el pito";
+           Profesor profesor=new Profesor(n);
+           
+            assertEquals(profesor.getNombre(), n);
+//        profesor.setNombre(null);
+//        assertEquals(profesor.getNombre(), n);
+       }
+       
+        @Test (expected = EProfesorSinNombre.class)
+       public void profesorNoPuedeCambiarNombre()throws EProfesorSinNombre {
+          String n = "tocame el pito";
+           Profesor profesor=new Profesor(n);
+            
+           profesor.setNombre("que me irrito");
+           
+       }
+              
+
+//Tengo que poder crear un profesor sin correo.
        @Test
        public void profesorSinCorreo() throws EProfesorSinNombre{
            Profesor profesor=new Profesor("Rafael Zarza", null,"0.0.0",1);
@@ -89,18 +110,22 @@ public class Testeo {
     }
     //Fin comprobacion -- Arreglar
  @Test
-    public void anadirAsignatura() {
+    public void anadirAsignatura() throws EProfesorSinNombre {
         Contenedor c = new Contenedor();
-        Asignatura a = new Asignatura("ADE", 1, 6, 8);
-        c.anadirAsignatura(a); 
+        Titulacion t = new Titulacion("Ingenieria Soft", 240);
+        Profesor profesor = new Profesor("Raul", "a.dolfo@usp.ceu.es", "2.2.2");
+        Asignatura a = new Asignatura("Ingenieria del software", profesor, 0, t, 0, 0);
+        c.anadirAsignatura(a);
+        assertEquals(a, c.getAsignaturas().get(0));
 
     }
  @Test
     public void anadirTitulacion() {
         Contenedor c = new Contenedor();
-        Titulacion t = new Titulacion("Ingenieria Soft", 240);
+        String titulacion = "Ingenieria Soft";
+        Titulacion t = new Titulacion(titulacion, 240);
         c.anadidTitulacion(t);
-        
+        assertEquals(t, c.getTitulaciones().get(0));
 
     }
 // @Test
@@ -117,6 +142,7 @@ public class Testeo {
         Aula a = new Aula(1, "1.5.5");
         Grupo g = new Grupo(1, a, t, 1, "A");
         c.anadirGrupo(g);
+        assertEquals(g, c.getGrupos().get(0));
 
     }
 }

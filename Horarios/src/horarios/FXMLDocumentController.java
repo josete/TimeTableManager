@@ -138,6 +138,7 @@ public class FXMLDocumentController implements Initializable {
                 horario.setG(g);
             }
             horario.generar();
+            almacenamiento.anadirHorario(horario);
             if(horario.isGenerado()){generar.setDisable(true);}
             repintar();
         } catch (EHorarioSinGrupo|NullPointerException ex) {
