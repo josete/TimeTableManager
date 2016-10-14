@@ -67,20 +67,11 @@ public class TestAsignatura extends TestCase {
         assertNotNull(asignatura.getCurso());
         
     }
-    @Test
-    public void testAsignaturaNombreNull(){
-        Asignatura asignatura=new Asignatura();
-        assertNull(asignatura.getNombre());
-    }
-    @Test
-    public void testAsignaturaSinNombre(){
-        Asignatura asignatura=new Asignatura(null,3,6,2);
-        boolean nombre = false;
-        if(asignatura.getNombre()==null){
-            nombre = true;
-        }
-        assertEquals(true,nombre);
-    }
+    //Dar una vuerlta -- Asignatura tiene que tener nombre
+    /*@Test (expected=asn)
+    public void testUnaAsignaturaTieneQueTenerNombre() throws asn {
+        Asignatura asignatura=new Asignatura("1isw",3,6,2);
+    }*/
     @Test
     public void testAsignaturaPerteneceCurso(){
         Asignatura a=new Asignatura("www",3,6,2);

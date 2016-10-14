@@ -111,6 +111,10 @@ public class Profesor {
         this.horasActualesDia = horasActualesDia;
     }
     
+    public boolean comprobarEmail(){
+        return false;
+    }
+
     public boolean puedeDarClaseHoy(){
         boolean puede = false;
         if(maximoHorasDia-horasActualesDia>0){
@@ -131,5 +135,4 @@ public class Profesor {
             throw new EProfesorSinHoras();
         }
     }
-           
 }

@@ -113,6 +113,7 @@ public class Testeo {
             Logger.getLogger(Testeo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //Fin comprobacion -- Arreglar
  @Test
     public void anadirAsignatura() throws EProfesorSinNombre {
         Contenedor c = new Contenedor();
