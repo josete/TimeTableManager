@@ -19,13 +19,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
+import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
  *
  * @author Clara
  */
-public class Testeo {
+public class Testeo extends TestCase {
 
     @Test
     public void unProfesorConNombre() throws EProfesorSinNombre{
