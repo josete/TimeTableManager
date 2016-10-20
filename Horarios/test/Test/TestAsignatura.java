@@ -125,7 +125,7 @@ public class TestAsignatura extends TestCase {
      @Test
     public void testAsignaturaVaciaNoImprimeNada(){
         //Asignatura a = new Asignatura("gilingenieria", 1,1,1);
-        Asignatura a = new Asignatura();
+        Asignatura a = new Asignatura(); 
         assertTrue("imprime algo y no debería", a.toString().length() == 0);
     }
     

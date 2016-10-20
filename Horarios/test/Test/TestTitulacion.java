@@ -52,4 +52,30 @@ public class TestTitulacion extends TestCase{
         }
         assertTrue(creditosMayoresQueCero);
     }
+    
+    @Test
+    public void testTitulacionToString(){
+        Titulacion t = new Titulacion(1, "Ingenieria Del Software", 6);
+        assertTrue("no imprime nada y deberia",  t.toString().length()>0);
+    }
+    
+    @Test
+    public void testTitulacion2ToString(){
+        Titulacion t = new Titulacion("Ingenieria del Software", 6);
+        assertTrue("no imprime nada y deberia", t.toString().length()>0);
+        
+    }
+    
+    @Test
+    public void testTitulacionVaciaNoImprimeNada(){
+        Titulacion t = new Titulacion();
+        assertTrue("imprime algo y no deberia",  t.toString().length() == 0);
+    }
+    /*
+    @Test
+    public void testAsignaturaToString(){
+        Asignatura a = new Asignatura("gilingenieria", 1,1,1);
+        assertTrue("no imprime nada y debería", a.toString().length() > 0);
+    }
+    */
 }

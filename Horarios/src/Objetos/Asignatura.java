@@ -130,11 +130,8 @@ public class Asignatura {
         if (tracker ==2){
         return ("");
         }
-        else return "Asignatura{" + "nombre=" + nombre + ", profesor=" + profesor + ", curso=" + curso + ", titulacion=" + titulacion + ", horasSemanales=" + horasSemanales + ", horasSesion=" + horasSesion + ", puedeRepetir=" + puedeRepetir + ", diaActualPuede=" + diaActualPuede + ", topeSemana=" + topeSemana + ", horasSemanaActual=" + horasSemanaActual + '}';
+        else return "Asignatura{nombre=" + nombre + ", profesor=" + profesor + ", curso=" + curso + ", titulacion=" + titulacion + ", horasSemanales=" + horasSemanales + ", horasSesion=" + horasSesion + ", puedeRepetir=" + puedeRepetir + ", diaActualPuede=" + diaActualPuede + ", topeSemana=" + topeSemana + ", horasSemanaActual=" + horasSemanaActual + '}';
     }
-    
-    
-    
     
     
 }

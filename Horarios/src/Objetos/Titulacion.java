@@ -14,7 +14,7 @@ public class Titulacion {
     int id;
     String nombre;
     int creditos;
-
+    int tracker = 1;
     public Titulacion(int id,String nombre, int creditos) {
         this.id = id;
         this.nombre = nombre;
@@ -25,7 +25,12 @@ public class Titulacion {
         this.nombre = nombre;
         this.creditos = creditos;
     }
-
+    
+    public Titulacion(){
+        tracker = 2;
+    }
+    
+    
     public int getId() {
         return id;
     }
@@ -52,9 +57,12 @@ public class Titulacion {
 
     @Override
     public String toString() {
-        return "Titulacion{" + "id=" + id + ", nombre=" + nombre + ", creditos=" + creditos + '}';
+        if(tracker == 2){
+            return "";
+        }
+        else{ return "Titulacion{" + "id=" + id + ", nombre=" + nombre + ", creditos=" + creditos + '}';
     }
-    
+    }
     
     
 }
