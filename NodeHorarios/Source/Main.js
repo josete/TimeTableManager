@@ -6,6 +6,8 @@ c = new configuracion();
 c.anadirSesion(new sesion("IS",2,3));
 c.anadirSesion(new sesion("IS",2,3));
 c.anadirSesion(new sesion("IS",2,3));
+c.anadirSesion(new sesion("IA",2,3));
+c.anadirSesion(new sesion("IA",2,3));
 
 h = new horario();
 h.setGrupo("Informatica");
