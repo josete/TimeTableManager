@@ -1,16 +1,26 @@
 var Horario = function(){
 	
 	this.grupo = null;
-	this.asignaturas = null;
+	this.sesiones = null;
 	
 	this.generar = function(){
-		if(grupo == null || asignaturas == null){
-			throw new Error("El horario no tiene grupo o asignaturas");
+		if(this.grupo == null || this.sesiones == null){
+			throw new Error("El horario no tiene grupo o sesiones");
+		}else{
+			console.log("Hola");
 		}
 	}
 	
 	this.setGrupo = function(grupo){
 		this.grupo = grupo;
+	}
+
+	this.setSesiones = function(sesiones){
+		this.sesiones = sesiones;
+	}
+
+	this.getSesiones = function(){
+		return this.sesiones;
 	}
 }
 
