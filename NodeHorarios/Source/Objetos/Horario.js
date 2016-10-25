@@ -7,7 +7,7 @@ var Horario = function(){
 		if(this.grupo == null || this.sesiones == null){
 			throw new Error("El horario no tiene grupo o sesiones");
 		}else{
-			console.log("Hola");
+			console.log("Hola soy un horario que de momento no hace nada");
 		}
 	}
 	
