@@ -13,3 +13,4 @@ h = new horario();
 h.setGrupo("Informatica");
 h.setSesiones(c.getSesiones());
 h.generar();
+h.imprimir();
