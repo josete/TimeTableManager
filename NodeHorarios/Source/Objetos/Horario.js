@@ -1,64 +1,52 @@
-var Horario = function(){
-	
+var Horario = function () {
+
 	this.grupo = null;
 	this.sesiones = null;
 	this.horaInicio = 8;
 	this.horasDia = 6;
 	this.horarioGenerado = {};
-	
-	this.generar = function(){
-		if(this.grupo == null || this.sesiones == null){
+	this.asignaturasAnadidas = [];
+
+	this.generar = function () {
+		if (this.grupo == null || this.sesiones == null) {
 			throw new Error("El horario no tiene grupo o sesiones");
-		}else{
-			horaActual = 0;
-			diaActual = 0;
-			horasDiaRestantes = this.horasDia;
-			for(i=0;i<this.sesiones.length;i++){
-				if(Object.keys(this.horarioGenerado).length>0){
-					if(!this.comprobarEsta(this.sesiones[i])){
-						this.horarioGenerado[diaActual+"-"+horaActual] = this.sesiones[i];
-					}
-				}else{
-					this.horarioGenerado[diaActual+"-"+horaActual] = this.sesiones[i];
+		} else {
+			horasTotalesDia = this.horasDia;
+			actual = 0;
+			while(horasTotalesDia >0){
+				if(this.sesiones[actual].getAsignatura().diaActualPeude()){
+					this.horarioGenerado[diaActual + "-" + horaActual] = this.sesiones[i];
+					horasTotalesDia -= this.sesiones[i].getHoras();
+					this.sesiones[actual].getAsignatura().setPuede(false);
 				}
-				horasDiaRestantes -= this.sesiones[i].getHoras();
-				horaActual++;
-				if(horasDiaRestantes==0){
-					horaActual = 0;
-					diaActual++;
-					horasDiaRestantes = this.horasDia;
-				}
+				actual++;
+				
 			}
+					
+
 		}
 	}
-	
-	this.setGrupo = function(grupo){
+
+	this.setGrupo = function (grupo) {
 		this.grupo = grupo;
 	}
 
-	this.setSesiones = function(sesiones){
+	this.setSesiones = function (sesiones) {
 		this.sesiones = sesiones;
 	}
 
-	this.getSesiones = function(){
+	this.getSesiones = function () {
 		return this.sesiones;
 	}
-	
-	this.imprimir = function(){
-				console.log(this.horarioGenerado);
+
+	this.imprimir = function () {
+		console.log(this.horarioGenerado);
 	}
-	
-	this.comprobarEsta = function(asignatura){
+
+	this.comprobarEsta = function (asignatura) {
 		esta = false;
-		horaActual = 0;
-			diaActual = 0;
-		for(i=0;i<this.sesiones.length;i++){
-			if(this.horarioGenerado[diaActual+"-"+horaActual].getAsignatura()==asignatura){esta=true;break;}
-			horaActual++;
-			if(horasDiaRestantes==0){
-				horaActual = 0;
-				diaActual++;
-			}
+		for (i = 0; i < this.asignaturasAnadidas.length; i++) {
+			if (this.asignaturasAnadidas[i] == asignatura) { esta = true; break; }
 		}
 		return esta;
 	}

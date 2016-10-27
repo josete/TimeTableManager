@@ -5,7 +5,8 @@ var Asignatura = function(nombre,curso,titulacion){
 	this.nombre = nombre;
 	this.curso = curso;
 	this.titulacion = titulacion;
-	
+	this.puede = true;
+
 	this.getAsignaturaInfo = function(){
 		return this.nombre + " "+this.curso+ " "+this.titulacion.nombre;
 	}
@@ -14,6 +15,14 @@ var Asignatura = function(nombre,curso,titulacion){
 	}
 	this.getCurso = function(){
 		return this.curso;
+	}
+
+	this.diaActualPuede = function(){
+		return this.puede;
+	}
+	
+	this.setPuede = function(puede){
+		this.puede = puede;
 	}
 
 }
