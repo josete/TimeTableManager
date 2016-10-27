@@ -13,14 +13,25 @@ var Horario = function () {
 		} else {
 			horasTotalesDia = this.horasDia;
 			actual = 0;
-			while(horasTotalesDia >0){
-				if(this.sesiones[actual].getAsignatura().diaActualPeude()){
-					this.horarioGenerado[diaActual + "-" + horaActual] = this.sesiones[i];
-					horasTotalesDia -= this.sesiones[i].getHoras();
+			dia = 0;
+			horaActual = this.horaInicio;
+			while(dia < 6){
+				if(this.sesiones[actual].getAsignatura().diaActualPuede()){
+					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];
+					horasTotalesDia -= this.sesiones[actual].getHoras();
+					horaActual += this.sesiones[actual].getHoras();
 					this.sesiones[actual].getAsignatura().setPuede(false);
 				}
 				actual++;
-				
+				if(horasTotalesDia <= 0){
+					horasTotalesDia = this.horasDia;
+					dia++;
+					horaActual = this.horaInicio;
+					this.resetear();
+				}
+				if(actual == this.sesiones.length){
+					actual = 0;
+				}
 			}
 					
 
@@ -43,12 +54,10 @@ var Horario = function () {
 		console.log(this.horarioGenerado);
 	}
 
-	this.comprobarEsta = function (asignatura) {
-		esta = false;
-		for (i = 0; i < this.asignaturasAnadidas.length; i++) {
-			if (this.asignaturasAnadidas[i] == asignatura) { esta = true; break; }
+	this.resetear = function () {
+		for(i=0;i<this.sesiones.length;i++){
+			this.sesiones[i].getAsignatura().setPuede(true);
 		}
-		return esta;
 	}
 }
 
