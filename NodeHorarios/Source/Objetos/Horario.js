@@ -1,70 +1,69 @@
-var Horario = function(){
-	
+var Horario = function () {
+
 	this.grupo = null;
 	this.sesiones = null;
 	this.horaInicio = 8;
 	this.horasDia = 6;
 	this.horarioGenerado = {};
-	
-	this.cuantasLlevo = 0;
-	
-	this.generar = function(){
-		if(this.grupo == null || this.sesiones == null){
+
+	this.asignaturasAnadidas = [];
+
+	this.generar = function () {
+		if (this.grupo == null || this.sesiones == null) {
 			throw new Error("El horario no tiene grupo o sesiones");
-		}else{
-			horaActual = 0;
-			diaActual = 0;
-			horasDiaRestantes = this.horasDia;
-			for(i=0;i<this.sesiones.length;i++){
-				if(Object.keys(this.horarioGenerado).length>0){
-					if(!this.comprobarEsta(this.sesiones[i])){
-						this.horarioGenerado[diaActual+"-"+horaActual] = this.sesiones[i];
-						this.cuantasLlevo;
-					}
-				}else{
-					this.horarioGenerado[diaActual+"-"+horaActual] = this.sesiones[i];
-					this.cuantasLlevo++;
+		} else {
+			horasTotalesDia = this.horasDia;
+			actual = 0;
+			dia = 0;
+			horaActual = this.horaInicio;
+			while(dia < 6){
+				if(this.sesiones[actual].getAsignatura().diaActualPuede()){
+					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];
+					horasTotalesDia -= this.sesiones[actual].getHoras();
+					horaActual += this.sesiones[actual].getHoras();
+					this.sesiones[actual].getAsignatura().setPuede(false);
 				}
-				horasDiaRestantes -= this.sesiones[i].getHoras();
-				horaActual++;
-				if(horasDiaRestantes==0){
-					horaActual = 0;
-					diaActual++;
-					horasDiaRestantes = this.horasDia;
+				actual++;
+				if(horasTotalesDia <= 0){
+					horasTotalesDia = this.horasDia;
+					dia++;
+					horaActual = this.horaInicio;
+					this.resetear();
+				}
+				if(actual == this.sesiones.length){
+					actual = 0;
 				}
 			}
 		}
 	}
-	
-	this.setGrupo = function(grupo){
+
+	this.setGrupo = function (grupo) {
 		this.grupo = grupo;
 	}
 
-	this.setSesiones = function(sesiones){
+	this.setSesiones = function (sesiones) {
 		this.sesiones = sesiones;
 	}
 
-	this.getSesiones = function(){
+	this.getSesiones = function () {
 		return this.sesiones;
 	}
-	
-	this.imprimir = function(){
-				console.log(this.horarioGenerado);
-	}
-	
-	this.comprobarEsta = function(asignatura){
-		esta = false;
-		horaActual = 0;
-			diaActual = 0;
-		for(i=0;i<this.cuantasLlevo;i++){
-			if(this.horarioGenerado[diaActual+"-"+horaActual].getAsignatura()==asignatura){esta=true;break;}
-			horaActual++;
-			if(horasDiaRestantes==0){
-				horaActual = 0;
-				diaActual++;
+
+	this.imprimir = function () {
+		for(i=8;i<14;i+=2){
+			for(j=0;j<6;j++){
+				process.stdout.write(this.horarioGenerado[j+"-"+i].getAsignatura().getNombre());
+				process.stdout.write("	");
 			}
+				process.stdout.write("\n");
 		}
-		return esta;
+		//console.log(this.horarioGenerado);
+	}
+
+	this.resetear = function () {
+		for(i=0;i<this.sesiones.length;i++){
+			this.sesiones[i].getAsignatura().setPuede(true);
+		}
 	}
 }
 
