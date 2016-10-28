@@ -6,6 +6,8 @@ var Horario = function(){
 	this.horasDia = 6;
 	this.horarioGenerado = {};
 	
+	this.cuantasLlevo = 0;
+	
 	this.generar = function(){
 		if(this.grupo == null || this.sesiones == null){
 			throw new Error("El horario no tiene grupo o sesiones");
@@ -17,9 +19,11 @@ var Horario = function(){
 				if(Object.keys(this.horarioGenerado).length>0){
 					if(!this.comprobarEsta(this.sesiones[i])){
 						this.horarioGenerado[diaActual+"-"+horaActual] = this.sesiones[i];
+						this.cuantasLlevo;
 					}
 				}else{
 					this.horarioGenerado[diaActual+"-"+horaActual] = this.sesiones[i];
+					this.cuantasLlevo++;
 				}
 				horasDiaRestantes -= this.sesiones[i].getHoras();
 				horaActual++;
@@ -52,7 +56,7 @@ var Horario = function(){
 		esta = false;
 		horaActual = 0;
 			diaActual = 0;
-		for(i=0;i<this.sesiones.length;i++){
+		for(i=0;i<this.cuantasLlevo;i++){
 			if(this.horarioGenerado[diaActual+"-"+horaActual].getAsignatura()==asignatura){esta=true;break;}
 			horaActual++;
 			if(horasDiaRestantes==0){
