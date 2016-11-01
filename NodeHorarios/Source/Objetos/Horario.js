@@ -6,7 +6,6 @@ var Horario = function () {
 	this.horasDia = 6;
 	this.horarioGenerado = {};
 
-	this.asignaturasAnadidas = [];
 
 	this.generar = function () {
 		if (this.grupo == null || this.sesiones == null) {
@@ -16,12 +15,13 @@ var Horario = function () {
 			actual = 0;
 			dia = 0;
 			horaActual = this.horaInicio;
-			while(dia < 6){
+			while(this.sesiones.length>0){
 				if(this.sesiones[actual].getAsignatura().diaActualPuede()){
 					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];
 					horasTotalesDia -= this.sesiones[actual].getHoras();
 					horaActual += this.sesiones[actual].getHoras();
 					this.sesiones[actual].getAsignatura().setPuede(false);
+					this.sesiones.splice(actual,1);
 				}
 				actual++;
 				if(horasTotalesDia <= 0){
@@ -30,7 +30,7 @@ var Horario = function () {
 					horaActual = this.horaInicio;
 					this.resetear();
 				}
-				if(actual == this.sesiones.length){
+				if(actual >= this.sesiones.length){
 					actual = 0;
 				}
 			}
@@ -51,7 +51,7 @@ var Horario = function () {
 
 	this.imprimir = function () {
 		for(i=8;i<14;i+=2){
-			for(j=0;j<6;j++){
+			for(j=0;j<4;j++){
 				process.stdout.write(this.horarioGenerado[j+"-"+i].getAsignatura().getNombre());
 				process.stdout.write("	");
 			}
