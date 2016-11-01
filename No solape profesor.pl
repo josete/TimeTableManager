@@ -12,6 +12,9 @@ horarioInvalido(asignacion(FranjaId1, Curso1,Asignatura1,intervalo(H1,H2),Dia),
 		FranjaId1 \= FranjaId2,
 		profesor(Asignatura1,Prof),profesor(Asignatura2,Prof).
 
+mismaAsignatura(planEstudios(Titulacion1,Asignatura,CursoN),planEstudios(Titulacion2, Asignatura, CursoM)):-
+	Titulacion1\=Titulacion2.
+
 
 asignacion(1, gisi(3),isi,intervalo(830,1030),dia(1)).
 asignacion(2, gisi(3),iac,intervalo(1030,1230),dia(1)).
@@ -21,4 +24,8 @@ asignacion(4, gisi(1),pr1,intervalo(830,1030),dia(2)).
 
 profesor(iac,mfl).
 profesor(pr1,mfl).
+
+planEstudios(teleco,sistemasOperativos,2).
+planEstudios(informatica,sistemasOperativos,2).
+
 
