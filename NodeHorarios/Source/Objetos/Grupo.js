@@ -17,3 +17,5 @@ var Grupo = function(nombre,curso,titulacion){
 	}
 
 }
+
+module.exports = Grupo;

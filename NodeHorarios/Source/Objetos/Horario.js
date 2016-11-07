@@ -5,6 +5,7 @@ var Horario = function () {
 	this.horaInicio = 8;
 	this.horasDia = 6;
 	this.horarioGenerado = {};
+	this.generado = false;
 
 
 	this.generar = function () {
@@ -35,6 +36,7 @@ var Horario = function () {
 				}
 			}
 		}
+		this.generado = true;
 	}
 
 	this.setGrupo = function (grupo) {
@@ -50,6 +52,7 @@ var Horario = function () {
 	}
 
 	this.imprimir = function () {
+		process.stdout.write("Horario Grupo:"+this.grupo.getNombre()+" "+this.grupo.getCurso()+"\n");
 		for(i=8;i<14;i+=2){
 			for(j=0;j<4;j++){
 				process.stdout.write(this.horarioGenerado[j+"-"+i].getAsignatura().getNombre());
@@ -57,13 +60,17 @@ var Horario = function () {
 			}
 				process.stdout.write("\n");
 		}
-		//console.log(this.horarioGenerado);
+		process.stdout.write("---------------------------");
 	}
 
 	this.resetear = function () {
 		for(i=0;i<this.sesiones.length;i++){
 			this.sesiones[i].getAsignatura().setPuede(true);
 		}
+	}
+
+	this.getGenerado = function(){
+		return this.generado;
 	}
 }
 
