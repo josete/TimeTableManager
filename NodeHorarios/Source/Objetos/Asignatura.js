@@ -1,4 +1,4 @@
-var Asignatura = function(nombre,curso,titulacion){
+var Asignatura = function(nombre,curso,titulacion,profesor){
 	if(nombre==null){
 		throw Error("Asignautra sin nombre");
 	}
@@ -6,6 +6,7 @@ var Asignatura = function(nombre,curso,titulacion){
 	this.curso = curso;
 	this.titulacion = titulacion;
 	this.puede = true;
+	this.profesor = profesor;
 
 	this.getAsignaturaInfo = function(){
 		return this.nombre + " "+this.curso+ " "+this.titulacion.nombre;
@@ -23,6 +24,14 @@ var Asignatura = function(nombre,curso,titulacion){
 	
 	this.setPuede = function(puede){
 		this.puede = puede;
+	}
+
+	this.getProfesor = function(){
+		return profesor;
+	}
+
+	this.setProfesor = function(profesor){
+		this.profesor = profesor;
 	}
 
 }

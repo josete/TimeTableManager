@@ -14,6 +14,10 @@ var Sesion = function(asignatura,horas,curso){
 	this.getHoras = function(){
 		return this.horas;
 	}
+
+    this.getCurso = function(){
+        return this.curso;
+    }
 }
 
 module.exports = Sesion;

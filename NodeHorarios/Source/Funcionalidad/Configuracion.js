@@ -24,6 +24,16 @@ var Configuracion = function(){
         return this.horarios;
     }
 
+    this.getSesionesPorCurso = function(curso){
+        sesionesCurso = [];
+        for(i=0;i<this.sesiones.length;i++){
+            if(this.sesiones[i].getCurso()==curso){
+                sesionesCurso.push(this.sesiones[i]);
+            }
+        }
+        return sesionesCurso;
+    }
+
 }
 
 module.exports = Configuracion;

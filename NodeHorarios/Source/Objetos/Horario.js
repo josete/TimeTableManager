@@ -16,16 +16,20 @@ var Horario = function () {
 			actual = 0;
 			dia = 0;
 			horaActual = this.horaInicio;
+			intento = 0;//Pruebas
 			while(this.sesiones.length>0){
-				if(this.sesiones[actual].getAsignatura().diaActualPuede()){
-					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];
+				intento++;
+				if(this.sesiones[actual].getAsignatura().diaActualPuede()&&!this.sesiones[actual].getAsignatura().getProfesor().getClaseAUnaHora(dia + "-" + horaActual)){
+					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];					
+					this.sesiones[actual].getAsignatura().getProfesor().anadirClase(dia + "-" + horaActual,this.sesiones[actual]);
 					horasTotalesDia -= this.sesiones[actual].getHoras();
 					horaActual += this.sesiones[actual].getHoras();
 					this.sesiones[actual].getAsignatura().setPuede(false);
 					this.sesiones.splice(actual,1);
+					intento=0;
 				}
 				actual++;
-				if(horasTotalesDia <= 0){
+				if(horasTotalesDia <= 0 || intento>3){
 					horasTotalesDia = this.horasDia;
 					dia++;
 					horaActual = this.horaInicio;
@@ -35,8 +39,9 @@ var Horario = function () {
 					actual = 0;
 				}
 			}
+			this.horarioGenerado["Dias"] = dia;
+			this.generado = true;
 		}
-		this.generado = true;
 	}
 
 	this.setGrupo = function (grupo) {
@@ -52,15 +57,17 @@ var Horario = function () {
 	}
 
 	this.imprimir = function () {
-		process.stdout.write("Horario Grupo:"+this.grupo.getNombre()+" "+this.grupo.getCurso()+"\n");
-		for(i=8;i<14;i+=2){
-			for(j=0;j<4;j++){
+		process.stdout.write("Horario Grupo:"+this.grupo.getNombre()+" "+this.grupo.getCurso().getCurso()+"\n");
+		for(i=this.horaInicio;i<(this.horaInicio+this.horasDia);i+=2){
+			for(j=0;j<(this.horarioGenerado["Dias"]+1);j++){
+				try{
 				process.stdout.write(this.horarioGenerado[j+"-"+i].getAsignatura().getNombre());
 				process.stdout.write("	");
+				}catch(err){}
 			}
 				process.stdout.write("\n");
 		}
-		process.stdout.write("---------------------------");
+		process.stdout.write("---------------------------\n");
 	}
 
 	this.resetear = function () {
