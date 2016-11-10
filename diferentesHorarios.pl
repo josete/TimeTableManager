@@ -1,4 +1,27 @@
 %Mismo dia, a la misma hora, mismo profesor.
+%El solape son tres convoluciones:
+% 1. Convolucion de dos pulsos rectangulares con la misma amplitud
+% 2. Convolucion de dos pulsos rectangulares: el segundo menor amplitud
+% 3. Convolucion de dos pulsos rectangulares: el segundo mayor amplitud
+
+solape(intervalo1(A,B),intervalo2(C,D)):-
+	%Amplitudes iguales
+
+	C<A, A<D;
+	C=A, B=D;
+	A<C, C<B, B<D;
+
+	%Amplitud del segundo menor que la del primero
+	%C<A, A<D
+	A<C, D<B;
+	C<B,B<D;
+
+	%Amplitud del segundo mayor que la del primero
+	%C<A, A<D;
+	C<A, B<D.
+	%A<C, C<B, B<D
+
+
 horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	horarioAsignacion(Horario, FranjaId2),
@@ -8,6 +31,7 @@ horarioInvalido(Horario):-
 	asignacionTiempo(FranjaId1, Intervalo1, Dia),
 	asignacionTiempo(FranjaId2, Intervalo2, Dia),
 	solape(Intervalo1, Intervalo2).
+
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).

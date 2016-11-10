@@ -1,4 +1,27 @@
 %Mismo dia, a la misma hora, mismo profesor.
+%El solape son tres convoluciones:
+% 1. Convolucion de dos pulsos rectangulares con la misma amplitud
+% 2. Convolucion de dos pulsos rectangulares: el segundo menor amplitud
+% 3. Convolucion de dos pulsos rectangulares: el segundo mayor amplitud
+
+solape(intervalo1(A,B),intervalo2(C,D)):-
+	%Amplitudes iguales
+
+	C<A, A<D;
+	C=A, B=D;
+	A<C, C<B, B<D;
+
+	%Amplitud del segundo menor que la del primero
+	%C<A, A<D
+	A<C, D<B;
+	C<B,B<D;
+
+	%Amplitud del segundo mayor que la del primero
+	%C<A, A<D;
+	C<A, B<D;
+	%A<C, C<B, B<D.
+
+
 horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	horarioAsignacion(Horario, FranjaId2),
@@ -9,25 +32,6 @@ horarioInvalido(Horario):-
 	asignacionTiempo(FranjaId2, Intervalo2, Dia),
 	solape(Intervalo1, Intervalo2).
 
-
-/*
-horarioInvalido(Horario,
-                asignacion(FranjaId1, Titulacion1, Curso1,Asignatura1,intervalo(H1,H2),Dia),
-		asignacion(FranjaId2, Titulacion2, Curso2,Asignatura2,intervalo(H1,H2),Dia)):-
-
-		horarioAsignacion(Horario, FranjaId1),
-		horarioAsignacion(Horario, FranjaId2),
-		asignacion(FranjaId1, Titulacion1, Curso1,Asignatura1,intervalo(H1,H2),Dia),
-		asignacion(FranjaId2, Titulacion2, Curso2,Asignatura2,intervalo(H1,H2),Dia),
-		FranjaId1 \= FranjaId2,
-		profesor(Asignatura1,Prof),profesor(Asignatura2,Prof).
-*/
-
-asignacion(1, gisi, 3, isi, pgr,intervalo(830,1030),dia(1)).
-asignacion(2, gisi, 3, iac, mfl,intervalo(1030,1230),dia(1)).
-%asignacion(3, gisi(3),iac,intervalo(830,1030),dia(2)).
-asignacion(3, gisi, 3, iso, rgg,intervalo(1230,1430),dia(1)).
-asignacion(4, gisi, 1, pr1, mfl,intervalo(830,1030),dia(2)).
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
@@ -53,11 +57,6 @@ asignacionAsignatura(4, pr1).
 asignacionProfesor(4, mfl).
 asignacionTiempo(intervalo(830,1030),dia(2)).
 
-
-
-profesor(iac,mfl).
-profesor(pr1,mfl).
-
 planEstudios(teleco,sistemasOperativos,2).
 planEstudios(informatica,sistemasOperativos,2).
 
@@ -66,4 +65,10 @@ horarioAsignacion(horario1, 1).
 horarioAsignacion(horario1, 2).
 horarioAsignacion(horario1, 3).
 horarioAsignacion(horario1, 4).
+
+
+
+
+
+
 
