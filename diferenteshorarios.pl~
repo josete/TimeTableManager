@@ -44,9 +44,12 @@ unaAsignaturaDosPlanesEstudio(Horario):-
 
 % Un profesor no puede tener mas de 8 horas de clase al dia, ni menos de
 % 4
+%
+%
+%CORREGIR
 numeroHorasValidoPorDiaProfesor(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
-	asignacionProfesor(FranjaId1, Nombre),
+	asignacionProfesor(FranjaId1, _Nombre),
 	asignacionTiempo(FranjaId1, intervalo(A,B),dia(N)),
 	Horas is B-A,
 	Horas<8,
@@ -63,15 +66,19 @@ asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(1030,1230),dia(1)).
-%asignacionTiempo(1, intervalo(1230,1430),dia(1)).
+asignacionTiempo(1, intervalo(1230,1430),dia(1)).
+
+
+asignacionTitulacion(2, gist).
+asignacionAsignatura(2, isi).
 
 
 
 asignacionTitulacion(2, gisi).
 asignacionCurso(2, 3).
 asignacionAsignatura(2, iac).
-%asignacionProfesor(2, mfl).
-asignacionProfesor(2, pgr).
+asignacionProfesor(2, mfl).
+%asignacionProfesor(2, pgr).
 asignacionTiempo(2, intervalo(830,1230),dia(1)).
 
 asignacionTitulacion(3, gisi).

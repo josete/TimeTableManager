@@ -49,7 +49,7 @@ unaAsignaturaDosPlanesEstudio(Horario):-
 %CORREGIR
 numeroHorasValidoPorDiaProfesor(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
-	asignacionProfesor(FranjaId1, Nombre),
+	asignacionProfesor(FranjaId1, _Nombre),
 	asignacionTiempo(FranjaId1, intervalo(A,B),dia(N)),
 	Horas is B-A,
 	Horas<8,
@@ -67,6 +67,10 @@ asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(1030,1230),dia(1)).
 asignacionTiempo(1, intervalo(1230,1430),dia(1)).
+
+
+%asignacionTitulacion(2, gist).
+%asignacionAsignatura(2, isi).
 
 
 
