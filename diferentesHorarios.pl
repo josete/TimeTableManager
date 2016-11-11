@@ -30,7 +30,10 @@ horarioInvalido(Horario):-
 	asignacionProfesor(FranjaId2, Profesor),
 	asignacionTiempo(FranjaId1, Intervalo1, Dia),
 	asignacionTiempo(FranjaId2, Intervalo2, Dia),
+	\+intervaloInvalido(Intervalo1),
+	\+intervaloInvalido(Intervalo2),
 	solape(Intervalo1, Intervalo2).
+
 
 unaAsignaturaDosPlanesEstudio(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
@@ -52,8 +55,8 @@ numeroHorasValidoPorDiaProfesor(Horario):-
 	asignacionProfesor(FranjaId1, _Nombre),
 	asignacionTiempo(FranjaId1, intervalo(A,B),dia(N)),
 	Horas is B-A,
-	Horas<8,
-	Horas>4.
+	Horas<800,
+	Horas>400.
 
 
 
@@ -103,6 +106,8 @@ horarioAsignacion(horario1, 3).
 horarioAsignacion(horario1, 4).
 
 %solape(intervalo1(1630,1930),intervalo2(1730,1830)).
+
+intervaloInvalido(intervalo(1430,1530)).
 
 
 
