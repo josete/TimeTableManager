@@ -30,9 +30,21 @@ horarioInvalido(Horario):-
 	asignacionProfesor(FranjaId2, Profesor),
 	asignacionTiempo(FranjaId1, Intervalo1, Dia),
 	asignacionTiempo(FranjaId2, Intervalo2, Dia),
-	\+intervaloInvalido(Intervalo1),
-	\+intervaloInvalido(Intervalo2),
 	solape(Intervalo1, Intervalo2).
+
+%no puede haber clase en el intervalo de 1430-1530
+
+horarioInvalido(Horario):-
+
+	horarioAsignacion(Horario, FranjaId1),
+	asignacionTiempo(FranjaId1, intervalo(1430,1530), _Dia).
+
+
+horarioInvalido(Horario):-
+	horarioAsignacion(Horario, FranjaId1),
+	asignacionProfesor(FranjaId1, _Nombre),
+	asignacionTiempo(FranjaId1, intervalo(A,B),dia(D)),
+	asignacionTiempoNoPuedeProfesor(FranjaId1,intervalo(A,B),dia(D)).
 
 
 unaAsignaturaDosPlanesEstudio(Horario):-
@@ -68,8 +80,9 @@ asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
-asignacionTiempo(1, intervalo(1030,1230),dia(1)).
-asignacionTiempo(1, intervalo(1230,1430),dia(1)).
+asignacionTiempo(1, intervalo(830,1030),dia(1)).
+asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
+%asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
 
 %asignacionTitulacion(2, gist).
@@ -80,9 +93,10 @@ asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 asignacionTitulacion(2, gisi).
 asignacionCurso(2, 3).
 asignacionAsignatura(2, iac).
-asignacionProfesor(2, mfl).
-%asignacionProfesor(2, pgr).
-asignacionTiempo(2, intervalo(830,1230),dia(1)).
+%asignacionProfesor(2, mfl).
+asignacionProfesor(2, pgr).
+asignacionTiempoNoPuedeProfesor(2,intervalo(830,1030),dia(1)).
+asignacionTiempo(2, intervalo(1630,2030),dia(1)).
 
 asignacionTitulacion(3, gisi).
 asignacionCurso(3, 3).
@@ -105,9 +119,6 @@ horarioAsignacion(horario1, 2).
 horarioAsignacion(horario1, 3).
 horarioAsignacion(horario1, 4).
 
-%solape(intervalo1(1630,1930),intervalo2(1730,1830)).
-
-intervaloInvalido(intervalo(1430,1530)).
 
 
 

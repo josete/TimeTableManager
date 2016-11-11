@@ -9,16 +9,19 @@
 -NO dos clases a la vez en el mismo aula\
 
 
-
+HECHO:
 -Profesor no puede dar dos clases a la vez\
 -Misma asignatura puede estar en dos planes de estudio diferentes\
+-resoluci\'f3n problema de horas tab\'fa, 2 a 3 para comer no se puede violar, fijada)\
+-Horas tab\'fa de profesores (no puedo)\
 
 
+FALTA:
 -N\'famero m\'e1ximo de horas por d\'eda profesor\
 -N\'famero minimo de horas por profesor d\'eda\
 -Salto m\'e1ximo y m\'ednimo entre clases\
--Fijaci\'f3n de actividades (generar de nuevo el horario con actividad fijada) => resoluci\'f3n problema de horas tab\'fa, 2 a 3 para comer no se puede violar, fijada)\
--Horas tab\'fa de profesores (no puedo)\
+-Fijaci\'f3n de actividades (generar de nuevo el horario con actividad fijada) 
+
 -Horas preferencia profesores (no me gusta)\
 -N\'famero d\'edas m\'e1ximo profesor\
 -N\'famero de d\'edas m\'ednimo profesor\
