@@ -4,7 +4,7 @@
 % 2. Convolucion de dos pulsos rectangulares: el segundo menor amplitud
 % 3. Convolucion de dos pulsos rectangulares: el segundo mayor amplitud
 
-solape(intervalo1(A,B),intervalo2(C,D)):-
+solape(intervalo(A,B),intervalo(C,D)):-
 	%Amplitudes iguales
 
 	C<A, A<D;
@@ -32,18 +32,50 @@ horarioInvalido(Horario):-
 	asignacionTiempo(FranjaId2, Intervalo2, Dia),
 	solape(Intervalo1, Intervalo2).
 
+unaAsignaturaDosPlanesEstudio(Horario):-
+	horarioAsignacion(Horario, FranjaId1),
+	horarioAsignacion(Horario, FranjaId2),
+	FranjaId1 \= FranjaId2,
+	asignacionAsignatura(FranjaId1, Asignatura),
+	asignacionAsignatura(FranjaId2, Asignatura),
+	asignacionTitulacion(FranjaId1, Titulacion1),
+	asignacionTitulacion(FranjaId2, Titulacion2),
+	Titulacion1\=Titulacion2.
+
+% Un profesor no puede tener mas de 8 horas de clase al dia, ni menos de
+% 4
+%
+%
+%CORREGIR
+numeroHorasValidoPorDiaProfesor(Horario):-
+	horarioAsignacion(Horario, FranjaId1),
+	asignacionProfesor(FranjaId1, Nombre),
+	asignacionTiempo(FranjaId1, intervalo(A,B),dia(N)),
+	Horas is B-A,
+	Horas<8,
+	Horas>4.
+
+
+
+
+
+
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
-asignacionTiempo(1, intervalo(830,1030),dia(1)).
+asignacionTiempo(1, intervalo(1030,1230),dia(1)).
+asignacionTiempo(1, intervalo(1230,1430),dia(1)).
+
+
 
 asignacionTitulacion(2, gisi).
 asignacionCurso(2, 3).
 asignacionAsignatura(2, iac).
 asignacionProfesor(2, mfl).
-asignacionTiempo(2, intervalo(1030,1230),dia(1)).
+%asignacionProfesor(2, pgr).
+asignacionTiempo(2, intervalo(830,1230),dia(1)).
 
 asignacionTitulacion(3, gisi).
 asignacionCurso(3, 3).
@@ -65,6 +97,8 @@ horarioAsignacion(horario1, 1).
 horarioAsignacion(horario1, 2).
 horarioAsignacion(horario1, 3).
 horarioAsignacion(horario1, 4).
+
+%solape(intervalo1(1630,1930),intervalo2(1730,1830)).
 
 
 
