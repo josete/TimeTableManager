@@ -21,7 +21,7 @@ solape(intervalo(A,B),intervalo(C,D)):-
 	C<A, B<D.
 	%A<C, C<B, B<D
 
-
+%El horario es invalido si a un profesor se le solapan las clases
 horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	horarioAsignacion(Horario, FranjaId2),
@@ -39,7 +39,8 @@ horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	asignacionTiempo(FranjaId1, intervalo(1430,1530), _Dia).
 
-
+% el horario es invalido si se le asigna clase a un profesor a una hora
+% que no puede
 horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	asignacionProfesor(FranjaId1, _Nombre),
@@ -109,9 +110,6 @@ asignacionCurso(4, 1).
 asignacionAsignatura(4, pr1).
 asignacionProfesor(4, mfl).
 asignacionTiempo(intervalo(830,1030),dia(2)).
-
-planEstudios(teleco,sistemasOperativos,2).
-planEstudios(informatica,sistemasOperativos,2).
 
 valoracion(horario1, 10).
 horarioAsignacion(horario1, 1).
