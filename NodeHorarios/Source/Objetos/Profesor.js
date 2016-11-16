@@ -1,9 +1,11 @@
-var Profesor = function(nombre){
+var Profesor = function(nombre,minHoras,maxHoras){
 	if(nombre==null){
 		throw Error("Profesor sin nombre");
 	}
 	this.nombre = nombre;
     this.diasConClase = {};
+	this.minHoras = minHoras;
+	this.maxHoras = maxHoras;
 
 	this.getNombre = function(){
 		return this.nombre;
@@ -16,16 +18,6 @@ var Profesor = function(nombre){
 	this.getClases = function(){
 		return this.diasConClase;
 	}
-
-	this.getClaseAUnaHora = function(key){
-		tiene = false;
-		if(this.diasConClase.hasOwnProperty(key)){
-			tiene = true;
-		}
-		return tiene;
-	}
-
-
 
 }
 

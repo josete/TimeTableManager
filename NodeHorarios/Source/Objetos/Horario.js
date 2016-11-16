@@ -1,3 +1,5 @@
+var comprobaciones = require("../Funcionalidad/Comprobaciones.js");
+
 var Horario = function () {
 
 	this.grupo = null;
@@ -7,6 +9,7 @@ var Horario = function () {
 	this.horarioGenerado = {};
 	this.generado = false;
 
+	this.comprobar = new comprobaciones();
 
 	this.generar = function () {
 		if (this.grupo == null || this.sesiones == null) {
@@ -19,14 +22,15 @@ var Horario = function () {
 			intento = 0;//Pruebas
 			while(this.sesiones.length>0){
 				intento++;
-				if(this.sesiones[actual].getAsignatura().diaActualPuede()&&!this.sesiones[actual].getAsignatura().getProfesor().getClaseAUnaHora(dia + "-" + horaActual)){
-					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];					
-					this.sesiones[actual].getAsignatura().getProfesor().anadirClase(dia + "-" + horaActual,this.sesiones[actual]);
-					horasTotalesDia -= this.sesiones[actual].getHoras();
-					horaActual += this.sesiones[actual].getHoras();
-					this.sesiones[actual].getAsignatura().setPuede(false);
-					this.sesiones.splice(actual,1);
-					intento=0;
+				if(this.sesiones[actual].getAsignatura().diaActualPuede()
+					&&!this.comprobar.comprobarSolape(this.sesiones[actual].getAsignatura().getProfesor(),dia + "-" + horaActual)){
+						this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];					
+						this.sesiones[actual].getAsignatura().getProfesor().anadirClase(dia + "-" + horaActual,this.sesiones[actual]);
+						horasTotalesDia -= this.sesiones[actual].getHoras();
+						horaActual += this.sesiones[actual].getHoras();
+						this.sesiones[actual].getAsignatura().setPuede(false);
+						this.sesiones.splice(actual,1);
+						intento=0;
 				}
 				actual++;
 				if(horasTotalesDia <= 0 || intento>3){

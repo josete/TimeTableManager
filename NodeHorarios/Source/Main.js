@@ -1,10 +1,10 @@
-var configuracion = require("../Source/Funcionalidad/Configuracion.js");
-var sesion = require("../Source/Objetos/Sesion.js");
-var horario = require("../Source/Objetos/Horario.js");
-var grupo = require("../Source/Objetos/Grupo.js");
-var asignatura = require("../Source/Objetos/Asignatura.js");
-var curso = require("../Source/Objetos/Curso.js");
-var profesor = require("../Source/Objetos/Profesor.js");
+var configuracion = require("./Funcionalidad/Configuracion.js");
+var sesion = require("./Objetos/Sesion.js");
+var horario = require("./Objetos/Horario.js");
+var grupo = require("./Objetos/Grupo.js");
+var asignatura = require("./Objetos/Asignatura.js");
+var curso = require("./Objetos/Curso.js");
+var profesor = require("./Objetos/Profesor.js");
 
 c = new configuracion();
 
