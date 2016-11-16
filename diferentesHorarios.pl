@@ -64,17 +64,20 @@ unaAsignaturaDosPlanesEstudio(Horario):-
 %
 %CORREGIR
 numeroHorasValidoPorDiaProfesor(Horario):-
-	horarioAsignacion(Horario, FranjaId1),
-	asignacionProfesor(FranjaId1, _Nombre),
-	asignacionTiempo(FranjaId1, intervalo(A,B),dia(N)),
-	Horas is B-A,
-	Horas<800,
-	Horas>400.
+     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, _Prof), asignacionTiempo(A, intervalo(H1, H2), dia(_N)), Dif is H2 - H1), L),
+     sumaElementosLista(L,Horas),
+     Horas<800,
+     Horas>400.
+
+numeroHorasValidoPorSemana(Horario):-
 
 
 
 
-
+sumaElementosLista([],0).
+sumaElementosLista([A|B],R):-
+	sumaElementosLista(B,S),
+	R is S+A.
 
 
 asignacionTitulacion(1, gisi).
@@ -82,7 +85,9 @@ asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(830,1030),dia(1)).
-asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
+asignacionTiempo(1, intervalo(830,1030),dia(2)).
+
+%asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
 
@@ -113,9 +118,9 @@ asignacionTiempo(intervalo(830,1030),dia(2)).
 
 valoracion(horario1, 10).
 horarioAsignacion(horario1, 1).
-horarioAsignacion(horario1, 2).
-horarioAsignacion(horario1, 3).
-horarioAsignacion(horario1, 4).
+%horarioAsignacion(horario1, 2).
+%horarioAsignacion(horario1, 3).
+%horarioAsignacion(horario1, 4).
 
 
 

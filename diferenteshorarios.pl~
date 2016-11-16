@@ -21,7 +21,7 @@ solape(intervalo(A,B),intervalo(C,D)):-
 	C<A, B<D.
 	%A<C, C<B, B<D
 
-
+%El horario es invalido si a un profesor se le solapan las clases
 horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	horarioAsignacion(Horario, FranjaId2),
@@ -39,7 +39,8 @@ horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	asignacionTiempo(FranjaId1, intervalo(1430,1530), _Dia).
 
-
+% el horario es invalido si se le asigna clase a un profesor a una hora
+% que no puede
 horarioInvalido(Horario):-
 	horarioAsignacion(Horario, FranjaId1),
 	asignacionProfesor(FranjaId1, _Nombre),
@@ -63,17 +64,20 @@ unaAsignaturaDosPlanesEstudio(Horario):-
 %
 %CORREGIR
 numeroHorasValidoPorDiaProfesor(Horario):-
-	horarioAsignacion(Horario, FranjaId1),
-	asignacionProfesor(FranjaId1, _Nombre),
-	asignacionTiempo(FranjaId1, intervalo(A,B),dia(N)),
-	Horas is B-A,
-	Horas<800,
-	Horas>400.
+     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, _Prof), asignacionTiempo(A, intervalo(H1, H2), dia(_N)), Dif is H2 - H1), L),
+     sumaElementosLista(L,Horas),
+     Horas<800,
+     Horas>400.
+
+numeroHorasValidoPorSemana(Horario):-
 
 
 
 
-
+sumaElementosLista([],0).
+sumaElementosLista([A|B],R):-
+	sumaElementosLista(B,S),
+	R is S+A.
 
 
 asignacionTitulacion(1, gisi).
@@ -82,6 +86,7 @@ asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(830,1030),dia(1)).
 asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
+asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(2)).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
 
@@ -110,14 +115,11 @@ asignacionAsignatura(4, pr1).
 asignacionProfesor(4, mfl).
 asignacionTiempo(intervalo(830,1030),dia(2)).
 
-planEstudios(teleco,sistemasOperativos,2).
-planEstudios(informatica,sistemasOperativos,2).
-
 valoracion(horario1, 10).
 horarioAsignacion(horario1, 1).
-horarioAsignacion(horario1, 2).
-horarioAsignacion(horario1, 3).
-horarioAsignacion(horario1, 4).
+%horarioAsignacion(horario1, 2).
+%horarioAsignacion(horario1, 3).
+%horarioAsignacion(horario1, 4).
 
 
 
