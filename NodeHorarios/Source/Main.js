@@ -26,7 +26,7 @@ isi = new asignatura("ISI",3,"Informatica",paloma);
 si = new asignatura("SI",3,"Informatica",angel);
 //*************
 met = new asignatura("MET",2,"Informatica",guillermo);
-est = new asignatura("EST",2,"Informatica",cristina);
+est = new asignatura("EST",2,"Informatica",raul);
 red = new asignatura("RED",2,"Informatica",teo);
 bd = new asignatura("BD",2,"Informatica",rodrigo);
 arq = new asignatura("ARQ",2,"Informatica",gl);
