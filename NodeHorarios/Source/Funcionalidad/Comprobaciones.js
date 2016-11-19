@@ -3,7 +3,7 @@ var Comprobaciones = function(){
     this.comprobarSolape = function(profesor,hora){
        puede = true;
 		if(profesor.getClases().hasOwnProperty(hora)){
-			tiene = false;
+			puede = false;
 		}
 		return puede;
     }

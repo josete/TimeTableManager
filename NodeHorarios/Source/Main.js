@@ -8,8 +8,8 @@ var profesor = require("./Objetos/Profesor.js");
 
 c = new configuracion();
 
-raul = new profesor("Raul");
-mariano = new profesor("Mariano",0,2);
+raul = new profesor("Raul",0,2);
+mariano = new profesor("Mariano");
 paloma = new profesor("Paloma");
 joseM = new profesor("Jose Manuel");
 angel = new profesor("Angel");
@@ -21,7 +21,7 @@ gl = new profesor("GL");
 //---------------------------------
 iso = new asignatura("IS",3,"Informatica",raul);
 ia = new asignatura("IA",3,"Informatica",mariano);
-pro = new asignatura("PR",3,"Informatica",mariano);
+pro = new asignatura("PR",3,"Informatica",joseM);
 isi = new asignatura("ISI",3,"Informatica",paloma);
 si = new asignatura("SI",3,"Informatica",angel);
 //*************
@@ -66,6 +66,7 @@ h.setGrupo(g);
 h.setSesiones(c.getSesionesPorCurso(infor3));
 h.generar();
 c.anadirHorario(h);
+h.imprimir();
 
 h2 = new horario();
 g2 = new grupo("Informatica",infor2)
@@ -73,7 +74,8 @@ h2.setGrupo(g2);
 h2.setSesiones(c.getSesionesPorCurso(infor2));
 h2.generar();
 c.anadirHorario(h2);
+h2.imprimir();
 
-horarios = c.getHorarios();
+/*horarios = c.getHorarios();
 horarios[0].imprimir();
-horarios[1].imprimir();
+horarios[1].imprimir();*/
