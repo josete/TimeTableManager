@@ -1,3 +1,5 @@
+var prologjs = require( '../../prologjs-master/main' );
+
 var Horario = function () {
 
 	this.grupo = null;
