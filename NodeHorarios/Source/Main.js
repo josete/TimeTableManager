@@ -9,7 +9,7 @@ var profesor = require("./Objetos/Profesor.js");
 c = new configuracion();
 
 raul = new profesor("Raul");
-mariano = new profesor("Mariano");
+mariano = new profesor("Mariano",0,2);
 paloma = new profesor("Paloma");
 joseM = new profesor("Jose Manuel");
 angel = new profesor("Angel");
@@ -21,7 +21,7 @@ gl = new profesor("GL");
 //---------------------------------
 iso = new asignatura("IS",3,"Informatica",raul);
 ia = new asignatura("IA",3,"Informatica",mariano);
-pro = new asignatura("PR",3,"Informatica",joseM);
+pro = new asignatura("PR",3,"Informatica",mariano);
 isi = new asignatura("ISI",3,"Informatica",paloma);
 si = new asignatura("SI",3,"Informatica",angel);
 //*************
