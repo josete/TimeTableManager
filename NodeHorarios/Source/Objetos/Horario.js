@@ -1,4 +1,4 @@
-var prologjs = require( '../../prologjs-master/main' );
+var comprobaciones = require("../Funcionalidad/Comprobaciones.js");
 
 var Horario = function () {
 
@@ -9,6 +9,7 @@ var Horario = function () {
 	this.horarioGenerado = {};
 	this.generado = false;
 
+	this.comprobar = new comprobaciones();
 
 	this.generar = function () {
 		if (this.grupo == null || this.sesiones == null) {
@@ -21,14 +22,15 @@ var Horario = function () {
 			intento = 0;//Pruebas
 			while(this.sesiones.length>0){
 				intento++;
-				if(this.sesiones[actual].getAsignatura().diaActualPuede()&&!this.sesiones[actual].getAsignatura().getProfesor().getClaseAUnaHora(dia + "-" + horaActual)){
-					this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];					
-					this.sesiones[actual].getAsignatura().getProfesor().anadirClase(dia + "-" + horaActual,this.sesiones[actual]);
-					horasTotalesDia -= this.sesiones[actual].getHoras();
-					horaActual += this.sesiones[actual].getHoras();
-					this.sesiones[actual].getAsignatura().setPuede(false);
-					this.sesiones.splice(actual,1);
-					intento=0;
+				if(this.sesiones[actual].getAsignatura().diaActualPuede()
+					&&this.realizarComprobaciones(this.sesiones[actual].getAsignatura().getProfesor(),this.sesiones[actual],dia + "-" + horaActual)){
+						this.horarioGenerado[dia + "-" + horaActual] = this.sesiones[actual];					
+						this.sesiones[actual].getAsignatura().getProfesor().anadirClase(dia + "-" + horaActual,this.sesiones[actual]);
+						horasTotalesDia -= this.sesiones[actual].getHoras();
+						horaActual += this.sesiones[actual].getHoras();
+						this.sesiones[actual].getAsignatura().setPuede(false);
+						this.sesiones.splice(actual,1);
+						intento=0;
 				}
 				actual++;
 				if(horasTotalesDia <= 0 || intento>3){
@@ -44,6 +46,18 @@ var Horario = function () {
 			this.horarioGenerado["Dias"] = dia;
 			this.generado = true;
 		}
+	}
+
+	this.realizarComprobaciones = function(profesor,sesion,hora){
+		resultado = this.comprobar.comprobar(profesor,sesion,hora);
+		pasados = 0;
+		for(i=0;i<resultado.length;i++){
+			if(resultado[i]==true)pasados++;
+		}
+		if(pasados==resultado.length){
+			return true;
+		}
+		return false;
 	}
 
 	this.setGrupo = function (grupo) {

@@ -1,10 +1,10 @@
-var configuracion = require("../Source/Funcionalidad/Configuracion.js");
-var sesion = require("../Source/Objetos/Sesion.js");
-var horario = require("../Source/Objetos/Horario.js");
-var grupo = require("../Source/Objetos/Grupo.js");
-var asignatura = require("../Source/Objetos/Asignatura.js");
-var curso = require("../Source/Objetos/Curso.js");
-var profesor = require("../Source/Objetos/Profesor.js");
+var configuracion = require("./Funcionalidad/Configuracion.js");
+var sesion = require("./Objetos/Sesion.js");
+var horario = require("./Objetos/Horario.js");
+var grupo = require("./Objetos/Grupo.js");
+var asignatura = require("./Objetos/Asignatura.js");
+var curso = require("./Objetos/Curso.js");
+var profesor = require("./Objetos/Profesor.js");
 
 c = new configuracion();
 
@@ -26,7 +26,7 @@ isi = new asignatura("ISI",3,"Informatica",paloma);
 si = new asignatura("SI",3,"Informatica",angel);
 //*************
 met = new asignatura("MET",2,"Informatica",guillermo);
-est = new asignatura("EST",2,"Informatica",cristina);
+est = new asignatura("EST",2,"Informatica",raul);
 red = new asignatura("RED",2,"Informatica",teo);
 bd = new asignatura("BD",2,"Informatica",rodrigo);
 arq = new asignatura("ARQ",2,"Informatica",gl);
