@@ -96,6 +96,6 @@ exports.testGetHorarioDeUnProfesor = function (test) {
 
     hR = c.getHorarioProfesor("Raul");
     hR.imprimir();
-    test.equal(6,Object.keys(hR.horarioGenerado).length)
+    test.equal(7,Object.keys(hR.horarioGenerado).length);
     test.done();
 }

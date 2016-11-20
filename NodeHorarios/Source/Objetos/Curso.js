@@ -1,6 +1,6 @@
 var Curso = function(nombre,curso,titulacion){
 	if(nombre==null){
-		throw Error("Grupo sin nombre");
+		throw Error("curso sin nombre");
 	}
 	this.nombre = nombre;
 	this.curso = curso;

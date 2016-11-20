@@ -38,10 +38,12 @@ var Configuracion = function () {
 
     this.getHorarioProfesor = function (profesor) {
         h = new horario();
+        dias = 0;
         for (i = 0; i < this.horarios.length; i++) {
             ho = this.horarios[i];
             for (k = ho.horaInicio; k < (ho.horaInicio + ho.horasDia); k += 2) {
                 for (j = 0; j < (ho.horarioGenerado["Dias"] + 1); j++) {
+                    if(ho.horarioGenerado["Dias"]>dias){dias = ho.horarioGenerado["Dias"]}
                     try {
                       if(ho.horarioGenerado[j + "-" + k].getAsignatura().getProfesor().getNombre()==profesor){
                           h.anadirClaseAHorario(j + "-" + k,ho.horarioGenerado[j + "-" + k]);
@@ -50,6 +52,7 @@ var Configuracion = function () {
                 }
             }
         }
+        h.horarioGenerado["Dias"] = dias;
         return h;
     }
 
