@@ -1,23 +1,26 @@
-var Profesor = function(nombre,minHorasDia,maxHorasDia){
-	if(nombre==null){
+var Profesor = function (nombre, minHorasDia, maxHorasDia) {
+	if (nombre == null) {
 		throw Error("Profesor sin nombre");
 	}
+	if (maxHorasDia == 0) {
+		throw Error("Profesor sin horas");
+	}
 	this.nombre = nombre;
-    this.diasConClase = {};
+	this.diasConClase = {};
 	this.minHorasDia = minHorasDia;
 	this.maxHorasDia = maxHorasDia;
 	this.horasDiaActual = 0;
 
-	this.getNombre = function(){
+	this.getNombre = function () {
 		return this.nombre;
 	}
 
-    this.anadirClase = function(key,sesion){
-        this.diasConClase[key] = sesion.getAsignatura();
+	this.anadirClase = function (key, sesion) {
+		this.diasConClase[key] = sesion.getAsignatura();
 		this.horasDiaActual += sesion.getHoras();
-    }
+	}
 
-	this.getClases = function(){
+	this.getClases = function () {
 		return this.diasConClase;
 	}
 
