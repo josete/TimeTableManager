@@ -84,6 +84,10 @@ var Horario = function () {
 		}
 	}
 
+	this.anadirClaseAHorario = function(key,sesion){
+		this.horarioGenerado[key] = sesion;
+	}
+
 	this.getGenerado = function(){
 		return this.generado;
 	}

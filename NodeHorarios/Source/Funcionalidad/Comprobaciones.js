@@ -23,13 +23,6 @@ var Comprobaciones = function(){
 		}
 		return puede;
 	}
-
-	this.comprobar = function(profesor,sesion,hora){
-		resultado = [];
-		resultado.push(this.comprobarSolape(profesor,hora));
-		resultado.push(this.comprobarHorasDiarias(profesor,sesion));
-		return resultado;
-	}
 }
 
 module.exports = Comprobaciones;

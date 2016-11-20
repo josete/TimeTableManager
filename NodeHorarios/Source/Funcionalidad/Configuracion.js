@@ -1,37 +1,56 @@
-var Configuracion = function(){
-    
+var horario = require("../Objetos/Horario.js");
+
+var Configuracion = function () {
+
     this.vacia = true;
     this.sesiones = [];
     this.horarios = [];
 
-    this.isVacia = function(){
+    this.isVacia = function () {
         return this.vacia;
     }
 
-    this.anadirSesion = function(sesion){
+    this.anadirSesion = function (sesion) {
         this.sesiones.push(sesion);
     }
 
-    this.getSesiones = function(){
+    this.getSesiones = function () {
         return this.sesiones;
     }
 
-    this.anadirHorario = function(horario){
+    this.anadirHorario = function (horario) {
         this.horarios.push(horario);
     }
 
-    this.getHorarios = function(){
+    this.getHorarios = function () {
         return this.horarios;
     }
 
-    this.getSesionesPorCurso = function(curso){
+    this.getSesionesPorCurso = function (curso) {
         sesionesCurso = [];
-        for(i=0;i<this.sesiones.length;i++){
-            if(this.sesiones[i].getCurso()==curso){
+        for (i = 0; i < this.sesiones.length; i++) {
+            if (this.sesiones[i].getCurso() == curso) {
                 sesionesCurso.push(this.sesiones[i]);
             }
         }
         return sesionesCurso;
+    }
+
+    this.getHorarioProfesor = function (profesor) {
+        h = new horario();
+        for (i = 0; i < this.horarios.length; i++) {
+            ho = this.horarios[i];
+            for (k = ho.horaInicio; k < (ho.horaInicio + ho.horasDia); k += 2) {
+                for (j = 0; j < (ho.horarioGenerado["Dias"] + 1); j++) {
+                    try {
+                      if(ho.horarioGenerado[j + "-" + k].getAsignatura().getProfesor().getNombre()==profesor){
+                          h.anadirClaseAHorario(j + "-" + k,ho.horarioGenerado[j + "-" + k]);
+                      }
+                    } catch (err) { }
+                }
+            }
+        }
+        return h;
     }
 
 }
