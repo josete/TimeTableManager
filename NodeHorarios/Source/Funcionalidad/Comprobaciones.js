@@ -10,7 +10,7 @@ var Comprobaciones = function(){
 
 	this.comprobarHorasDiarias = function(profesor,sesion,dia){
 		puede = true;
-		if(profesor.horasDias[dia]==undefined){
+		if(profesor.horasDias[dia]==undefined || profesor.maxHorasDia==undefined){
 			return true;
 		}else{
 			if(profesor.horasDias[dia]<profesor.maxHorasDia){

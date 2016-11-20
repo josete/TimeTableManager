@@ -8,7 +8,7 @@ var profesor = require("./Objetos/Profesor.js");
 
 c = new configuracion();
 
-raul = new profesor("Raul",0,2);
+raul = new profesor("Raul");
 mariano = new profesor("Mariano");
 paloma = new profesor("Paloma");
 joseM = new profesor("Jose Manuel");
