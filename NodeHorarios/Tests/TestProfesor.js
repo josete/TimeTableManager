@@ -1,4 +1,5 @@
 profesor = require("../Source/Objetos/Profesor.js");
+sesion = require("../Source/Objetos/Sesion.js");
 
 exports.testNombreProfesorNotNull = function(test){
 	p = new profesor("Raul");
@@ -16,3 +17,9 @@ exports.testProfesorMaxHoras0 = function(test){
     test.done();
 }
 
+exports.testProfesorSinHoras = function(test){
+	p = new profesor("Raul",0,2);
+	p.anadirClase("0-8",new sesion("sda",2,"dasd"));
+	test.equal(2,p.horasDias[0]);
+	test.done();
+}

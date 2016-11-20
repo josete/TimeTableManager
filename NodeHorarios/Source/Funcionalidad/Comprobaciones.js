@@ -8,13 +8,13 @@ var Comprobaciones = function(){
 		return puede;
     }
 
-	this.comprobarHorasDiarias = function(profesor,sesion){
+	this.comprobarHorasDiarias = function(profesor,sesion,dia){
 		puede = true;
-		if(profesor.maxHorasDia==undefined){
+		if(profesor.horasDias[dia]==undefined){
 			return true;
 		}else{
-			if(profesor.horasDiaActual<profesor.maxHorasDia){
-				if(profesor.horasDiaActual+sesion.getHoras()>profesor.maxHorasDia){
+			if(profesor.horasDias[dia]<profesor.maxHorasDia){
+				if(profesor.horasDias[dia]+sesion.getHoras()>profesor.maxHorasDia){
 					puede = false;
 				}
 			}else{

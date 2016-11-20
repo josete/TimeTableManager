@@ -76,6 +76,8 @@ h2.generar();
 c.anadirHorario(h2);
 h2.imprimir();
 
+console.log("Horario de Raul: ");
+c.getHorarioProfesor("Raul").imprimir();
 /*horarios = c.getHorarios();
 horarios[0].imprimir();
 horarios[1].imprimir();*/

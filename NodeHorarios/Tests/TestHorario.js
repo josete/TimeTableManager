@@ -51,7 +51,7 @@ exports.testProfesorConHoras = function(test){
 	sesiones = [new sesion(iso,2,3),new sesion(iso,2,3)];
 	raul.anadirClase("0-8",sesiones[0]);
 	h.setSesiones(sesiones);
-	test.ok(h.comprobar.comprobarHorasDiarias(raul,sesiones[1]));
+	test.ok(h.comprobar.comprobarHorasDiarias(raul,sesiones[1],0));
 	test.done();
 }
 
@@ -62,6 +62,6 @@ exports.testProfesorSinHoras = function(test){
 	sesiones = [new sesion(iso,2,3),new sesion(iso,2,3)];
 	raul.anadirClase("0-8",sesiones[0]);
 	h.setSesiones(sesiones);
-	test.equals(false,h.comprobar.comprobarHorasDiarias(raul,sesiones[1]));
+	test.equals(false,h.comprobar.comprobarHorasDiarias(raul,sesiones[1],0));
 	test.done();
 }
