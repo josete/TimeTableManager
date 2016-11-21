@@ -6,6 +6,7 @@ var Configuracion = function () {
     this.sesiones = [];
     this.profesores = [];
     this.asignaturas = [];
+    this.cursos = [];
     this.horarios = [];
 
     this.isVacia = function () {
@@ -52,6 +53,10 @@ var Configuracion = function () {
                 return this.profesores[i];
             }
         }
+    }
+
+    this.anadirCurso = function(curso){
+        this.cursos.push(curso);
     }
 
     this.getHorarioProfesor = function (profesor) {

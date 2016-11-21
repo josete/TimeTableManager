@@ -20,6 +20,7 @@ var leerExcel = function (archivo,configuracion) {
                     if (rowNumber > 2) {
                         this.c.anadirProfesor(f.fabricar("Profesor",{nombre:row.getCell(1).value,min:row.getCell(2).value,max:row.getCell(3).value}));
                         this.c.anadirAsignatura(f.fabricar("Asignatura",{nombre:row.getCell(5).value,curso:row.getCell(6).value,titulacion:row.getCell(7).value,profesor:row.getCell(8).value}));
+                        this.c.anadirCurso(f.fabricar("Curso",{nombre:row.getCell(10).value,curso:row.getCell(11).value,titulacion:row.getCell(12).value}));
                     }
                 });
             });

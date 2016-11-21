@@ -42,7 +42,27 @@ exports.testLeerExcelObteniendoAsignaturasNombre = function (test) {
     leer = new leerExcel("../Info.xlsx", c);
     async.series([
         function (callback) { leer.leer(); },
-        function (callback) { test.equals("Raul", c.asignaturas[0].getNombre()); }
+        function (callback) { test.equals("IS", c.asignaturas[0].getNombre()); }
+    ]);
+    test.done();
+}
+
+exports.testLeerExcelObteniendoCursos = function (test) {
+    c = new configuracion();
+    leer = new leerExcel("../Info.xlsx", c);
+    async.series([
+        function (callback) { leer.leer(); },
+        function (callback) { test.equals(1, c.cursos.length); }
+    ]);
+    test.done();
+}
+
+exports.testLeerExcelObteniendoAsignaturasNombre = function (test) {
+    c = new configuracion();
+    leer = new leerExcel("../Info.xlsx", c);
+    async.series([
+        function (callback) { leer.leer(); },
+        function (callback) { test.equals("Informatica", c.cursos[0].getNombre()); }
     ]);
     test.done();
 }

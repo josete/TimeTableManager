@@ -1,5 +1,6 @@
 profesor = require("../Objetos/Profesor.js");
 asignatura = require("../Objetos/Asignatura.js");
+curso = require("../Objetos/Curso.js");
 
 var fabrica = function (configuracion) {
 
@@ -12,7 +13,10 @@ var fabrica = function (configuracion) {
                 objeto = new profesor(datos.nombre, datos.min, datos.max);
                 break;
             case "Asignatura":
-                objeto = new asignatura(datos.nombre,datos.curso,datos.titulacion,c.getProfesorPorNombre(datos.profesor));
+                objeto = new asignatura(datos.nombre, datos.curso, datos.titulacion, c.getProfesorPorNombre(datos.profesor));
+                break;
+            case "Curso":
+                objeto = new curso(datos.nombre,datos.curso,datos.titulacion);
                 break;
         }
         return objeto;
