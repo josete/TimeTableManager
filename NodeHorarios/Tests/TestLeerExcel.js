@@ -72,7 +72,7 @@ exports.testLeerExcelObteniendoSesiones = function (test) {
     leer = new leerExcel("../Info.xlsx", c);
     async.series([
         function (callback) { leer.leer(); },
-        function (callback) { test.equals(1, c.sesiones.length); }
+        function (callback) { test.equals(3, c.sesiones.length); }
     ]);
     test.done();
 }
