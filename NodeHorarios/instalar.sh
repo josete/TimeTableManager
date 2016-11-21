@@ -9,3 +9,6 @@ git clone https://github.com/josete/TimeTableManager.git ./horarios
 cd horarios
 #Cambio de rama
 git checkout pruebas
+cd NodeHorarios
+#Instalar dependencias
+npm install
