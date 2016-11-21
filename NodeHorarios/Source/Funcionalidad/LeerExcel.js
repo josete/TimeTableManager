@@ -8,8 +8,8 @@ var leerExcel = function (archivo,configuracion) {
     }
 
     this.archivo = archivo;
-    f = new fabrica();
     this.c = configuracion;
+    f = new fabrica(configuracion);
 
     this.leer = function () {
         var workbook = new Excel.Workbook();
@@ -19,6 +19,7 @@ var leerExcel = function (archivo,configuracion) {
                 worksheet.eachRow(function (row, rowNumber) {
                     if (rowNumber > 2) {
                         this.c.anadirProfesor(f.fabricar("Profesor",{nombre:row.getCell(1).value,min:row.getCell(2).value,max:row.getCell(3).value}));
+                        this.c.anadirAsignatura(f.fabricar("Asignatura",{nombre:row.getCell(5).value,curso:row.getCell(6).value,titulacion:row.getCell(7).value,profesor:row.getCell(8).value}));
                     }
                 });
             });

@@ -26,3 +26,23 @@ exports.testLeerExcelObteniendoProfesoresNombre = function (test) {
     ]);
     test.done();
 }
+
+exports.testLeerExcelObteniendoAsignaturas = function (test) {
+    c = new configuracion();
+    leer = new leerExcel("../Info.xlsx", c);
+    async.series([
+        function (callback) { leer.leer(); },
+        function (callback) { test.equals(1, c.asignaturas.length); }
+    ]);
+    test.done();
+}
+
+exports.testLeerExcelObteniendoAsignaturasNombre = function (test) {
+    c = new configuracion();
+    leer = new leerExcel("../Info.xlsx", c);
+    async.series([
+        function (callback) { leer.leer(); },
+        function (callback) { test.equals("Raul", c.asignaturas[0].getNombre()); }
+    ]);
+    test.done();
+}
