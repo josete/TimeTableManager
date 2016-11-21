@@ -1,6 +1,7 @@
 profesor = require("../Objetos/Profesor.js");
 asignatura = require("../Objetos/Asignatura.js");
 curso = require("../Objetos/Curso.js");
+sesion = require("../Objetos/Sesion.js");
 
 var fabrica = function (configuracion) {
 
@@ -16,7 +17,10 @@ var fabrica = function (configuracion) {
                 objeto = new asignatura(datos.nombre, datos.curso, datos.titulacion, c.getProfesorPorNombre(datos.profesor));
                 break;
             case "Curso":
-                objeto = new curso(datos.nombre,datos.curso,datos.titulacion);
+                objeto = new curso(datos.nombre, datos.curso, datos.titulacion);
+                break;
+            case "Sesion":
+                objeto = new sesion(c.getAsignaturaPorNombre(datos.asignatura), datos.horas, c.getCursoPorNombre(datos.curso));
                 break;
         }
         return objeto;

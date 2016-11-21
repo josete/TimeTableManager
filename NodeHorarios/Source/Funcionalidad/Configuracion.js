@@ -39,24 +39,40 @@ var Configuracion = function () {
         return sesionesCurso;
     }
 
-    this.anadirProfesor = function(profesor){
+    this.anadirProfesor = function (profesor) {
         this.profesores.push(profesor);
     }
 
-    this.anadirAsignatura = function(asignatura){
+    this.anadirAsignatura = function (asignatura) {
         this.asignaturas.push(asignatura);
     }
 
-    this.getProfesorPorNombre = function(nombre){
-        for(i=0;i<this.profesores.length;i++){
-            if(this.profesores[i].getNombre()==nombre){
+    this.getAsignaturaPorNombre = function (nombre) {
+        for (i = 0; i < this.asignaturas.length; i++) {
+            if (this.asignaturas[i].getNombre() == nombre) {
+                return this.asignaturas[i];
+            }
+        }
+    }
+
+    this.getProfesorPorNombre = function (nombre) {
+        for (i = 0; i < this.profesores.length; i++) {
+            if (this.profesores[i].getNombre() == nombre) {
                 return this.profesores[i];
             }
         }
     }
 
-    this.anadirCurso = function(curso){
+    this.anadirCurso = function (curso) {
         this.cursos.push(curso);
+    }
+
+    this.getCursoPorNombre = function (nombre) {
+        for (i = 0; i < this.cursos.length; i++) {
+            if (this.cursos[i].getNombre() + " " + this.cursos[i].getCurso() == nombre) {
+                return this.cursos[i];
+            }
+        }
     }
 
     this.getHorarioProfesor = function (profesor) {
@@ -66,11 +82,11 @@ var Configuracion = function () {
             ho = this.horarios[i];
             for (k = ho.horaInicio; k < (ho.horaInicio + ho.horasDia); k += 2) {
                 for (j = 0; j < (ho.horarioGenerado["Dias"] + 1); j++) {
-                    if(ho.horarioGenerado["Dias"]>dias){dias = ho.horarioGenerado["Dias"]}
+                    if (ho.horarioGenerado["Dias"] > dias) { dias = ho.horarioGenerado["Dias"] }
                     try {
-                      if(ho.horarioGenerado[j + "-" + k].getAsignatura().getProfesor().getNombre()==profesor){
-                          h.anadirClaseAHorario(j + "-" + k,ho.horarioGenerado[j + "-" + k]);
-                      }
+                        if (ho.horarioGenerado[j + "-" + k].getAsignatura().getProfesor().getNombre() == profesor) {
+                            h.anadirClaseAHorario(j + "-" + k, ho.horarioGenerado[j + "-" + k]);
+                        }
                     } catch (err) { }
                 }
             }
