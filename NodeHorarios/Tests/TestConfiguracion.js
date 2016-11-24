@@ -26,6 +26,15 @@ exports.testRecuperarSesiones = function (test) {
     test.done();
 }
 
+exports.testGuardarAsignatura = function (test) {
+    c = new configuracion();
+    raul = new profesor("Raul", 0, 2);
+    iso = new asignatura("IS", 3, "Informatica", raul);
+    c.anadirAsignatura(iso);
+    test.equals(1,c.asignaturas.length);
+    test.done();
+}
+
 exports.testGetHorarioDeUnProfesor = function (test) {
     c = new configuracion();
     raul = new profesor("Raul", 0, 2);
@@ -96,6 +105,6 @@ exports.testGetHorarioDeUnProfesor = function (test) {
 
     hR = c.getHorarioProfesor("Raul");
     hR.imprimir();
-    test.equal(7,Object.keys(hR.horarioGenerado).length);
+    test.equal(7, Object.keys(hR.horarioGenerado).length);
     test.done();
 }

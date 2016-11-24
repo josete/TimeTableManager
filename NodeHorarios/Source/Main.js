@@ -5,6 +5,7 @@ var grupo = require("./Objetos/Grupo.js");
 var asignatura = require("./Objetos/Asignatura.js");
 var curso = require("./Objetos/Curso.js");
 var profesor = require("./Objetos/Profesor.js");
+var leerExcel = require("./Funcionalidad/LeerExcel.js");
 
 c = new configuracion();
 
