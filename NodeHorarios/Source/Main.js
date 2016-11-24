@@ -8,8 +8,10 @@ var profesor = require("./Objetos/Profesor.js");
 var leerExcel = require("./Funcionalidad/LeerExcel.js");
 
 c = new configuracion();
+leer = new leerExcel("../Info.xlsx", c);
+leer.leer();
 
-raul = new profesor("Raul");
+/*raul = new profesor("Raul");
 mariano = new profesor("Mariano");
 paloma = new profesor("Paloma");
 joseM = new profesor("Jose Manuel");
@@ -60,22 +62,22 @@ c.anadirSesion(new sesion(bd,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
-//----------------------------------
+//----------------------------------*/
 h = new horario();
-g = new grupo("Informatica",infor3)
+g = new grupo("Informatica",c.getCursoPorNombre("Informatica 3"));
 h.setGrupo(g);
-h.setSesiones(c.getSesionesPorCurso(infor3));
+h.setSesiones(c.getSesionesPorCurso(c.getCursoPorNombre("Informatica 3")));
 h.generar();
 c.anadirHorario(h);
 h.imprimir();
 
-h2 = new horario();
+/*h2 = new horario();
 g2 = new grupo("Informatica",infor2)
 h2.setGrupo(g2);
 h2.setSesiones(c.getSesionesPorCurso(infor2));
 h2.generar();
 c.anadirHorario(h2);
-h2.imprimir();
+h2.imprimir();*/
 
 console.log("Horario de Raul: ");
 c.getHorarioProfesor("Raul").imprimir();

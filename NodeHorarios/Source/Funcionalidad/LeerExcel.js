@@ -13,12 +13,16 @@ var leerExcel = function (archivo, configuracion) {
         var workbook = Excel.readFile(this.archivo);
         var worksheet = workbook.Sheets["Hoja1"];
         var data = Excel.utils.sheet_to_json(worksheet, { header: 1 });
-        for (i = 2; i < data.length; i++) {
-            f.fabricar("Profesor", { nombre: data[i][0], min: data[i][1], max: data[i][2] });
-            f.fabricar("Asignatura", { nombre: data[i][4], curso: data[i][5], titulacion: data[i][6], profesor: data[i][7] });
-            i += 2;
-            f.fabricar("Curso", { nombre: data[i][9], curso: data[i][10], titulacion: data[i][11] });
-        }
+        data = data.splice(2, data.length);
+        data.forEach(function (element) {
+            f.fabricar("Profesor", { nombre: element[0], min: element[1], max: element[2] });
+            if (element[4] != undefined) {
+                f.fabricar("Asignatura", { nombre: element[4], curso: element[5], titulacion: element[6], profesor: element[7] });
+            }
+            if (element[9] != undefined) {
+                f.fabricar("Curso", { nombre: element[9], curso: element[10], titulacion: element[11] });
+            }
+        }, this);
         worksheet = workbook.Sheets["Hoja2"];
         data = Excel.utils.sheet_to_json(worksheet, { header: 1 });
         data = data.splice(2, data.length);
