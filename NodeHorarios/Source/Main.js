@@ -5,10 +5,13 @@ var grupo = require("./Objetos/Grupo.js");
 var asignatura = require("./Objetos/Asignatura.js");
 var curso = require("./Objetos/Curso.js");
 var profesor = require("./Objetos/Profesor.js");
+var leerExcel = require("./Funcionalidad/LeerExcel.js");
+async = require("async");
 
 c = new configuracion();
+leer = new leerExcel("../Info.xlsx", c);
 
-raul = new profesor("Raul");
+/*raul = new profesor("Raul");
 mariano = new profesor("Mariano");
 paloma = new profesor("Paloma");
 joseM = new profesor("Jose Manuel");
@@ -20,7 +23,7 @@ rodrigo =  new profesor("Rodrigo");
 gl = new profesor("GL");
 //---------------------------------
 iso = new asignatura("IS",3,"Informatica",raul);
-ia = new asignatura("IA",3,"Informatica",mariano);
+ia = new asignatura("IA",3,"Informatica",raul);
 pro = new asignatura("PR",3,"Informatica",joseM);
 isi = new asignatura("ISI",3,"Informatica",paloma);
 si = new asignatura("SI",3,"Informatica",angel);
@@ -59,25 +62,32 @@ c.anadirSesion(new sesion(bd,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
-//----------------------------------
-h = new horario();
-g = new grupo("Informatica",infor3)
-h.setGrupo(g);
-h.setSesiones(c.getSesionesPorCurso(infor3));
-h.generar();
-c.anadirHorario(h);
-h.imprimir();
+//----------------------------------*/
+infor3 = new curso("Informatica", 3, "Informatica");
+async.series([
+    function (callback) { leer.leer(); callback()},
+    function (callback) {
+        h = new horario();
+        g = new grupo("Informatica", infor3)
+        h.setGrupo(g);
+        h.setSesiones(c.getSesionesPorNombreCurso("Informatica 3"));
+        h.generar();
+        c.anadirHorario(h);
+        h.imprimir();
+        callback();
+    }
+]);
 
-h2 = new horario();
+/*h2 = new horario();
 g2 = new grupo("Informatica",infor2)
 h2.setGrupo(g2);
 h2.setSesiones(c.getSesionesPorCurso(infor2));
 h2.generar();
 c.anadirHorario(h2);
-h2.imprimir();
+h2.imprimir();*/
 
-console.log("Horario de Raul: ");
-c.getHorarioProfesor("Raul").imprimir();
+/*console.log("Horario de Raul: ");
+c.getHorarioProfesor("Raul").imprimir();*
 /*horarios = c.getHorarios();
 horarios[0].imprimir();
 horarios[1].imprimir();*/

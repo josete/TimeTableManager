@@ -29,10 +29,11 @@ var Configuracion = function () {
         return this.horarios;
     }
 
-    this.getSesionesPorCurso = function (curso) {
+    this.getSesionesPorNombreCurso = function (curso) {
         sesionesCurso = [];
         for (i = 0; i < this.sesiones.length; i++) {
-            if (this.sesiones[i].getCurso() == curso) {
+            console.log(this.sesiones[i].getNombre()+" "+this.sesiones[i].getCurso());
+            if ((this.sesiones[i].getNombre()+" "+this.sesiones[i].getCurso() == curso)) {
                 sesionesCurso.push(this.sesiones[i]);
             }
         }
