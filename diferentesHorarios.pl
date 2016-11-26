@@ -60,30 +60,29 @@ unaAsignaturaDosPlanesEstudio(Horario):-
 
 % Un profesor no puede tener mas de 8 horas de clase al dia, ni menos de
 % 4
-%
-%
-%CORREGIR
+
 numeroHorasValidoPorDiaProfesor(Horario):-
-     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, _Prof), asignacionTiempo(A, intervalo(H1, H2), dia(_N)), Dif is H2 - H1), L),
+     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(_N)), Dif is H2 - H1), L),
      sumaElementosLista(L,Horas),
      Horas=<800,
      Horas>=400.
 
-%1 Lunes
-%2 Martes
-%3 MIERCOLES
-%4 JUEVES
-%5 VIERNES
-
+%Suma las horas de todos los dias
 numeroHorasValidoPorSemana(Horario):-
+ findall(N,(horarioAsignacion(Horario,A),asignacionProfesor(A,Prof),asignacionTiempo(A,intervalo(H1,H2),dia(N))),L),
 
- findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, _Prof), asignacionTiempo(A, intervalo(H1, H2), dia(N)), Dif is H2 - H1), L),
-	N>=1,
-	N=<5,
-
- sumaElementosLista(L,Horas),
- Horas=<1000,
+ recorrerLista(L,T),
+ sumaElementosLista(T,Horas),
+ Horas=<2000,
  Horas>=600.
+
+
+% Recorre la lista que contiene todos los dias que da clase un profesor,
+% sacando las horas que da cada dia
+recorrerLista([],_).
+recorrerLista([I|R],[T|U]):-
+	 findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, _Prof), asignacionTiempo(A, intervalo(H1, H2), dia(I)), Dif is H2 - H1), T),
+	 recorrerLista(R,U).
 
 
 
@@ -99,6 +98,7 @@ asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(830,1230),dia(1)).
 asignacionTiempo(1, intervalo(830,1230),dia(2)).
+asignacionTiempo(1, intervalo(830,1230),dia(3)).
 
 %asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
