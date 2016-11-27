@@ -22,7 +22,6 @@ var Horario = function () {
 			intento = 0;//Pruebas
 			while (this.sesiones.length > 0 && dia<5) {
 				intento++;
-				console.log(this.sesiones[actual].getAsignatura().getNombre());
 				profesor = this.sesiones[actual].getAsignatura().getProfesor();
 				asignatura = this.sesiones[actual].getAsignatura();
 				sesion = this.sesiones[actual];

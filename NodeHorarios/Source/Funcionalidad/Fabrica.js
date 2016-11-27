@@ -19,8 +19,7 @@ var fabrica = function (configuracion) {
                 configuracion.anadirCurso(new curso(datos.nombre, datos.curso, datos.titulacion));
                 break;
             case "Sesion":
-                //console.log(datos);
-                 configuracion.anadirSesion(new sesion(this.c.getAsignaturaPorNombre(datos.asignatura), datos.horas, this.c.getCursoPorNombre(datos.curso)));
+                configuracion.anadirSesion(new sesion(this.c.getAsignaturaPorNombre(datos.asignatura), datos.horas, this.c.getCursoPorNombre(datos.curso)));
                 break;
         }
     }
