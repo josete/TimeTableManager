@@ -149,25 +149,64 @@ horasContinuasDiaProfesor(Horario):-
 %Un profesor no debe tener mas de 6 horas libres
 maxGapsProfesorPorDia(Horario):-
      N=1,
-
+% Mete en la lista L las horas a las que acaban las sesiones de un
+% profesor en un dia
       findall(H2,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),L),
 
+% Mete en la lista T las horas a las que empiezan las sesiones de un
+% profesor en un dia
        findall(H1,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),T),
 
+% Coge el elemento mayor de la lista L y el menor de la lista T y asi ya
+% tenemos el rango de horas que el profesor esta en la universidad y al
+% cual se le aplica el max gaps por dia
        elementoMayor(L,E),
        elementoMenor(T,U),
 
-
+% Coge el numero de horas al dia que un profesor tiene clase y lo mete
+% en la variable Horas
        findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(N)), Dif is H2 - H1), W),
        sumaElementosLista(W,Horas),
 
-       %Resta es el intervalo de horas en el que un profesor tiene clases al dia
+       %Resta es el rango de horas en el que un profesor tiene clases al dia
        Resta is E-U,
+       %Las horas libres serán las horas que pasa en la universidad(Resta) menos las que esta dando clase (Horas).
        HorasLibres is Resta-Horas,
+       %Horas libres = parametro que tiene que ser configurable por el ususario.
        HorasLibres=<600.
 
+maxGapsProfesorPorSemana(Horario):-
+	 findall(N,(horarioAsignacion(Horario,A),asignacionProfesor(A,Prof),asignacionTiempo(A,intervalo(H1,H2),dia(N))),L),
+	 elim(L,X),
+	 recorrerListaGapsDia(X,HorasLibres),
+	 sumaElementosLista(HorasLibres,S),
+	 %S es el parametro que mete el cliente
+	 S=<30000.
+
+elim([],[]).
+elim([H|T],S):-member(H,T),!,elim(T,S).
+elim([H|T],[H|S]):-elim(T,S).
 
 
+
+recorrerListaGapsDia([],[]).
+recorrerListaGapsDia([I|R],[HorasLibres|Y]):-
+	findall(H2,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(I))),L),
+	findall(H1,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(I))),T),
+	elementoMayor(L,E),
+	elementoMenor(T,U),
+	findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(I)), Dif is H2 - H1), W),
+       sumaElementosLista(W,Horas),
+       Resta is E-U,
+       HorasLibres is Resta - Horas,
+
+       recorrerListaGapsDia(R,Y).
+
+
+sumaElementosLista([],0).
+sumaElementosLista([X|Y],R):-
+	sumaElementosLista(Y,Z),
+	R is X+Z.
 
 
 
