@@ -111,25 +111,62 @@ comprobacionDosListas([E|V],[U|W]):-
 	segundoLista([U|W],E),
 	comprobacionDosListas(V,W).
 
+elementoMayor([X],X).
+elementoMayor([X|Y],X):-
+	elementoMayor(Y,N),
+	X>N.
+elementoMayor([X|Y],N):-
+	elementoMayor(Y,N),
+	X<N.
+
+elementoMenor([X],X).
+elementoMenor([X|Y],X):-
+	elementoMenor(Y,G),
+	X<G.
+elementoMenor([X|Y],G):-
+	elementoMenor(Y,G),
+	X>G.
 %El profesor no puede tener mas de 6 horas de clase seguidas
 % Si por la mañana tiene un numero de horas seguidas que no supera el
 % limite de 6 y luego tiene una hora libre y clase otra vez, debe salir
 % ture
 horasContinuasDiaProfesor(Horario):-
 	N=1,
-	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
-	findall(H2,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),T),
+	findall(H1,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),L),
+	findall(H2,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),T),
 	comprobacionDosListas(T,L),
 	primeroLista(L,X),
 	ultimoLista(T,Y),
 	Dif is Y-X,
 	Dif=<600;
 	N=1,
-	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1,
-	pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
-	findall(H2,(horarioAsignacion(horario1, 1),asignacionProfesor(1,
-	pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),T),
+	findall(H1,(horarioAsignacion(Horario, A),asignacionProfesor(A,
+	Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),L),
+	findall(H2,(horarioAsignacion(Horario, A),asignacionProfesor(A,
+	Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),T),
 	\+comprobacionDosListas(T,L).
+
+%Un profesor no debe tener mas de 6 horas libres
+maxGapsProfesorPorDia(Horario):-
+     N=1,
+
+      findall(H2,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),L),
+
+       findall(H1,(horarioAsignacion(Horario, A),asignacionProfesor(A, Prof),asignacionTiempo(A, intervalo(H1,H2),dia(N))),T),
+
+       elementoMayor(L,E),
+       elementoMenor(T,U),
+
+
+       findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(N)), Dif is H2 - H1), W),
+       sumaElementosLista(W,Horas),
+
+       %Resta es el intervalo de horas en el que un profesor tiene clases al dia
+       Resta is E-U,
+       HorasLibres is Resta-Horas,
+       HorasLibres=<600.
+
+
 
 
 
