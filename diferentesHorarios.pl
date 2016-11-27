@@ -62,7 +62,9 @@ unaAsignaturaDosPlanesEstudio(Horario):-
 % 4
 
 numeroHorasValidoPorDiaProfesor(Horario):-
-     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(_N)), Dif is H2 - H1), L),
+     %La N (el dia concreto) se le pide al cliente que la meta por teclado
+     N=1,
+     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(N)), Dif is H2 - H1), L),
      sumaElementosLista(L,Horas),
      Horas=<800,
      Horas>=400.
@@ -79,7 +81,7 @@ numeroHorasValidoPorSemana(Horario):-
 
 % Recorre la lista que contiene todos los dias que da clase un profesor,
 % sacando las horas que da cada dia
-recorrerLista([],_).
+recorrerLista([],[]).
 recorrerLista([I|R],[T|U]):-
 	 findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, _Prof), asignacionTiempo(A, intervalo(H1, H2), dia(I)), Dif is H2 - H1), T),
 	 recorrerLista(R,U).
@@ -91,13 +93,33 @@ sumaElementosLista([A|B],R):-
 	sumaElementosLista(B,S),
 	R is S+A.
 
+primeroLista([],[]).
+primeroLista([A|_B],A).
+
+ultimoLista([X],X).
+ultimoLista([A|B],U):-
+	ultimoLista(B,U).
+
+%El profesor no puede tener mas de 6 horas de clase seguidas
+horasContinuasDiaProfesor(Horario):-
+	N=1,
+	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
+	findall(H2,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),T),
+	primeroLista(L,X),
+	ultimoLista(T,Y),
+	Dif is Y-X,
+	Dif=<600.
+
+
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
 asignacionProfesor(1, pgr).
-asignacionTiempo(1, intervalo(830,1230),dia(1)).
-asignacionTiempo(1, intervalo(830,1230),dia(2)).
+asignacionTiempo(1, intervalo(830,1030),dia(1)).
+asignacionTiempo(1, intervalo(1030,1230),dia(1)).
+asignacionTiempo(1, intervalo(1230,1430),dia(1)).
+%asignacionTiempo(1, intervalo(830,1230),dia(2)).
 asignacionTiempo(1, intervalo(830,1230),dia(3)).
 
 %asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
