@@ -111,17 +111,30 @@ comprobacionDosListas([E|V],[U|W]):-
 	segundoLista([U|W],E),
 	comprobacionDosListas(V,W).
 
+concatena([],[],[]).
+concatena(L1,L2,L3):-
+%El predicado append devuelve verdadero si L3 es la concatenacion de L1 Y L2
+	append(L1,L2,L3).
 
 %El profesor no puede tener mas de 6 horas de clase seguidas
 horasContinuasDiaProfesor(Horario):-
 	N=1,
 	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
 	findall(H2,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),T),
-	comprobacionDosListas(T,L),
+	concatena(U,V,L),
+	concatena(Z,K,T),
+	comprobacionDosListas(U,Z),
 	primeroLista(L,X),
 	ultimoLista(T,Y),
 	Dif is Y-X,
 	Dif=<600.
+%	N=1,
+%	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1,
+%	pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
+%	findall(H2,(horarioAsignacion(horario1, 1),asignacionProfesor(1,
+%	pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),T),
+%	\+comprobacionDosListas(T,L).
+
 
 
 

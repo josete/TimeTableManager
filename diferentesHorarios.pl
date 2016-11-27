@@ -111,8 +111,10 @@ comprobacionDosListas([E|V],[U|W]):-
 	segundoLista([U|W],E),
 	comprobacionDosListas(V,W).
 
-
 %El profesor no puede tener mas de 6 horas de clase seguidas
+% Si por la mañana tiene un numero de horas seguidas que no supera el
+% limite de 6 y luego tiene una hora libre y clase otra vez, debe salir
+% ture
 horasContinuasDiaProfesor(Horario):-
 	N=1,
 	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1, pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
@@ -121,7 +123,13 @@ horasContinuasDiaProfesor(Horario):-
 	primeroLista(L,X),
 	ultimoLista(T,Y),
 	Dif is Y-X,
-	Dif=<600.
+	Dif=<600;
+	N=1,
+	findall(H1,(horarioAsignacion(horario1, 1),asignacionProfesor(1,
+	pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),L),
+	findall(H2,(horarioAsignacion(horario1, 1),asignacionProfesor(1,
+	pgr),asignacionTiempo(1, intervalo(H1,H2),dia(N))),T),
+	\+comprobacionDosListas(T,L).
 
 
 
