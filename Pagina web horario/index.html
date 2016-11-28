@@ -10,16 +10,16 @@
   <script src="js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="css/fileinput.min.css">
-<script src="js/fileinput.min.js"></script>
+  <script src="js/fileinput.min.js"></script>
 
-<link rel="shortcut icon" href="img/calendar.png">
+  <link rel="shortcut icon" href="img/calendar.png">
 </head>
 <body>
-<div id="wrap">
-<header>
-	<div class="container">
-		<h1>Horario <small>Universidad San Pablo CEU</small></h1>
-	</div>
+  <div id="wrap">
+    <header>
+	    <div class="container">
+		    <h1>Horario <small>Universidad San Pablo CEU</small></h1>
+	    </div>
 </header>
 <div class="container-fluid">
   <br>
@@ -34,10 +34,37 @@
     </div>
   </div>
 </div>
+
 <br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <select class="form-control">
+        <option>Todas</option>
+        <option>Profesores</option>
+        <option>Grupos</option>
+      </select>
+    </div>
+    <div class="col-xs-2">
+      <fieldset disabled>
+        <select id="disabledSelect" class="form-control">
+          <option>Cosas</option>
+          <option>Mas cosas</option>
+          <option>Algo mas</option>
+        </select>
+      </fieldset>
+    </div>
+  </div>
 </div>
-	<br>
-	<div class="container"><table class="table table-bordered">
+
+<br>
+
+</div>
+
+<br>
+
+<div class="container"><table class="table table-bordered">
   <thead>
     <tr>
       <th>Horas</th>

@@ -14,7 +14,6 @@
 
 	<link rel="shortcut icon" href="../img/calendar.png">
 </head>
-</head>
 <body>
 <header>
 	<div class="container">
@@ -29,14 +28,49 @@
         <li rolo="presentation"><a href="../index.html">Horario</a></li>
         <li rolo="presentation"><a href="manual.html">Manual</a></li>
         <li rolo="presentation"><a href="restricciones.html">Restricciones</a></li>
-         <li rolo="presentation" class="active"><a href="#">Configuración</a></li>
+        <li rolo="presentation" class="active"><a href="#">Configuración</a></li>
       </ul>
     </div>
-  </div>
+	</div>
+
+<br>
+
 <div class="container">
-<label class="control-label">Seleccione Excel para generar el horario</label>
-<input id="input-1" type="file" class="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+	<label class="control-label">Seleccione Excel para generar el horario</label>
+	<input id="input-1" type="file" class="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
 </div>
 </div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <label class="col-sm-2 control-label">Restricciones Profesor (Prueba)</label>
+    <div class="col-xs-4">
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Max</th>
+      <th>Min</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Raul</td>
+      <td><input class="form-control input-sm" type="text"></td>
+      <td><input class="form-control input-sm" type="text"></td>
+    </tr>
+    <tr>
+      <td>Mariano</td>
+      <td><input class="form-control input-sm" type="text"></td>
+      <td><input class="form-control input-sm" type="text"></td>
+    </tr>
+    </tbody>
+  </table>
+    </div>
+</div>
+</div>
+
 </body>
 </html>
