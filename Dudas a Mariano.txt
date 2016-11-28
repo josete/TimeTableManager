@@ -3,3 +3,5 @@ numeroDeHorasValidoAlDia (si está bien lo de que la N la meta el cliente)
 numeroDeHorasValidoPorSemana (un ojo en general)
 
 numero max de horas seguidas de un profesor al dia.
+
+Dias entre sesiones no falla, si no que da un error.

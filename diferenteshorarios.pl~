@@ -100,7 +100,7 @@ ultimoLista([X],X).
 ultimoLista([A|B],U):-
 	ultimoLista(B,U).
 
-segundoLista([X|[]],[]).
+segundoLista([X|[]],0).
 segundoLista([A|B],E):-
 	primeroLista(B,E).
 
@@ -181,7 +181,7 @@ maxGapsProfesorPorSemana(Horario):-
 	 recorrerListaGapsDia(X,HorasLibres),
 	 sumaElementosLista(HorasLibres,S),
 	 %S es el parametro que mete el cliente
-	 S=<3.
+	 S=<30000.
 
 elim([],[]).
 elim([H|T],S):-member(H,T),!,elim(T,S).
@@ -202,17 +202,33 @@ recorrerListaGapsDia([I|R],[HorasLibres|Y]):-
 
        recorrerListaGapsDia(R,Y).
 
+diasEntreSesiones(Horario):-
+	findall(N,(horarioAsignacion(Horario,A),asignacionProfesor(A,Prof),asignacionTiempo(1,intervalo(H1,H2),dia(N))),L),
+	elim(L,X),
+	restaElementosLista(X,T),
+	elementoMayor(T,U),
+	%El valor de U lo mete el usuario, es el numero max y  min de dias de separacion entre sesiones.
+	U<3,
+	U>1.
+
 
 sumaElementosLista([],0).
 sumaElementosLista([X|Y],R):-
 	sumaElementosLista(Y,Z),
 	R is X+Z.
-
+restaElementosLista([],[]).
+restaElementosLista(L,[]):-
+	segundoLista(L,0).
+restaElementosLista([X|Y],[R|T]):-
+	segundoLista([X|Y],S),
+	R is S-X,
+	restaElementosLista(Y,T).
 
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
+%asignacionAsignatura(1, pt).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(830,1030),dia(1)).
 asignacionTiempo(1, intervalo(1030,1230),dia(1)).
@@ -257,6 +273,13 @@ horarioAsignacion(horario1, 1).
 %horarioAsignacion(horario1, 2).
 %horarioAsignacion(horario1, 3).
 %horarioAsignacion(horario1, 4).
+
+
+
+
+
+
+
 
 
 
