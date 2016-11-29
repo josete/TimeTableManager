@@ -69,6 +69,19 @@ numeroHorasValidoPorDiaProfesor(Horario):-
      Horas=<800,
      Horas>=400.
 
+numeroHorasValidoPorSemanaProfesor(Horario):-
+     findall(Dif, (horarioAsignacion(Horario,A),asignacionProfesor(A, Prof), asignacionTiempo(A, intervalo(H1, H2), dia(N)), Dif is H2 - H1), L),
+     sumaElementosLista(L,Horas),
+     Horas=<600,
+     Horas>=2000.
+
+
+
+
+
+
+
+
 %Suma las horas de todos los dias
 numeroHorasValidoPorSemana(Horario):-
  findall(N,(horarioAsignacion(Horario,A),asignacionProfesor(A,Prof),asignacionTiempo(A,intervalo(H1,H2),dia(N))),L),
@@ -126,6 +139,63 @@ elementoMenor([X|Y],X):-
 elementoMenor([X|Y],G):-
 	elementoMenor(Y,G),
 	X>G.
+
+listaAsignaciones(Horario,L) :-
+	findall(intervaloDia(H1, H2, Dia),
+		asignacionTiempo(Horario, intervalo(H1, H2), Dia), L).
+
+elementoMenorEnListaIntervaloDia([IntervaloDia], IntervaloDia).
+
+elementoMenorEnListaIntervaloDia([Intervalo1|R], Intervalo1) :-
+	elementoMenorEnListaIntervaloDia(R, Intervalo2),
+	menorQue(Intervalo1, Intervalo2).
+
+elementoMenorEnListaIntervaloDia([Intervalo1|R], Intervalo2) :-
+	elementoMenorEnListaIntervaloDia(R, Intervalo2),
+	\+ menorQue(Intervalo1, Intervalo2).
+
+menorQue(intervaloDia(H1, H2, Dia),
+	 intervaloDia(H3, H4, Dia)) :-
+	H2 < H4.
+
+menorQue(intervaloDia(H1, H2, dia(D1)),
+	intervaloDia(H3, H4, dia(D2))) :-
+	D1 < D2.
+
+%Ordenar lista de mayor a menor
+ordenarLista([X],[X]).
+ordenarLista([X|Y],[X|V]):-
+	elementoMenorEnListaIntervaloDia([X|Y],X),
+	ordenarLista(Y,V).
+
+ordenarLista([X|Y],[T|V]):-
+	elementoMenorEnListaIntervaloDia([X|Y],T),
+	borrar(T,[X|Y],L1),
+	ordenarLista(L1,V).
+
+borrar(X,[X|T],T).
+borrar(X,[H|T],[H|NT]):-
+	borrar(X,T,NT).
+
+%  listaAsignaciones(1, L), ordenarLista(L, Lo).
+
+meet(intervaloDia(0,0,Dia),0).
+
+meet(intervaloDia(H1,H2,Dia), Horas) :-
+	Horas is H2 - H1.
+
+meet(intervaloDia(H1, H2,Dia),
+      intervaloDia(H2, H3,Dia), Horas) :-
+	Horas is H3 - H1.
+
+meet(intervaloDia(H1, H2, Dia),
+      intervaloDia([(H2, H3,Dia)|Resto]), Horas) :-
+	Horas12 is H3 - H1,
+	meet([intervaloDia(H2, H3,Dia) | Resto], HorasResto),
+	Horas is Horas12 + HorasResto.
+
+%intervaloDia(H1,H2,Dia).
+
 %El profesor no puede tener mas de 6 horas de clase seguidas
 % Si por la mañana tiene un numero de horas seguidas que no supera el
 % limite de 6 y luego tiene una hora libre y clase otra vez, debe salir
@@ -225,6 +295,8 @@ restaElementosLista([X|Y],[R|T]):-
 	R is S-X,
 	restaElementosLista(Y,T).
 
+intervaloDia(H1,H2,Dia):-
+	H1,H2,Dia.
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
