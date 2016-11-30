@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Manual</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	 <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js"></script>
+	 <script src="../js/jquery.js"></script>
+  	<script src="../js/bootstrap.min.js"></script>	
+
+	<link rel="stylesheet" href="../css/fileinput.min.css">
+	<script src="../js/fileinput.min.js"></script>
+
+	<link rel="shortcut icon" href="../img/calendar.png">
+</head>
+<body>
+<header>
+	<div class="container">
+		<h1>Horario <small>Universidad San Pablo CEU</small></h1>
+	</div>
+</header>
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li rolo="presentation"><a href="../index.html">Horario</a></li>
+        <li rolo="presentation"><a href="manual.html">Manual</a></li>
+        <li rolo="presentation"><a href="restricciones.html">Restricciones</a></li>
+        <li rolo="presentation" class="active"><a href="#">Configuración</a></li>
+      </ul>
+    </div>
+	</div>
+
+<br>
+
+<div class="container">
+	<label class="control-label">Seleccione Excel para generar el horario</label>
+	<input id="input-1" type="file" class="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+</div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <label class="col-sm-2 control-label">Restricciones Profesor (Prueba)</label>
+    <div class="col-xs-4">
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Max</th>
+      <th>Min</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Raul</td>
+      <td><input class="form-control input-sm" type="text"></td>
+      <td><input class="form-control input-sm" type="text"></td>
+    </tr>
+    <tr>
+      <td>Mariano</td>
+      <td><input class="form-control input-sm" type="text"></td>
+      <td><input class="form-control input-sm" type="text"></td>
+    </tr>
+    </tbody>
+  </table>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
