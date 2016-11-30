@@ -1,0 +1,174 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Node js\\node.exe',
+1 verbose cli   'D:\\Node js\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'node-swipl' ]
+2 info using npm@2.14.2
+3 info using node@v4.0.0
+4 verbose install initial load of C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\package.json
+5 verbose installManyTop reading scoped package data from C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\jsprolog\package.json
+6 verbose readDependencies loading dependencies from C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\package.json
+7 silly cache add args [ 'node-swipl', null ]
+8 verbose cache add spec node-swipl
+9 silly cache add parsed spec Result {
+9 silly cache add   raw: 'node-swipl',
+9 silly cache add   scope: null,
+9 silly cache add   name: 'node-swipl',
+9 silly cache add   rawSpec: '',
+9 silly cache add   spec: '*',
+9 silly cache add   type: 'range' }
+10 silly addNamed node-swipl@*
+11 verbose addNamed "*" is a valid semver range for node-swipl
+12 silly addNameRange { name: 'node-swipl', range: '*', hasData: false }
+13 silly mapToRegistry name node-swipl
+14 silly mapToRegistry using default registry
+15 silly mapToRegistry registry https://registry.npmjs.org/
+16 silly mapToRegistry uri https://registry.npmjs.org/node-swipl
+17 verbose addNameRange registry:https://registry.npmjs.org/node-swipl not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/node-swipl
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 13:26:12
+21 verbose request id 105fb4e58070376c
+22 verbose etag W/"5399024e-d13"
+23 verbose lastModified Thu, 12 Jun 2014 01:28:46 GMT
+24 http request GET https://registry.npmjs.org/node-swipl
+25 http 304 https://registry.npmjs.org/node-swipl
+26 silly get cb [ 304,
+26 silly get   { date: 'Mon, 28 Nov 2016 12:26:11 GMT',
+26 silly get     via: '1.1 varnish',
+26 silly get     'cache-control': 'max-age=300',
+26 silly get     etag: 'W/"5399024e-d13"',
+26 silly get     age: '0',
+26 silly get     connection: 'keep-alive',
+26 silly get     'x-served-by': 'cache-ams4421-AMS',
+26 silly get     'x-cache': 'HIT',
+26 silly get     'x-cache-hits': '1',
+26 silly get     'x-timer': 'S1480335971.930344,VS0,VE7',
+26 silly get     vary: 'Accept-Encoding' } ]
+27 verbose etag https://registry.npmjs.org/node-swipl from cache
+28 verbose get saving node-swipl to C:\Users\Portatil-pc\AppData\Roaming\npm-cache\registry.npmjs.org\node-swipl\.cache.json
+29 silly addNameRange number 2 { name: 'node-swipl', range: '*', hasData: true }
+30 silly addNameRange versions [ 'node-swipl', [ '0.2.0' ] ]
+31 silly addNamed node-swipl@0.2.0
+32 verbose addNamed "0.2.0" is a plain semver version for node-swipl
+33 silly cache afterAdd node-swipl@0.2.0
+34 verbose afterAdd C:\Users\Portatil-pc\AppData\Roaming\npm-cache\node-swipl\0.2.0\package\package.json not in flight; writing
+35 verbose afterAdd C:\Users\Portatil-pc\AppData\Roaming\npm-cache\node-swipl\0.2.0\package\package.json written
+36 silly install resolved [ { name: 'node-swipl',
+36 silly install resolved     version: '0.2.0',
+36 silly install resolved     main: 'swipl.js',
+36 silly install resolved     description: 'A node.js interface to the SWI-Prolog library',
+36 silly install resolved     keywords: [ 'swi', 'prolog', 'swipl', 'logic' ],
+36 silly install resolved     author:
+36 silly install resolved      { name: 'Tom Klonikowski',
+36 silly install resolved        email: 'klonik_t@informatik.haw-hamburg.de' },
+36 silly install resolved     license: 'LGPL',
+36 silly install resolved     repository:
+36 silly install resolved      { type: 'git',
+36 silly install resolved        url: 'git+ssh://git@github.com/jansegre/node-swipl.git' },
+36 silly install resolved     directories: { src: 'src', tests: 'tests' },
+36 silly install resolved     engines: { node: '>=0.10.0', libswipl: '>=5.10.0' },
+36 silly install resolved     scripts: { install: 'node-gyp configure build', test: 'node tests/a.js' },
+36 silly install resolved     bugs: { url: 'https://github.com/jansegre/node-swipl/issues' },
+36 silly install resolved     homepage: 'https://github.com/jansegre/node-swipl',
+36 silly install resolved     _id: 'node-swipl@0.2.0',
+36 silly install resolved     dist:
+36 silly install resolved      { shasum: '19c32d02eb9412957bb4df43fa8b6ceeab38c90b',
+36 silly install resolved        tarball: 'https://registry.npmjs.org/node-swipl/-/node-swipl-0.2.0.tgz' },
+36 silly install resolved     _from: 'node-swipl@*',
+36 silly install resolved     _npmVersion: '1.3.24',
+36 silly install resolved     _npmUser: { name: 'jansegre', email: 'jan@segre.in' },
+36 silly install resolved     maintainers: [ [Object] ],
+36 silly install resolved     _shasum: '19c32d02eb9412957bb4df43fa8b6ceeab38c90b',
+36 silly install resolved     _resolved: 'https://registry.npmjs.org/node-swipl/-/node-swipl-0.2.0.tgz',
+36 silly install resolved     readme: 'ERROR: No README data found!' } ]
+37 info install node-swipl@0.2.0 into C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas
+38 info installOne node-swipl@0.2.0
+39 verbose installOne of node-swipl to C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas not in flight; installing
+40 verbose lock using C:\Users\Portatil-pc\AppData\Roaming\npm-cache\_locks\node-swipl-ac15c3ff73cb356d.lock for C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+41 silly install write writing node-swipl 0.2.0 to C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+42 verbose unbuild node_modules\node-swipl
+43 silly gentlyRm C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl is being purged from base C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas
+44 verbose gentlyRm don't care about contents; nuking C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+45 verbose tar unpack C:\Users\Portatil-pc\AppData\Roaming\npm-cache\node-swipl\0.2.0\package.tgz
+46 verbose tar unpacking to C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+47 silly gentlyRm C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl is being purged
+48 verbose gentlyRm don't care about contents; nuking C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+49 silly gunzTarPerm modes [ '777', '666' ]
+50 silly gunzTarPerm extractEntry package.json
+51 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+52 silly gunzTarPerm extractEntry .npmignore
+53 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+54 silly gunzTarPerm extractEntry README.md
+55 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+56 silly gunzTarPerm extractEntry swipl.js
+57 silly gunzTarPerm modified mode [ 'swipl.js', 420, 438 ]
+58 silly gunzTarPerm extractEntry binding.gyp
+59 silly gunzTarPerm modified mode [ 'binding.gyp', 420, 438 ]
+60 silly gunzTarPerm extractEntry src/SWI-Prolog.h
+61 silly gunzTarPerm modified mode [ 'src/SWI-Prolog.h', 420, 438 ]
+62 silly gunzTarPerm extractEntry src/libswipl.cc
+63 silly gunzTarPerm modified mode [ 'src/libswipl.cc', 420, 438 ]
+64 silly gunzTarPerm extractEntry src/libswipl.h
+65 silly gunzTarPerm modified mode [ 'src/libswipl.h', 420, 438 ]
+66 silly gunzTarPerm extractEntry tests/a.js
+67 silly gunzTarPerm modified mode [ 'tests/a.js', 420, 438 ]
+68 silly gunzTarPerm extractEntry tests/fisch.js
+69 silly gunzTarPerm modified mode [ 'tests/fisch.js', 420, 438 ]
+70 silly gunzTarPerm extractEntry tests/org.js
+71 silly gunzTarPerm modified mode [ 'tests/org.js', 420, 438 ]
+72 silly gunzTarPerm extractEntry tests/fisch.pl
+73 silly gunzTarPerm modified mode [ 'tests/fisch.pl', 420, 438 ]
+74 verbose write writing to C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl\package.json
+75 info preinstall node-swipl@0.2.0
+76 verbose readDependencies loading dependencies from C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl\package.json
+77 verbose readDependencies loading dependencies from C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl\package.json
+78 silly install resolved []
+79 verbose about to build C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+80 info build C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+81 info linkStuff node-swipl@0.2.0
+82 silly linkStuff node-swipl@0.2.0 has C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules as its parent node_modules
+83 verbose linkBins node-swipl@0.2.0
+84 verbose linkMans node-swipl@0.2.0
+85 verbose rebuildBundles node-swipl@0.2.0
+86 info install node-swipl@0.2.0
+87 verbose unsafe-perm in lifecycle true
+88 info node-swipl@0.2.0 Failed to exec install script
+89 verbose unlock done using C:\Users\Portatil-pc\AppData\Roaming\npm-cache\_locks\node-swipl-ac15c3ff73cb356d.lock for C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+90 verbose stack Error: node-swipl@0.2.0 install: `node-gyp configure build`
+90 verbose stack Exit status 1
+90 verbose stack     at EventEmitter.<anonymous> (D:\Node js\node_modules\npm\lib\utils\lifecycle.js:214:16)
+90 verbose stack     at emitTwo (events.js:87:13)
+90 verbose stack     at EventEmitter.emit (events.js:172:7)
+90 verbose stack     at ChildProcess.<anonymous> (D:\Node js\node_modules\npm\lib\utils\spawn.js:24:14)
+90 verbose stack     at emitTwo (events.js:87:13)
+90 verbose stack     at ChildProcess.emit (events.js:172:7)
+90 verbose stack     at maybeClose (internal/child_process.js:817:16)
+90 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+91 verbose pkgid node-swipl@0.2.0
+92 verbose cwd C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas
+93 error Windows_NT 10.0.14393
+94 error argv "D:\\Node js\\node.exe" "D:\\Node js\\node_modules\\npm\\bin\\npm-cli.js" "install" "node-swipl"
+95 error node v4.0.0
+96 error npm  v2.14.2
+97 error code ELIFECYCLE
+98 error node-swipl@0.2.0 install: `node-gyp configure build`
+98 error Exit status 1
+99 error Failed at the node-swipl@0.2.0 install script 'node-gyp configure build'.
+99 error This is most likely a problem with the node-swipl package,
+99 error not with npm itself.
+99 error Tell the author that this fails on your system:
+99 error     node-gyp configure build
+99 error You can get their info via:
+99 error     npm owner ls node-swipl
+99 error There is likely additional logging output above.
+100 verbose exit [ 1, true ]
+101 verbose unbuild node_modules\node-swipl
+102 info preuninstall node-swipl@0.2.0
+103 info uninstall node-swipl@0.2.0
+104 verbose unbuild rmStuff node-swipl@0.2.0 from C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules
+105 info postuninstall node-swipl@0.2.0
+106 silly gentlyRm C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl is being purged from base C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas
+107 verbose gentlyRm don't care about contents; nuking C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+108 silly vacuum-fs purging C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules\node-swipl
+109 silly vacuum-fs quitting because other entries in C:\Users\Portatil-pc\Desktop\Clase\Jose\Repo\NodeHorarios\pruebas\node_modules

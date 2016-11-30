@@ -1,5 +1,5 @@
 vive(X,Y):-
-	=(paloma,paloma).
+	=(X,Y).
 bird(pigeon).
 bird(penguin).
 lives(pigeon,_).

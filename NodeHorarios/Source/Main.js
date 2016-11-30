@@ -5,7 +5,7 @@ var grupo = require("./Objetos/Grupo.js");
 var asignatura = require("./Objetos/Asignatura.js");
 var curso = require("./Objetos/Curso.js");
 var profesor = require("./Objetos/Profesor.js");
-var leerExcel = require("./Funcionalidad/LeerExcel.js");
+var leerExcel = require("./Funcionalidad/LeerExcel.js");ç
 
 c = new configuracion();
 leer = new leerExcel("../Info.xlsx", c);
@@ -23,7 +23,7 @@ rodrigo =  new profesor("Rodrigo");
 gl = new profesor("GL");
 //---------------------------------
 iso = new asignatura("IS",3,"Informatica",raul);
-ia = new asignatura("IA",3,"Informatica",mariano);
+ia = new asignatura("IA",3,"Informatica",raul);
 pro = new asignatura("PR",3,"Informatica",joseM);
 isi = new asignatura("ISI",3,"Informatica",paloma);
 si = new asignatura("SI",3,"Informatica",angel);
@@ -63,6 +63,22 @@ c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 //----------------------------------*/
+<<<<<<< HEAD
+infor3 = new curso("Informatica", 3, "Informatica");
+async.series([
+    function (callback) { leer.leer(); callback()},
+    function (callback) {
+        h = new horario();
+        g = new grupo("Informatica", infor3)
+        h.setGrupo(g);
+        h.setSesiones(c.getSesionesPorNombreCurso("Informatica 3"));
+        h.generar();
+        c.anadirHorario(h);
+        h.imprimir();
+        callback();
+    }
+]);
+=======
 h = new horario();
 g = new grupo("Informatica",c.getCursoPorNombre("Informatica 3"));
 h.setGrupo(g);
@@ -70,6 +86,7 @@ h.setSesiones(c.getSesionesPorCurso(c.getCursoPorNombre("Informatica 3")));
 h.generar();
 c.anadirHorario(h);
 h.imprimir();
+>>>>>>> 914cf9d3d3c8ac607f9e1108870b941f4bda75bb
 
 /*h2 = new horario();
 g2 = new grupo("Informatica",infor2)
@@ -79,8 +96,8 @@ h2.generar();
 c.anadirHorario(h2);
 h2.imprimir();*/
 
-console.log("Horario de Raul: ");
-c.getHorarioProfesor("Raul").imprimir();
+/*console.log("Horario de Raul: ");
+c.getHorarioProfesor("Raul").imprimir();*
 /*horarios = c.getHorarios();
 horarios[0].imprimir();
 horarios[1].imprimir();*/
