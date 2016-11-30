@@ -5,11 +5,11 @@ var grupo = require("./Objetos/Grupo.js");
 var asignatura = require("./Objetos/Asignatura.js");
 var curso = require("./Objetos/Curso.js");
 var profesor = require("./Objetos/Profesor.js");
-var leerExcel = require("./Funcionalidad/LeerExcel.js");
-async = require("async");
+var leerExcel = require("./Funcionalidad/LeerExcel.js");ç
 
 c = new configuracion();
 leer = new leerExcel("../Info.xlsx", c);
+leer.leer();
 
 /*raul = new profesor("Raul");
 mariano = new profesor("Mariano");
@@ -63,6 +63,7 @@ c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 //----------------------------------*/
+<<<<<<< HEAD
 infor3 = new curso("Informatica", 3, "Informatica");
 async.series([
     function (callback) { leer.leer(); callback()},
@@ -77,6 +78,15 @@ async.series([
         callback();
     }
 ]);
+=======
+h = new horario();
+g = new grupo("Informatica",c.getCursoPorNombre("Informatica 3"));
+h.setGrupo(g);
+h.setSesiones(c.getSesionesPorCurso(c.getCursoPorNombre("Informatica 3")));
+h.generar();
+c.anadirHorario(h);
+h.imprimir();
+>>>>>>> 914cf9d3d3c8ac607f9e1108870b941f4bda75bb
 
 /*h2 = new horario();
 g2 = new grupo("Informatica",infor2)
