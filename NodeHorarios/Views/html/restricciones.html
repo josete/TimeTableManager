@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+ <link rel="stylesheet" href="../css/bootstrap.min.css">
+
 	<meta charset="UTF-8">
 	<title>Restricciones</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js"></script>
-	<script src="../js/jquery.js"></script>
+	<!--<script src="../js/jquery.js"></script>-->
 	<script src="../js/bootstrap.min.js"></script>
 	
 	<link rel="stylesheet" href="../css/fileinput.min.css">
@@ -46,23 +52,49 @@
   </thead>
   <tbody>
     <tr>
-      <td>Solapamiento</td>
+      <td>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">?</button>
+      Solapamiento
+      <div id="demo" class="collapse">
+      Evita que las clases impartidas por cierto profesor coincidan si dan varias horas.
+  </div>
+      </td>
       <td><input type="checkbox" value=""></td>
       </tr>
     <tr>
-      <td>Horas Máx/Min semanales de un profesor</td>
+      <td><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2">?</button>
+      Horas Máx/Min semanales de un profesor
+    <div id="demo2" class="collapse">
+    Un profesor no puede impartir más de X y menos de Y configurables horas a la semana al generar su horario.
+  </div>
+      </td>
       <td><input type="checkbox" value=""></td>
     </tr>
     <tr>
-      <td>Horas Máx/Min diarías de un profesor</td>
+      <td><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo3">?</button>
+      Horas Máx/Min diarías de un profesor
+      <div id="demo3" class="collapse">
+     Un profesor no puede impartir más de X e Y configurables horas al día al generar su horario.
+  </div>
+  </td>
       <td><input type="checkbox" value=""></td>
     </tr>
     <tr>
-      <td>Horas continuas/dia de un profesor</td>
+      <td><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo4">?</button>
+      Horas continuas/dia de un profesor
+      <div id="demo4" class="collapse">
+    Un profesor no debe tener más de X (configurable) horas seguidas de clase al generar su horario.
+  </div>
+      </td>
       <td><input type="checkbox" value=""></td>
     </tr>
     <tr>
-      <td>Hora para comer</td>
+      <td><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo5">?</button>
+      Hora para comer
+      <div id="demo5" class="collapse">
+   Las horas de clase se organizarán de tal modo que de 14:30 a 15:30 haya una hora libre para comer.
+  </div>
+      </td>
       <td><input type="checkbox" value=""></td>
     </tr>
   </tbody>
