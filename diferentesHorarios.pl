@@ -156,7 +156,7 @@ elementoMenorEnListaIntervaloDia([Intervalo1|R], Intervalo2) :-
 
 menorQue(intervaloDia(H1, H2, Dia),
 	 intervaloDia(H3, H4, Dia)) :-
-	H2 < H4.
+	H1 < H3.
 
 menorQue(intervaloDia(H1, H2, dia(D1)),
 	intervaloDia(H3, H4, dia(D2))) :-
