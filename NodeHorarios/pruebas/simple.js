@@ -4,6 +4,7 @@ var fs = require('fs');
 
 var pu = new p();
 var datos = fs.readFileSync('example.pl').toString();
+console.log(datos);
 var db = Prolog.default.Parser.parse(datos);
 	//Como el modulo utilizado no admite realizar asserts, se hacen desde una clase separada, que modifica la base de datos prolog
 	anadir = pu.anadirLives("penguin",["zoo","espana"],datos);
@@ -15,7 +16,7 @@ var db = Prolog.default.Parser.parse(datos);
 	anadir = pu.anadirBird(["gorrion","aguila","periquito"],datos);
 	db = anadir[0];
 	datos = anadir[1];
-	query = Prolog.default.Parser.parseQuery("vive(paloma,paloma)."); 
+	query = Prolog.default.Parser.parseQuery("viveMenor(1,2,X)."); 
     iter = Prolog.default.Solver.query(db, query);
 
 while(iter.next()){	

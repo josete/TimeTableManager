@@ -1,9 +1,9 @@
 vive(X,Y,Z):-
-	is(Z,=(X,Y)).
+	X=Y.
 viveMayor(X,Y,Z):-
-	is(Z,>(X,Y)).
+	X>Y.
 viveMenor(X,Y,Z):-
-	is(Z,<(X,Y)).
+	X<Y.
 bird(pigeon).
 bird(penguin).
 lives(pigeon,_).
