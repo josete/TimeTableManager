@@ -5,7 +5,7 @@ var grupo = require("./Objetos/Grupo.js");
 var asignatura = require("./Objetos/Asignatura.js");
 var curso = require("./Objetos/Curso.js");
 var profesor = require("./Objetos/Profesor.js");
-var leerExcel = require("./Funcionalidad/LeerExcel.js");ç
+var leerExcel = require("./Funcionalidad/LeerExcel.js");
 
 c = new configuracion();
 leer = new leerExcel("../Info.xlsx", c);
@@ -63,30 +63,14 @@ c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 c.anadirSesion(new sesion(red,2,infor2));
 //----------------------------------*/
-<<<<<<< HEAD
-infor3 = new curso("Informatica", 3, "Informatica");
-async.series([
-    function (callback) { leer.leer(); callback()},
-    function (callback) {
-        h = new horario();
-        g = new grupo("Informatica", infor3)
-        h.setGrupo(g);
-        h.setSesiones(c.getSesionesPorNombreCurso("Informatica 3"));
-        h.generar();
-        c.anadirHorario(h);
-        h.imprimir();
-        callback();
-    }
-]);
-=======
+
 h = new horario();
 g = new grupo("Informatica",c.getCursoPorNombre("Informatica 3"));
 h.setGrupo(g);
-h.setSesiones(c.getSesionesPorCurso(c.getCursoPorNombre("Informatica 3")));
+h.setSesiones(c.getSesionesPorNombreCurso("Informatica 3"));
 h.generar();
 c.anadirHorario(h);
 h.imprimir();
->>>>>>> 914cf9d3d3c8ac607f9e1108870b941f4bda75bb
 
 /*h2 = new horario();
 g2 = new grupo("Informatica",infor2)
@@ -101,3 +85,7 @@ c.getHorarioProfesor("Raul").imprimir();*
 /*horarios = c.getHorarios();
 horarios[0].imprimir();
 horarios[1].imprimir();*/
+
+this.getConf = function(){
+    return c;
+}

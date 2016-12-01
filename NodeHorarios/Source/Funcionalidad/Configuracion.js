@@ -32,8 +32,7 @@ var Configuracion = function () {
     this.getSesionesPorNombreCurso = function (curso) {
         sesionesCurso = [];
         for (i = 0; i < this.sesiones.length; i++) {
-            console.log(this.sesiones[i].getNombre()+" "+this.sesiones[i].getCurso());
-            if ((this.sesiones[i].getNombre()+" "+this.sesiones[i].getCurso() == curso)) {
+            if ((this.sesiones[i].curso.getNombre()+" "+this.sesiones[i].curso.getCurso() == curso)) {
                 sesionesCurso.push(this.sesiones[i]);
             }
         }
