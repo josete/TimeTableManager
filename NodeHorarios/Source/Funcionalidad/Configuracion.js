@@ -29,10 +29,10 @@ var Configuracion = function () {
         return this.horarios;
     }
 
-    this.getSesionesPorCurso = function (curso) {
+    this.getSesionesPorNombreCurso = function (curso) {
         sesionesCurso = [];
         for (i = 0; i < this.sesiones.length; i++) {
-            if (this.sesiones[i].getCurso() == curso) {
+            if ((this.sesiones[i].curso.getNombre()+" "+this.sesiones[i].curso.getCurso() == curso)) {
                 sesionesCurso.push(this.sesiones[i]);
             }
         }
@@ -56,7 +56,9 @@ var Configuracion = function () {
     }
 
     this.getProfesorPorNombre = function (nombre) {
+        console.log("El nombre es: "+nombre);
         for (i = 0; i < this.profesores.length; i++) {
+            console.log("El nombre actual es: "+this.profesores[i].getNombre());
             if (this.profesores[i].getNombre() == nombre) {
                 return this.profesores[i];
             }

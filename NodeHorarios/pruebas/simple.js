@@ -20,5 +20,6 @@ var db = Prolog.default.Parser.parse(datos);
     iter = Prolog.default.Solver.query(db, query);
 
 while(iter.next()){	
-    console.log("X = ", iter.current.X);
+	console.log(iter);
+    console.log("X = ", iter.current.Y);
 }
