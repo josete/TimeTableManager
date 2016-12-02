@@ -173,6 +173,16 @@ ordenarLista([X|Y],[T|V]):-
 	borrar(T,[X|Y],L1),
 	ordenarLista(L1,V).
 
+horas([],[]).
+horasUnIntervalo([intervaloDia(H1,H2,dia(N))],(H1,H2)).
+
+cogerHoras([],[]).
+cogerHoras([Intervalo1],U):-
+	horasUnIntervalo([Intervalo1],U).
+cogerHoras([Intervalo1|R],[U|T]):-
+	horasUnIntervalo([Intervalo1],U),
+	cogerHoras(R,T).
+
 borrar(X,[X|T],T).
 borrar(X,[H|T],[H|NT]):-
 	borrar(X,T,NT).
@@ -303,7 +313,7 @@ asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
 %asignacionAsignatura(1, pt).
 asignacionProfesor(1, pgr).
-asignacionTiempo(1, intervalo(1330,1030),dia(1)).
+asignacionTiempo(1, intervalo(830,1030),dia(1)).
 asignacionTiempo(1, intervalo(1030,1230),dia(1)).
 asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
