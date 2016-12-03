@@ -42,15 +42,9 @@ horarioInvalido(Horario):-
 	asignacionTiempoNoPuedeProfesor(FranjaId1,intervalo(A,B),dia(D)).
 
 
-salida:-
-	tell('C:/Users/Clara/Desktop/horarios/TimeTableManager/salida.txt'),
-	generarHorario,
-	told.
-
-generarHorario1:-
+generarHorario:-
 	consult('C:/Users/Clara/Desktop/horarios/TimeTableManager/leer.txt'),
 	horarioInvalido(Horario).
-
 
 
 %asignacionTitulacion(1, gisi).
