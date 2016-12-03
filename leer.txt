@@ -1,7 +1,6 @@
 horarioAsignacion(horario1, 1).
 asignacionProfesor(1, pgr).
 asignacionTiempo(1, intervalo(830,1030),dia(1)).
-
-
+asignacionTiempoNoPuedeProfesor(1,intervalo(1030,1230),dia(1)).
 
 

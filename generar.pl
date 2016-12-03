@@ -35,29 +35,12 @@ horarioInvalido(Horario):-
 
 % el horario es invalido si se le asigna clase a un profesor a una hora
 % que no puede
-%horarioInvalido(Horario):-
-	%horarioAsignacion(Horario, FranjaId1),
-	%asignacionProfesor(FranjaId1, _Nombre),
-	%asignacionTiempo(FranjaId1, intervalo(A,B),dia(D)),
-	%asignacionTiempoNoPuedeProfesor(FranjaId1,intervalo(A,B),dia(D)).
+horarioInvalido(Horario):-
+	horarioAsignacion(Horario, FranjaId1),
+	asignacionProfesor(FranjaId1, _Nombre),
+	asignacionTiempo(FranjaId1, intervalo(A,B),dia(D)),
+	asignacionTiempoNoPuedeProfesor(FranjaId1,intervalo(A,B),dia(D)).
 
-
-
-generarHorario:-
-	write('Introduzca el horario: '),
-	read(Horario),
-	write('Introduzca el id del horario: '),
-	read(Id),
-	assert(horarioAsignacion(Horario,Id)),
-	write('Introduzca el profesor: '),
-	read(Profesor),
-	assert(asignacionProfesor(Id,Profesor)),
-	write('intervalo(H1,H2)' ),
-	read(intervalo(H1,H2)),
-	write('dia(N): '),
-	read(dia(N)),
-	assert(asignacionTiempo(Id,intervalo(H1,H2),dia(N))),
-	horarioInvalido(Horario).
 
 salida:-
 	tell('C:/Users/Clara/Desktop/horarios/TimeTableManager/salida.txt'),
