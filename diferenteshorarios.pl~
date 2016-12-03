@@ -173,6 +173,7 @@ ordenarLista([X|Y],[T|V]):-
 	borrar(T,[X|Y],L1),
 	ordenarLista(L1,V).
 
+
 horas([],[]).
 horasUnIntervalo([intervaloDia(H1,H2,dia(N))],(H1,H2)).
 
@@ -182,6 +183,7 @@ cogerHoras([Intervalo1],U):-
 cogerHoras([Intervalo1|R],[U|T]):-
 	horasUnIntervalo([Intervalo1],U),
 	cogerHoras(R,T).
+
 
 borrar(X,[X|T],T).
 borrar(X,[H|T],[H|NT]):-
@@ -356,6 +358,7 @@ horarioAsignacion(horario1, 1).
 %horarioAsignacion(horario1, 2).
 %horarioAsignacion(horario1, 3).
 %horarioAsignacion(horario1, 4).
+
 
 
 
