@@ -65,7 +65,7 @@ salida:-
 	told.
 
 generarHorario1:-
-	consult('C:/Users/Clara/Desktop/horarios/TimeTableManager/leer.txt'),
+	consult('C:/Users/Clara/Desktop/leer.txt'),
 	horarioInvalido(Horario).
 
 
