@@ -16,6 +16,8 @@
 
   <link rel="shortcut icon" href="img/calendar.png">
   <script>
+  var hola = "<table class="table table-bordered"><thead><tr><th>Horas</th><th>Lunes</th><th>Martes</th><th>Miercoles</th><th>Jueves</th><th>Viernes</th></tr></thead><tbody><tr id><td>8:30</td><td id="8-0"></td><td id="8-1"></td><td id="8-2"></td><td id="8-3"></td><td id="8-4"></td></tr><tr><td >10:30</td><td id="10-0"></td><td id="10-1"></td><td id="10-2"></td><td id="10-3"></td><td id="10-4"></td></tr><tr><td>12:30</td><td id="12-0"></td><td id="12-1"></td><td id="12-2"></td><td id="12-3"></td><td id="12-4"></td></tr><tr><td>14:30</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>";
+  $("#Horarios").append(hola);
   $.getJSON("/getHorarioCurso",
         function(data){
           Object.keys(data).forEach(function(element){
@@ -73,52 +75,7 @@
 <br>
 <br>
 
-<div class="container"><table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Horas</th>
-      <th>Lunes</th>
-      <th>Martes</th>
-      <th>Miercoles</th>
-      <th>Jueves</th>
-      <th>Viernes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr id>
-      <td>8:30</td>
-      <td id="8-0"></td>
-      <td id="8-1"></td>
-      <td id="8-2"></td>
-      <td id="8-3"></td>
-      <td id="8-4"></td>
-    </tr>
-    <tr>
-      <td >10:30</td>
-      <td id="10-0"></td>
-      <td id="10-1"></td>
-      <td id="10-2"></td>
-      <td id="10-3"></td>
-      <td id="10-4"></td>
-    </tr>
-    <tr>
-      <td>12:30</td>
-      <td id="12-0"></td>
-      <td id="12-1"></td>
-      <td id="12-2"></td>
-      <td id="12-3"></td>
-      <td id="12-4"></td>
-    </tr>
-      <tr>
-      <td>14:30</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-  </table>
+<div class="container" id="Horarios">
   </div>
 </div>
 <div id="footer">
