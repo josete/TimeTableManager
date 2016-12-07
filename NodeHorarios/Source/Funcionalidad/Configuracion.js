@@ -30,6 +30,16 @@ var Configuracion = function () {
         return this.horarios;
     }
 
+    this.getHorariosDeUnGrupo = function(nombre){
+        horariosGrupo = [];
+        for(i=0;i<this.horarios.length;i++){
+            if(this.horarios[i].grupo.nombre==nombre){
+                horariosGrupo.push(this.horarios[i]);
+            }
+        }
+        return horariosGrupo;
+    }
+
     this.getSesionesPorNombreCurso = function (curso) {
         sesionesCurso = [];
         for (i = 0; i < this.sesiones.length; i++) {
@@ -57,9 +67,7 @@ var Configuracion = function () {
     }
 
     this.getProfesorPorNombre = function (nombre) {
-        console.log("El nombre es: "+nombre);
         for (i = 0; i < this.profesores.length; i++) {
-            console.log("El nombre actual es: "+this.profesores[i].getNombre());
             if (this.profesores[i].getNombre() == nombre) {
                 return this.profesores[i];
             }
@@ -96,6 +104,24 @@ var Configuracion = function () {
         }
         h.horarioGenerado["Dias"] = dias;
         return h;
+    }
+
+    this.aceptarHorario = function(grupo){
+        posicion = 0;
+        calidad = 0;
+        horariosObtenidos = this.getHorariosDeUnGrupo(grupo);
+        for(i=0;i<horariosObtenidos.length;i++){
+            if(horariosObtenidos[i].valor>calidad){
+                posicion=i;
+                calidad = horariosObtenidos[i].valor;
+            }
+        }
+        //El horario se acepta para hacer definitivas las horas del profesor
+        horariosObtenidos[posicion].aceptar();
+        console.log("El valor es: "+calidad);
+        horariosObtenidos[posicion].imprimir();
+        //Se añade el horario al array de horario aceptados
+        this.horariosValidos.push(horariosObtenidos[posicion]);
     }
 
 }

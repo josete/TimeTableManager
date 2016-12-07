@@ -27,13 +27,13 @@ var Horario = function () {
 				intento++;
 				profesor = this.sesiones[actual].getAsignatura().getProfesor();
 				asignatura = this.sesiones[actual].getAsignatura();
-				sesion = this.sesiones[actual];
+				sesion = this.sesiones[actual];				
 				//if (asignatura.diaActualPuede() && this.comprobar.comprobarSolape(profesor, dia + "-" + horaActual)
 					//&& this.comprobar.comprobarHorasDiarias(profesor, sesion,dia)) {
 					this.horarioGenerado[dia + "-" + horaActual] = sesion;
 					//profesor.anadirClase(dia + "-" + horaActual, sesion);
 					horasTotalesDia -= sesion.getHoras();
-					horaActual += sesion.getHoras();
+					horaActual += parseInt("10",sesion.getHoras());
 					//asignatura.setPuede(false);
 					this.sesiones.splice(actual, 1);
 					intento = 0;
@@ -43,7 +43,7 @@ var Horario = function () {
 					horasTotalesDia = this.horasDia;
 					dia++;
 					horaActual = this.horaInicio;
-					this.resetear();
+					//this.resetear();
 				}
 				/*if (actual >= this.sesiones.length) {
 					actual = 0;
@@ -98,6 +98,15 @@ var Horario = function () {
 
 	this.getRandomInt = function(max) {
     	return Math.floor(Math.random() * ((max-1) - 0 + 1)) + 0;
+	}
+
+	this.aceptar=function(){
+		horarioIntermedio = this.horarioGenerado;
+		Object.keys(this.horarioGenerado).forEach(function(element){
+			try{
+				horarioIntermedio[element].asignatura.profesor.anadirClase(element,horarioIntermedio[element]);
+			}catch(err){}
+		});
 	}
 }
 
