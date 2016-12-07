@@ -72,20 +72,19 @@ var Main = function () {
     h.setSesiones(c.getSesionesPorNombreCurso("Informatica 3"));
     h.generar();
     c.anadirHorario(h);
-
     h.imprimir();
 
-    /*h2 = new horario();
-    g2 = new grupo("Informatica",infor2)
+    h2 = new horario();
+    g2 = new grupo("Informatica", c.getCursoPorNombre("Informatica 2"));
     h2.setGrupo(g2);
-    h2.setSesiones(c.getSesionesPorCurso(infor2));
+    h2.setSesiones(c.getSesionesPorNombreCurso("Informatica 2"));
     h2.generar();
     c.anadirHorario(h2);
-    h2.imprimir();*/
+    h2.imprimir();
 
     /*console.log("Horario de Raul: ");
-    c.getHorarioProfesor("Raul").imprimir();*
-    /*horarios = c.getHorarios();
+    c.getHorarioProfesor("Raul").imprimir();
+    horarios = c.getHorarios();
     horarios[0].imprimir();
     horarios[1].imprimir();*/
 
