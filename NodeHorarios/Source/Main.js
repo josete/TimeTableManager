@@ -6,8 +6,11 @@ var asignatura = require("./Objetos/Asignatura.js");
 var curso = require("./Objetos/Curso.js");
 var profesor = require("./Objetos/Profesor.js");
 var leerExcel = require("./Funcionalidad/LeerExcel.js");
+var comprobaciones = require("./Funcionalidad/Comprobaciones.js");
 
 var Main = function () {
+
+    comprobar = new comprobaciones();
     c = new configuracion();
     leer = new leerExcel("../Info.xlsx", c);
     //Creo que hay que hacerlo asincrono
@@ -74,6 +77,18 @@ var Main = function () {
     c.anadirHorario(h);
     h.imprimir();
 
+    var a = [];
+    Object.keys(h.horarioGenerado).forEach(function(element){
+        try{
+        var final =element.split("-")[0]+"-"+(parseInt("10",element.split("-")[1])+parseInt("10",h.horarioGenerado[element].horas));
+        a.push(comprobar.comprobarSolape(h.horarioGenerado[element].getAsignatura().getProfesor(),element,final));        
+        }catch(err){}
+    });
+    h.valor = Math.min.apply(Math,a);
+    console.log("Valor: "+h.valor);
+
+    //this.comprobar.comprobarSolape();
+
     h2 = new horario();
     g2 = new grupo("Informatica", c.getCursoPorNombre("Informatica 2"));
     h2.setGrupo(g2);
@@ -81,6 +96,14 @@ var Main = function () {
     h2.generar();
     c.anadirHorario(h2);
     h2.imprimir();
+    Object.keys(h2.horarioGenerado).forEach(function(element){
+        try{
+        var final =element.split("-")[0]+"-"+(parseInt("10",element.split("-")[1])+parseInt("10",h.horarioGenerado[element].horas));
+        a.push(comprobar.comprobarSolape(h.horarioGenerado[element].getAsignatura().getProfesor(),element,final));
+        }catch(err){}
+    });
+    h2.valor = Math.min.apply(Math,a);
+    console.log("Valor: "+h2.valor);
 
     /*console.log("Horario de Raul: ");
     c.getHorarioProfesor("Raul").imprimir();

@@ -1,21 +1,22 @@
 var Comprobaciones = function(){
 
     this.comprobarSolape = function(profesor,A0,Af){
-       puede = true;
+       puede = 10;
+       if(Object.keys(profesor.getClases()).length>0){
 		if(profesor.getClases().hasOwnProperty(A0)||profesor.getClases().hasOwnProperty(Af)){
-			puede = false;
+			puede = 0;
 		}else{
-			partes0 = A0.split(":");
-			partesf = Af.split(":");
+			partes0 = A0.split("-");
+			partesf = Af.split("-");
 			horas = Object.keys(profesor.getClases());
 			horas.forEach(function(element){
-				ps = element.split(":");
-				if(p[0]>partes0[0]&&p[0]<partesf[0]){
-					puede = false;
-					break;
+				ps = element.split("-");
+				if(p[1]>partes0[0]&&p[1]<partesf[1]){
+					puede = 0;
 				}
 			});
 		}
+	}
 		return puede;
     }
 
