@@ -84,16 +84,15 @@ elementoMenor([X|Y],X):-
 	elementoMenor(Y,N),
 	X<N.
 
-
-
-
-generarHorarioUnaAsignatura(asignacionTiempo(Id,intervalo(X,Y),dia(1))):-
-	horarioAsignacion(Horario,Id),
-	asignacionAsignatura(Id, Asignatura),
+posiblesIntervalos(intervalo(X,Y)):-
 	generarPosibilidades(T),
 	elementoMayor(T,Y),
 	elementoMenor(T,X).
 
+generarHorarioUnaAsignatura(asignacionTiempo(Id,X,dia(1))):-
+	horarioAsignacion(Horario,Id),
+	asignacionAsignatura(Id, Asignatura),
+	posiblesIntervalos(X).
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
