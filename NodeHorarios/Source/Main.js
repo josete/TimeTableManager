@@ -31,6 +31,7 @@ var Main = function() {
     h.generar();
     c.anadirHorario(h);
     //h.imprimir();
+    console.log("El numero de horarios es: "+c.getHorariosDeUnGrupo("Informatica 3").length);
     c.getHorariosDeUnGrupo("Informatica 3").forEach(function(element) {
         comprobar.valorar(element);
     });
@@ -49,7 +50,7 @@ var Main = function() {
     //----------------------
     h2.setSesiones(c.getSesionesPorNombreCurso("Informatica 2"));
     h2.generar();
-    c.anadirHorario(h2);
+    c.anadirHorario(h2);    
     c.getHorariosDeUnGrupo("Informatica 2").forEach(function (element) {
         comprobar.valorar(element);
     });
