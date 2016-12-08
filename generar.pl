@@ -28,10 +28,10 @@ horarioInvalido(Horario):-
 
 %no puede haber clase en el intervalo de H1-H2
 
-horarioInvalido(Horario):-
+%horarioInvalido(Horario):-
 %H1y H2 lo mete el cliente
-	horarioAsignacion(Horario, FranjaId1),
-	asignacionTiempo(FranjaId1, intervalo(1430,1330), _Dia).
+	%horarioAsignacion(Horario, FranjaId1),
+	%asignacionTiempo(FranjaId1, intervalo(1430,1330), _Dia).
 
 % el horario es invalido si se le asigna clase a un profesor a una hora
 % que no puede
@@ -95,6 +95,7 @@ posiblesIntervalos(intervalo(X,Y)):-
 
 
 sacarElementoDeUnaLista([A],A).
+
 posiblesDias(Dia):-
 	generarPosibilidadesDias(N),
 	sacarElementoDeUnaLista(N,Dia).
@@ -103,12 +104,31 @@ combinacionHorasDias(Intervalos,dia(Dia)):-
 	posiblesIntervalos(Intervalos),
 	posiblesDias(Dia).
 
-
-
 generarHorarioUnaAsignatura(Asignatura,asignacionTiempo(Id,Intervalos,dia(Dia))):-
-	horarioAsignacion(Horario,Id),
 	asignacionAsignatura(Id, Asignatura),
-	combinacionHorasDias(Intervalos,dia(Dia)).
+	combinacionHorasDias(Intervalos,dia(Dia)),
+	horarioAsignacion(Horario,Id).
+
+asignacionTiempo(Id,Intervalo,Dia).
+
+recorrerLista([],[]).
+recorrerLista([asignacionTiempo(Id,Intervalos,Dia)|R],[asignacionTiempo(Id,Intervalos,Dia)|U]):-
+	horarioAsignacion(Horario,Id),
+	 \+horarioInvalido(Horario),
+	 recorrerLista(R,U).
+
+recorrerLista([asignacionTiempo(Id,Intervalos,Dia)|R],[]):-
+	horarioAsignacion(Horario,Id),
+	horarioInvalido(Horario),
+	recorrerLista(R,[]).
+
+
+generarHorarioResAsignatura(Asignatura,asignacionTiempo(Id,Intervalos,dia(Dia)),T):-
+	asignacionAsignatura(Id, Asignatura),
+	combinacionHorasDias(Intervalos,dia(Dia)),
+	findall(I,generarHorarioUnaAsignatura(Asignatura,I),L),
+	recorrerLista(L,T).
+
 
 
 asignacionTitulacion(1, gisi).
@@ -122,7 +142,7 @@ asignacionProfesor(1, pgr).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
 %asignacionTiempo(1, intervalo(1830,2030),dia(1)).
-%asignacionTiempoNoPuedeProfesor(1,intervalo(830,1030),dia(1)).
+asignacionTiempoNoPuedeProfesor(1,intervalo(9999,9999),dia(7)).
 
 
 %asignacionTiempo(1, intervalo(830,1230),dia(2)).
