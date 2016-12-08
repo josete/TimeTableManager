@@ -58,7 +58,7 @@ variaciones(N,L,[H|Varia]):-
 	variaciones(N1,Rest,Varia).
 
 
-generarHorario(X):-
+generarPosibilidades(X):-
 	L=[830,930,1030,1130,1230,1330,1430,1530,1630,1730,1830,1930,2030],
 	variaciones(2,L,X).
 
@@ -67,6 +67,32 @@ ordenarLista([A|B],[A|B]):-
 	A<B.
 ordenarLista([A|B],[]):-
 	B<A.
+
+elementoMayor([X],X).
+elementoMayor([X|Y],X):-
+	elementoMayor(Y,N),
+	X>N.
+elementoMayor([X|Y],N):-
+	elementoMayor(Y,N),
+	X<N.
+
+elementoMenor([X],X).
+elementoMenor([X|Y],N):-
+	elementoMenor(Y,N),
+	X>N.
+elementoMenor([X|Y],X):-
+	elementoMenor(Y,N),
+	X<N.
+
+
+
+
+generarHorarioUnaAsignatura(asignacionTiempo(Id,intervalo(X,Y),dia(1))):-
+	horarioAsignacion(Horario,Id),
+	asignacionAsignatura(Id, Asignatura),
+	generarPosibilidades(T),
+	ordenarLista(T,L).
+
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).

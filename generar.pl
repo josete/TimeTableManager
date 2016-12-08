@@ -68,6 +68,32 @@ ordenarLista([A|B],[A|B]):-
 ordenarLista([A|B],[]):-
 	B<A.
 
+elementoMayor([X],X).
+elementoMayor([X|Y],X):-
+	elementoMayor(Y,N),
+	X>N.
+elementoMayor([X|Y],N):-
+	elementoMayor(Y,N),
+	X<N.
+
+elementoMenor([X],X).
+elementoMenor([X|Y],N):-
+	elementoMenor(Y,N),
+	X>N.
+elementoMenor([X|Y],X):-
+	elementoMenor(Y,N),
+	X<N.
+
+
+
+
+generarHorarioUnaAsignatura(asignacionTiempo(Id,intervalo(X,Y),dia(1))):-
+	horarioAsignacion(Horario,Id),
+	asignacionAsignatura(Id, Asignatura),
+	generarPosibilidades(T),
+	elementoMayor(T,Y),
+	elementoMenor(T,X).
+
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
