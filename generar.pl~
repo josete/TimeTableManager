@@ -42,18 +42,30 @@ horarioInvalido(Horario):-
 	asignacionTiempoNoPuedeProfesor(FranjaId1,intervalo(A,B),dia(D)).
 
 
-generarHorario1:-
+leerHorario:-
 	consult('C:/Users/Clara/Desktop/horarios/TimeTableManager/leer.txt'),
 	horarioInvalido(Horario).
 
+variaciones(0,_,[]).
+variaciones(N,L,[H|Varia]):-
+	N>0,
+	N1 is N-1,
+	borrar(H,L,Rest),
+	variaciones(N1,Rest,Varia).
 
-%asignacionTitulacion(1, gisi).
-%asignacionCurso(1, 3).
-%asignacionAsignatura(1, isi).
+
+generarHorario(X):-
+	L=[830,930,1030,1130,1230,1330,1430,1530,1630,1730,1830,1930,2030],
+	variaciones(2,L,X).
+
+
+asignacionTitulacion(1, gisi).
+asignacionCurso(1, 3).
+asignacionAsignatura(1, isi).
 %asignacionAsignatura(1, pt).
-%asignacionProfesor(1, pgr).
+asignacionProfesor(1, pgr).
 %asignacionProfesor(2, pgr).
-%asignacionTiempo(1, intervalo(830,1030),dia(1)).
+%asignacionTiempo(1, intervalo(X,Y),dia(N)).
 %asignacionTiempo(2, intervalo(830,1030),dia(1)).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
@@ -63,8 +75,35 @@ generarHorario1:-
 
 %asignacionTiempo(1, intervalo(830,1230),dia(2)).
 %asignacionTiempo(1, intervalo(830,1230),dia(3)).
-%horarioAsignacion(horario1, 1).
+horarioAsignacion(horario1, 1).
 %horarioAsignacion(horario1, 2).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
