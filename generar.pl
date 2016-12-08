@@ -98,7 +98,7 @@ posiblesDias(Dia):-
 	generarPosibilidadesDias(N),
 	sacarElementoDeUnaLista(N,Dia).
 
-generarHorarioUnaAsignatura(asignacionTiempo(Id,Intervalos,dia(Dia))):-
+generarHorarioUnaAsignatura(Asignatura,asignacionTiempo(Id,Intervalos,dia(Dia))):-
 	horarioAsignacion(Horario,Id),
 	asignacionAsignatura(Id, Asignatura),
 	posiblesIntervalos(Intervalos),

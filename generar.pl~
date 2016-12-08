@@ -93,11 +93,16 @@ posiblesIntervalos(intervalo(X,Y)):-
 	elementoMayor(T,Y),
 	elementoMenor(T,X).
 
-generarHorarioUnaAsignatura(asignacionTiempo(Id,Intervalos,dia(N))):-
+sacarElementoDeUnaLista([A],A).
+posiblesDias(Dia):-
+	generarPosibilidadesDias(N),
+	sacarElementoDeUnaLista(N,Dia).
+
+generarHorarioUnaAsignatura(asignacionTiempo(Id,Intervalos,dia(Dia))):-
 	horarioAsignacion(Horario,Id),
 	asignacionAsignatura(Id, Asignatura),
 	posiblesIntervalos(Intervalos),
-	generarPosibilidadesDias(N).
+	posiblesDias(Dia).
 
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
