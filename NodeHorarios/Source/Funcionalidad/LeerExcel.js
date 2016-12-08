@@ -34,6 +34,7 @@ var leerExcel = function (archivo, configuracion) {
         data.forEach(function (element) {
             f.fabricar("Sesion", { asignatura: element[13], horas: element[14], curso: element[15] });
         }, this);*/
+        //callback();
     }
 
 }

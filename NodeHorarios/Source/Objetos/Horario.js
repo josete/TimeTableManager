@@ -9,6 +9,9 @@ var Horario = function () {
 	this.horarioGenerado = {};
 	this.generado = false;
 
+	//Evaluacion del horario
+	this.valor = 0;
+
 	this.comprobar = new comprobaciones();
 
 	this.generar = function () {
@@ -16,7 +19,7 @@ var Horario = function () {
 			throw new Error("El horario no tiene grupo o sesiones");
 		} else {
 			horasTotalesDia = this.horasDia;
-			actual = 0;
+			actual = this.getRandomInt(this.sesiones.length);
 			dia = 0;
 			horaActual = this.horaInicio;
 			intento = 0;//Pruebas
@@ -24,27 +27,27 @@ var Horario = function () {
 				intento++;
 				profesor = this.sesiones[actual].getAsignatura().getProfesor();
 				asignatura = this.sesiones[actual].getAsignatura();
-				sesion = this.sesiones[actual];
-				if (asignatura.diaActualPuede() && this.comprobar.comprobarSolape(profesor, dia + "-" + horaActual)
-					&& this.comprobar.comprobarHorasDiarias(profesor, sesion,dia)) {
+				sesion = this.sesiones[actual];				
+				//if (asignatura.diaActualPuede() && this.comprobar.comprobarSolape(profesor, dia + "-" + horaActual)
+					//&& this.comprobar.comprobarHorasDiarias(profesor, sesion,dia)) {
 					this.horarioGenerado[dia + "-" + horaActual] = sesion;
-					profesor.anadirClase(dia + "-" + horaActual, sesion);
+					//profesor.anadirClase(dia + "-" + horaActual, sesion);
 					horasTotalesDia -= sesion.getHoras();
-					horaActual += sesion.getHoras();
-					asignatura.setPuede(false);
+					horaActual += parseInt("10",sesion.getHoras());
+					//asignatura.setPuede(false);
 					this.sesiones.splice(actual, 1);
 					intento = 0;
-				}
-				actual++;
+				//}
+				actual=this.getRandomInt(this.sesiones.length);
 				if (horasTotalesDia <= 0 || intento > 3) {
 					horasTotalesDia = this.horasDia;
 					dia++;
 					horaActual = this.horaInicio;
-					this.resetear();
+					//this.resetear();
 				}
-				if (actual >= this.sesiones.length) {
+				/*if (actual >= this.sesiones.length) {
 					actual = 0;
-				}
+				}*/
 			}
 			this.horarioGenerado["Dias"] = dia;
 			this.generado = true;
@@ -91,6 +94,19 @@ var Horario = function () {
 
 	this.getGenerado = function () {
 		return this.generado;
+	}
+
+	this.getRandomInt = function(max) {
+    	return Math.floor(Math.random() * ((max-1) - 0 + 1)) + 0;
+	}
+
+	this.aceptar=function(){
+		horarioIntermedio = this.horarioGenerado;
+		Object.keys(this.horarioGenerado).forEach(function(element){
+			try{
+				horarioIntermedio[element].asignatura.profesor.anadirClase(element,horarioIntermedio[element]);
+			}catch(err){}
+		});
 	}
 }
 

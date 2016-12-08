@@ -13,7 +13,7 @@ var fabrica = function (configuracion) {
                 configuracion.anadirProfesor(new profesor(datos.nombre, datos.min, datos.max));
                 break;
             case "Asignatura":
-                console.log("Profesor: "+this.c.getProfesorPorNombre(datos.profesor).nombre);
+                //console.log("Profesor: "+this.c.getProfesorPorNombre(datos.profesor).nombre);
                 configuracion.anadirAsignatura(new asignatura(datos.nombre, datos.curso, datos.titulacion, this.c.getProfesorPorNombre(datos.profesor)));
                 break;
             case "Curso":
