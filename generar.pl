@@ -58,9 +58,15 @@ variaciones(N,L,[H|Varia]):-
 	variaciones(N1,Rest,Varia).
 
 
-generarHorario(X):-
+generarPosibilidades(X):-
 	L=[830,930,1030,1130,1230,1330,1430,1530,1630,1730,1830,1930,2030],
 	variaciones(2,L,X).
+
+ordenarLista([],[]).
+ordenarLista([A|B],[A|B]):-
+	A<B.
+ordenarLista([A|B],[]):-
+	B<A.
 
 
 asignacionTitulacion(1, gisi).
