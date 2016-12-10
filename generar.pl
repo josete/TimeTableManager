@@ -1,3 +1,7 @@
+
+:-dynamic
+    horarioAsignacion/2,
+    asignacionTiempo/3.
 solape(intervalo(A,B),intervalo(C,D)):-
 	%Amplitudes iguales
 
@@ -109,7 +113,6 @@ generarHorarioUnaAsignatura(Asignatura,asignacionTiempo(Id,Intervalos,dia(Dia)),
 	combinacionHorasDias(Intervalos,dia(Dia)),
 	horarioAsignacion(Horario,Id).
 
-
 %recorrerLista([],[]).
 % recorrerLista([asignacionTiempo(Id,Intervalos,Dia)|R],[asignacionTiempo(Id,Intervalos,Dia)|U]):-
 %	horarioAsignacion(Horario,Id),
@@ -125,7 +128,6 @@ generarHorarioUnaAsignatura(Asignatura,asignacionTiempo(Id,Intervalos,dia(Dia)),
 	%recorrerLista(L,T).
 
 
-
 asignacionTitulacion(1, gisi).
 asignacionCurso(1, 3).
 asignacionAsignatura(1, isi).
@@ -137,7 +139,7 @@ asignacionProfesor(1, pgr).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
 %asignacionTiempo(1, intervalo(1830,2030),dia(1)).
-asignacionTiempoNoPuedeProfesor(1,intervalo(890,930),dia(1)).
+asignacionTiempoNoPuedeProfesor(1,intervalo(830,930),dia(1)).
 
 
 %asignacionTiempo(1, intervalo(830,1230),dia(2)).
