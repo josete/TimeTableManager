@@ -39,7 +39,7 @@ horarioInvalido(Horario):-
 
 % el horario es invalido si se le asigna clase a un profesor a una hora
 % que no puede
-horarioInvalido(Horario):-
+horarioInvalido(Horario,asignacionTiempo(FranjaId1, intervalo(A,B),dia(D))):-
 	horarioAsignacion(Horario, FranjaId1),
 	asignacionProfesor(FranjaId1, _Nombre),
 	asignacionTiempo(FranjaId1, intervalo(A,B),dia(D)),
@@ -111,7 +111,9 @@ combinacionHorasDias(Intervalos,dia(Dia)):-
 generarHorarioUnaAsignatura(Asignatura,asignacionTiempo(Id,Intervalos,dia(Dia)),Horario):-
 	asignacionAsignatura(Id, Asignatura),
 	combinacionHorasDias(Intervalos,dia(Dia)),
+	%assert(asignacionTiempo(Id,Intervalos,dia(Dia))),
 	horarioAsignacion(Horario,Id).
+	%\+horarioInvalido(Horario);
 
 %recorrerLista([],[]).
 % recorrerLista([asignacionTiempo(Id,Intervalos,Dia)|R],[asignacionTiempo(Id,Intervalos,Dia)|U]):-
@@ -138,7 +140,7 @@ asignacionProfesor(1, pgr).
 %asignacionTiempo(2, intervalo(830,1030),dia(1)).
 %asignacionTiempo(1, intervalo(1230,1430),dia(1)).
 
-%asignacionTiempo(1, intervalo(1830,2030),dia(1)).
+%asignacionTiempo(1, intervalo(830,930),dia(1)).
 asignacionTiempoNoPuedeProfesor(1,intervalo(830,930),dia(1)).
 
 
