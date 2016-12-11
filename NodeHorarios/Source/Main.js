@@ -25,17 +25,17 @@ var Main = function () {
     });
     c.aceptarHorario("Informatica 3");
 
-    for(var i=0;i<20;i++){
+    /*for(var i=0;i<20;i++){
         generarHorario("Informatica",2);    
     }
     console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo("Informatica 2").length);
     c.getHorariosDeUnGrupo("Informatica 2").forEach(function (element) {
         comprobar.valorar(element);
     });
-    c.aceptarHorario("Informatica 2");
+    c.aceptarHorario("Informatica 2");*/
 
     this.generarHorarioParaMostrar = function (numero) {
-        h = c.getHorarios()[0];
+        h = c.getHorariosValidos()[0];
         horarioEnviar = {}
         Object.keys(h.horarioGenerado).forEach(function (element) {
             try {
@@ -50,6 +50,7 @@ var Main = function () {
         g = new grupo((titulacion + " " + curso), c.getCursoPorNombre((titulacion + " " + curso)));
         h.setGrupo(g);
         h.setSesiones(c.getSesionesPorNombreCurso((titulacion + " " + curso)));
+        //h.setHorasDias([6,0,6,6,6]);
         h.generar();
         c.anadirHorario(h);
     }

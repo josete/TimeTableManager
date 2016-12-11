@@ -30,10 +30,14 @@ var Configuracion = function () {
         return this.horarios;
     }
 
-    this.getHorariosDeUnGrupo = function(nombre){
+    this.getHorariosValidos = function () {
+        return this.horariosValidos;
+    }
+
+    this.getHorariosDeUnGrupo = function (nombre) {
         horariosGrupo = [];
-        for(i=0;i<this.horarios.length;i++){
-            if(this.horarios[i].grupo.nombre==nombre){
+        for (i = 0; i < this.horarios.length; i++) {
+            if (this.horarios[i].grupo.nombre == nombre) {
                 horariosGrupo.push(this.horarios[i]);
             }
         }
@@ -43,7 +47,7 @@ var Configuracion = function () {
     this.getSesionesPorNombreCurso = function (curso) {
         sesionesCurso = [];
         for (i = 0; i < this.sesiones.length; i++) {
-            if ((this.sesiones[i].curso.getNombre()+" "+this.sesiones[i].curso.getCurso() == curso)) {
+            if ((this.sesiones[i].curso.getNombre() + " " + this.sesiones[i].curso.getCurso() == curso)) {
                 sesionesCurso.push(this.sesiones[i]);
             }
         }
@@ -106,19 +110,19 @@ var Configuracion = function () {
         return h;
     }
 
-    this.aceptarHorario = function(grupo){
+    this.aceptarHorario = function (grupo) {
         posicion = 0;
         calidad = 0;
         horariosObtenidos = this.getHorariosDeUnGrupo(grupo);
-        for(i=0;i<horariosObtenidos.length;i++){
-            if(horariosObtenidos[i].valor>calidad){
-                posicion=i;
+        for (i = 0; i < horariosObtenidos.length; i++) {
+            if (horariosObtenidos[i].valor > calidad) {
+                posicion = i;
                 calidad = horariosObtenidos[i].valor;
             }
         }
         //El horario se acepta para hacer definitivas las horas del profesor
         horariosObtenidos[posicion].aceptar();
-        console.log("El valor es: "+calidad);
+        console.log("El valor es: " + calidad);
         horariosObtenidos[posicion].imprimir();
         //Se añade el horario al array de horario aceptados
         this.horariosValidos.push(horariosObtenidos[posicion]);

@@ -6,6 +6,7 @@ var Horario = function () {
 	this.sesiones = null;
 	this.horaInicio = 8;
 	this.horasDia = 6;
+	this.horasDias;
 	this.horarioGenerado = {};
 	this.generado = false;
 
@@ -18,30 +19,35 @@ var Horario = function () {
 		if (this.grupo == null || this.sesiones == null) {
 			throw new Error("El horario no tiene grupo o sesiones");
 		} else {
+			dia = 0;
+			if (this.horasDias != null) {
+				this.horasDia = this.horasDias[dia];
+			}
 			horasTotalesDia = this.horasDia;
 			actual = this.getRandomInt(this.sesiones.length);
-			dia = 0;
 			horaActual = this.horaInicio;
 			intento = 0;//Pruebas
-			while (this.sesiones.length > 0 && dia<5) {
+			while (this.sesiones.length > 0 && dia < 5) {
 				intento++;
 				profesor = this.sesiones[actual].getAsignatura().getProfesor();
 				asignatura = this.sesiones[actual].getAsignatura();
-				sesion = this.sesiones[actual];				
-				//if (asignatura.diaActualPuede() && this.comprobar.comprobarSolape(profesor, dia + "-" + horaActual)
-					//&& this.comprobar.comprobarHorasDiarias(profesor, sesion,dia)) {
-					this.horarioGenerado[dia + "-" + horaActual] = sesion;
-					//profesor.anadirClase(dia + "-" + horaActual, sesion);
-					horasTotalesDia -= sesion.getHoras();
-					horaActual += parseInt("10",sesion.getHoras());
-					//asignatura.setPuede(false);
-					this.sesiones.splice(actual, 1);
-					intento = 0;
-				//}
-				actual=this.getRandomInt(this.sesiones.length);
+				sesion = this.sesiones[actual];
+				if (horasTotalesDia>0){
+				this.horarioGenerado[dia + "-" + horaActual] = sesion;
+				//profesor.anadirClase(dia + "-" + horaActual, sesion);
+				horasTotalesDia -= sesion.getHoras();
+				horaActual += parseInt("10", sesion.getHoras());
+				//asignatura.setPuede(false);
+				this.sesiones.splice(actual, 1);
+				intento = 0;
+				}
+				actual = this.getRandomInt(this.sesiones.length);
 				if (horasTotalesDia <= 0 || intento > 3) {
-					horasTotalesDia = this.horasDia;
 					dia++;
+					if (this.horasDias != null) {
+						this.horasDia = this.horasDias[dia];
+					}
+					horasTotalesDia = this.horasDia;
 					horaActual = this.horaInicio;
 					//this.resetear();
 				}
@@ -75,7 +81,7 @@ var Horario = function () {
 				try {
 					process.stdout.write(this.horarioGenerado[j + "-" + i].getAsignatura().getNombre());
 					process.stdout.write("	");
-				} catch (err) {process.stdout.write("---");process.stdout.write("	"); }
+				} catch (err) { process.stdout.write("---"); process.stdout.write("	"); }
 			}
 			process.stdout.write("\n");
 		}
@@ -96,17 +102,21 @@ var Horario = function () {
 		return this.generado;
 	}
 
-	this.getRandomInt = function(max) {
-    	return Math.floor(Math.random() * ((max-1) - 0 + 1)) + 0;
+	this.getRandomInt = function (max) {
+		return Math.floor(Math.random() * ((max - 1) - 0 + 1)) + 0;
 	}
 
-	this.aceptar=function(){
+	this.aceptar = function () {
 		horarioIntermedio = this.horarioGenerado;
-		Object.keys(this.horarioGenerado).forEach(function(element){
-			try{
-				horarioIntermedio[element].asignatura.profesor.anadirClase(element,horarioIntermedio[element]);
-			}catch(err){}
+		Object.keys(this.horarioGenerado).forEach(function (element) {
+			try {
+				horarioIntermedio[element].asignatura.profesor.anadirClase(element, horarioIntermedio[element]);
+			} catch (err) { }
 		});
+	}
+
+	this.setHorasDias = function (dias) {
+		this.horasDias = dias;
 	}
 }
 
