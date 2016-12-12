@@ -100,5 +100,4 @@ var Main = function () {
         return horarioEnviar;
     }
 }
-
 module.exports = Main;
