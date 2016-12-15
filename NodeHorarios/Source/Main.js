@@ -60,10 +60,9 @@ var Main = function () {
         g = new grupo((titulacion + " " + curso), c.getCursoPorNombre((titulacion + " " + curso)));
         h.setGrupo(g);
         h.setSesiones(c.getSesionesPorNombreCurso((titulacion + " " + curso)));
-        //h.setHorasDias([6,0,6,6,6]);
+        h.setHorasDias([6,4,4,4,6]);
         h.generar();
         c.anadirHorario(h);
     }
 }
-
 module.exports = Main;
