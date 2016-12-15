@@ -16,8 +16,18 @@ var Main = function () {
     leer = new leerExcel("../Info.xlsx", c);
     leer.leer();
 
-    for(var i=0;i<20;i++){
-        generarHorario("Informatica",3);    
+    for (var j = 0; j < c.cursos.length; j++) {
+        for (var i = 0; i < 30; i++) {
+            generarHorario(c.cursos[j].nombre, c.cursos[j].curso);
+        }
+        console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo(c.cursos[j].nombre + " " + c.cursos[j].curso).length);
+        c.getHorariosDeUnGrupo(c.cursos[j].nombre + " " + c.cursos[j].curso).forEach(function (element) {
+            comprobar.valorar(element);
+        });
+        c.aceptarHorario(c.cursos[j].nombre + " " + c.cursos[j].curso);
+    }
+    /*for (var i = 0; i < 20; i++) {
+        generarHorario("Informatica", 3);
     }
     console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo("Informatica 3").length);
     c.getHorariosDeUnGrupo("Informatica 3").forEach(function (element) {
@@ -25,8 +35,8 @@ var Main = function () {
     });
     c.aceptarHorario("Informatica 3");
 
-    /*for(var i=0;i<20;i++){
-        generarHorario("Informatica",2);    
+    for (var i = 0; i < 20; i++) {
+        generarHorario("Informatica", 2);
     }
     console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo("Informatica 2").length);
     c.getHorariosDeUnGrupo("Informatica 2").forEach(function (element) {
