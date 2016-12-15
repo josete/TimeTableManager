@@ -9,6 +9,7 @@ var Configuracion = function () {
     this.cursos = [];
     this.horarios = [];
     this.horariosValidos = [];
+    this.horas = {}
 
     this.isVacia = function () {
         return this.vacia;
