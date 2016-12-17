@@ -18,7 +18,7 @@ var Main = function () {
 
     for (var j = 0; j < c.cursos.length; j++) {
         for (var i = 0; i < 30; i++) {
-            generarHorario(c.cursos[j].nombre, c.cursos[j].curso);
+            generarHorario(c.cursos[j].nombre, c.cursos[j].curso, c.horas[c.cursos[j].nombre + " " + c.cursos[j].curso]);
         }
         console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo(c.cursos[j].nombre + " " + c.cursos[j].curso).length);
         c.getHorariosDeUnGrupo(c.cursos[j].nombre + " " + c.cursos[j].curso).forEach(function (element) {
@@ -55,12 +55,14 @@ var Main = function () {
         return horarioEnviar;
     }
 
-    function generarHorario(titulacion, curso) {
+    function generarHorario(titulacion, curso, horas) {
         h = new horario();
         g = new grupo((titulacion + " " + curso), c.getCursoPorNombre((titulacion + " " + curso)));
         h.setGrupo(g);
         h.setSesiones(c.getSesionesPorNombreCurso((titulacion + " " + curso)));
-        h.setHorasDias([6,4,4,4,6]);
+        if (horas != null) {
+            h.setHorasDias(horas);
+        }
         h.generar();
         c.anadirHorario(h);
     }

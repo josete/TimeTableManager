@@ -9,7 +9,7 @@ var fabrica = function (configuracion) {
 
     this.fabricar = function (tipo, datos) {
         switch (tipo) {
-            case "Profesor":            
+            case "Profesor":
                 configuracion.anadirProfesor(new profesor(datos.nombre, datos.min, datos.max));
                 break;
             case "Asignatura":
@@ -22,6 +22,9 @@ var fabrica = function (configuracion) {
             case "Sesion":
                 //console.log("Profesor: "+this.c.getAsignaturaPorNombre(datos.asignatura).getProfesor().nombre);
                 configuracion.anadirSesion(new sesion(this.c.getAsignaturaPorNombre(datos.asignatura), datos.horas, this.c.getCursoPorNombre(datos.curso)));
+                break;
+            case "Horas":
+                configuracion.horas[datos.id] = [datos.l,datos.m,datos.x,datos.j,datos.v];
                 break;
         }
     }

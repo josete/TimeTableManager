@@ -24,8 +24,11 @@ var leerExcel = function (archivo, configuracion) {
             if (element[9] != undefined) {
                 f.fabricar("Curso", { nombre: element[9], curso: element[10], titulacion: element[11] });
             }
-            if(element[13] != undefined){
+            if (element[13] != undefined) {
                 f.fabricar("Sesion", { asignatura: element[13], horas: element[14], curso: element[15] });
+            }
+            if (element[17] != undefined) {
+                f.fabricar("Horas", { id:element[17],l: element[18], m: element[19], x: element[20], j: element[21], v: element[22] });
             }
         }, this);
         /*worksheet = workbook.Sheets["Hoja2"];
