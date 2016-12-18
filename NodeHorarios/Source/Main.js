@@ -26,32 +26,27 @@ var Main = function () {
         });
         c.aceptarHorario(c.cursos[j].nombre + " " + c.cursos[j].curso);
     }
-    /*for (var i = 0; i < 20; i++) {
-        generarHorario("Informatica", 3);
-    }
-    console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo("Informatica 3").length);
-    c.getHorariosDeUnGrupo("Informatica 3").forEach(function (element) {
-        comprobar.valorar(element);
-    });
-    c.aceptarHorario("Informatica 3");
-
-    for (var i = 0; i < 20; i++) {
-        generarHorario("Informatica", 2);
-    }
-    console.log("El numero de horarios es: " + c.getHorariosDeUnGrupo("Informatica 2").length);
-    c.getHorariosDeUnGrupo("Informatica 2").forEach(function (element) {
-        comprobar.valorar(element);
-    });
-    c.aceptarHorario("Informatica 2");*/
 
     this.generarHorarioParaMostrar = function (numero) {
-        h = c.getHorariosValidos()[0];
+        h = c.getHorariosValidos();
         horarioEnviar = {}
-        Object.keys(h.horarioGenerado).forEach(function (element) {
-            try {
-                horarioEnviar[element] = h.horarioGenerado[element].getAsignatura().getNombre();
-            } catch (err) { }
-        });
+        for (var k = 0; k < h.length; k++) {
+            horario = {};
+            horario["nombre"]=h[k].grupo.nombre;
+            for (var j = 8; j < 14; j += 2) {
+                var tr = "<tr><td>" + j + "</td>";
+                for (var i = 0; i < h[k].horarioGenerado["Dias"]; i++) {
+                    try {
+                        tr += "<td>" + h[k].horarioGenerado[i + "-" + j].getAsignatura().getNombre() + "</td>";
+                    } catch (err) {
+                        tr += "<td></td>";
+                    }
+                }
+                tr += "</tr>";
+                horario[j] = tr;
+            }
+            horarioEnviar[k] = horario;
+        }
         return horarioEnviar;
     }
 

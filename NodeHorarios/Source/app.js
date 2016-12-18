@@ -15,4 +15,5 @@ app.get('/getHorarioCurso',function(req,res){
     res.send(horarios.generarHorarioParaMostrar(0));
 });
 
+
 app.listen(3000);
