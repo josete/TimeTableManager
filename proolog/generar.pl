@@ -152,7 +152,9 @@ horarioAsignacion(horario1, 1).
 
 
 
+
 %generarHorarioUnaAsignatura(ISI, X, Y).
+
 
 
 
